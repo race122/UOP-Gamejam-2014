@@ -25,8 +25,8 @@ public class Rock : MonoBehaviour
     private bool inSupply, isPickedUp, isFiring;
     private float frictionValue;
 
-    private float FRICTION_MAX =                0.4f;
-    private float FRICTION_MIN =                0.2f;
+    private float FRICTION_MAX =                0.2f;
+    private float FRICTION_MIN =                0.1f;
 
     private Vector3 BULLSEYE_POSITION;
     private Vector3 BACK_OF_HOUSE_POSITION;
@@ -78,7 +78,7 @@ public class Rock : MonoBehaviour
     }
 
     public bool IsMoving() {
-        return (rigidbody.velocity.magnitude > 0.05f);
+        return (rigidbody.velocity.magnitude > 0.1f);
     }
 
     public void StopMovingSlow() {
@@ -107,7 +107,6 @@ public class Rock : MonoBehaviour
 
     private void UpdateCamera() {
         if (isFiring) {
-            print(rigidbody.velocity.magnitude);
             if (!IsMoving()) {
                 player.StoneFired();
                 isFiring = false;
