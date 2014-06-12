@@ -89,7 +89,7 @@ public class Rock : MonoBehaviour
     // Send a value 0-1 to this function to set the friction value 
     // (0 = lowest, 1 = highest)
     public void SetFriction(float friction) {
-        frictionValue = Mathf.Clamp(frictionValue * FRICTION_MAX,FRICTION_MIN,FRICTION_MAX);
+        frictionValue = Mathf.Clamp(friction * FRICTION_MAX,FRICTION_MIN,FRICTION_MAX);
     }
 
     private void UpdateCamera() {
