@@ -5,10 +5,6 @@ Geri-Lynn Ramsay's Xtreme Curling 2014
 
 To Do List:
 
-* Sound
- * Implement placeholder sounds ( mostly done )
- * Add commentator sounds
- * Add team voices
 * UI
  * Dynamic location for UI elements(there are issues on different aspect ratio's)
  * Power meter (Brushing + pushing)
