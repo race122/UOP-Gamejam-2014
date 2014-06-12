@@ -5,11 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-<<<<<<< HEAD
 	<ProjectGuid>{26BEAA7C-4BB2-4E68-3384-49DC06EE3EC6}</ProjectGuid>
-=======
-	<ProjectGuid>{126116F6-B781-431A-6764-466B14FA96CB}</ProjectGuid>
->>>>>>> 57c0fcb23c3b744f699de0f3b7af83c9e5b3fbf6
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -43,17 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-<<<<<<< HEAD
 	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
 	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
-=======
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
-	</Reference>
-	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
->>>>>>> 57c0fcb23c3b744f699de0f3b7af83c9e5b3fbf6
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -63,13 +52,10 @@
      <Compile Include="Assets\Code\HudScript.cs" />
      <Compile Include="Assets\Code\MainMenuScript.cs" />
      <Compile Include="Assets\Code\MouseTest.cs" />
+     <Compile Include="Assets\Code\OptionsMenu.cs" />
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\Player2.cs" />
      <Compile Include="Assets\Code\Rock.cs" />
-<<<<<<< HEAD
-     <Compile Include="Assets\Code\optionsMenu.cs" />
-=======
->>>>>>> 57c0fcb23c3b744f699de0f3b7af83c9e5b3fbf6
      <None Include="Assets\Models\hi.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
