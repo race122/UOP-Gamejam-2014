@@ -7,7 +7,7 @@ public class MouseTest : MonoBehaviour {
 	static int _SCREENHEIGHT = Screen.height;
 	static int _SCREENWIDTH = Screen.width;
 
-	//y mouse position coords
+	//y mouse position coords dgsdg
 	float MousePositionY;
 
 	//get scrub motion
