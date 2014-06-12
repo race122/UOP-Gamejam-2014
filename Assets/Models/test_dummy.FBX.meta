@@ -1,0 +1,314 @@
+fileFormatVersion: 2
+guid: ab047afeb798f384a83fd124992bc79c
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: test_dummy
+    100004: test_dummy_Head
+    100006: test_dummy_LAnkle
+    100008: test_dummy_LArmCollarbone
+    100010: test_dummy_LArmForeArm
+    100012: test_dummy_LArmIKTarget
+    100014: test_dummy_LArmIndex1
+    100016: test_dummy_LArmIndex2
+    100018: test_dummy_LArmIndex3
+    100020: test_dummy_LArmMiddle1
+    100022: test_dummy_LArmMiddle2
+    100024: test_dummy_LArmMiddle3
+    100026: test_dummy_LArmPalm
+    100028: test_dummy_LArmPinkie1
+    100030: test_dummy_LArmPinkie2
+    100032: test_dummy_LArmPinkie3
+    100034: test_dummy_LArmThumb1
+    100036: test_dummy_LArmThumb2
+    100038: test_dummy_LArmThumb3
+    100040: test_dummy_LArmUpperArm
+    100042: test_dummy_LCalf
+    100044: test_dummy_LPlatform
+    100046: test_dummy_LShouderPad
+    100048: test_dummy_LThigh
+    100050: test_dummy_LToe
+    100052: test_dummy_Neck
+    100054: test_dummy_Pelvis
+    100056: test_dummy_RAnkle
+    100058: test_dummy_RCalf
+    100060: test_dummy_RCollarbone
+    100062: test_dummy_RForeArm
+    100064: test_dummy_Ribcage
+    100066: test_dummy_RIKTarget
+    100068: test_dummy_RIndex1
+    100070: test_dummy_RIndex2
+    100072: test_dummy_RIndex3
+    100074: test_dummy_RMiddle1
+    100076: test_dummy_RMiddle2
+    100078: test_dummy_RMiddle3
+    100080: test_dummy_RPalm
+    100082: test_dummy_RPinkie1
+    100084: test_dummy_RPinkie2
+    100086: test_dummy_RPinkie3
+    100088: test_dummy_RPlatform
+    100090: test_dummy_RShouderPad
+    100092: test_dummy_RThigh
+    100094: test_dummy_RThumb1
+    100096: test_dummy_RThumb2
+    100098: test_dummy_RThumb3
+    100100: test_dummy_RToe
+    100102: test_dummy_RUpperArm
+    100104: test_dummy_Spine1
+    100106: test_dummy_Spine2
+    100108: test_dummy_Spine3
+    100110: testman
+    400000: //RootNode
+    400002: test_dummy
+    400004: test_dummy_Head
+    400006: test_dummy_LAnkle
+    400008: test_dummy_LArmCollarbone
+    400010: test_dummy_LArmForeArm
+    400012: test_dummy_LArmIKTarget
+    400014: test_dummy_LArmIndex1
+    400016: test_dummy_LArmIndex2
+    400018: test_dummy_LArmIndex3
+    400020: test_dummy_LArmMiddle1
+    400022: test_dummy_LArmMiddle2
+    400024: test_dummy_LArmMiddle3
+    400026: test_dummy_LArmPalm
+    400028: test_dummy_LArmPinkie1
+    400030: test_dummy_LArmPinkie2
+    400032: test_dummy_LArmPinkie3
+    400034: test_dummy_LArmThumb1
+    400036: test_dummy_LArmThumb2
+    400038: test_dummy_LArmThumb3
+    400040: test_dummy_LArmUpperArm
+    400042: test_dummy_LCalf
+    400044: test_dummy_LPlatform
+    400046: test_dummy_LShouderPad
+    400048: test_dummy_LThigh
+    400050: test_dummy_LToe
+    400052: test_dummy_Neck
+    400054: test_dummy_Pelvis
+    400056: test_dummy_RAnkle
+    400058: test_dummy_RCalf
+    400060: test_dummy_RCollarbone
+    400062: test_dummy_RForeArm
+    400064: test_dummy_Ribcage
+    400066: test_dummy_RIKTarget
+    400068: test_dummy_RIndex1
+    400070: test_dummy_RIndex2
+    400072: test_dummy_RIndex3
+    400074: test_dummy_RMiddle1
+    400076: test_dummy_RMiddle2
+    400078: test_dummy_RMiddle3
+    400080: test_dummy_RPalm
+    400082: test_dummy_RPinkie1
+    400084: test_dummy_RPinkie2
+    400086: test_dummy_RPinkie3
+    400088: test_dummy_RPlatform
+    400090: test_dummy_RShouderPad
+    400092: test_dummy_RThigh
+    400094: test_dummy_RThumb1
+    400096: test_dummy_RThumb2
+    400098: test_dummy_RThumb3
+    400100: test_dummy_RToe
+    400102: test_dummy_RUpperArm
+    400104: test_dummy_Spine1
+    400106: test_dummy_Spine2
+    400108: test_dummy_Spine3
+    400110: testman
+    4300000: testman
+    7400000: Running
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: testman
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Running
+      takeName: Take 001
+      firstFrame: 10
+      lastFrame: 30
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: test_dummy
+        weight: 1
+      - path: test_dummy_LArmIKTarget
+        weight: 1
+      - path: test_dummy_LPlatform
+        weight: 1
+      - path: test_dummy_Pelvis
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_LThigh
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_LThigh/test_dummy_LCalf
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_LThigh/test_dummy_LCalf/test_dummy_LAnkle
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_LThigh/test_dummy_LCalf/test_dummy_LAnkle/test_dummy_LToe
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_RThigh
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_RThigh/test_dummy_RCalf
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_RThigh/test_dummy_RCalf/test_dummy_RAnkle
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_RThigh/test_dummy_RCalf/test_dummy_RAnkle/test_dummy_RToe
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmIndex1
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmIndex1/test_dummy_LArmIndex2
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmIndex1/test_dummy_LArmIndex2/test_dummy_LArmIndex3
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmMiddle1
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmMiddle1/test_dummy_LArmMiddle2
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmMiddle1/test_dummy_LArmMiddle2/test_dummy_LArmMiddle3
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmPinkie1
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmPinkie1/test_dummy_LArmPinkie2
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmPinkie1/test_dummy_LArmPinkie2/test_dummy_LArmPinkie3
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmThumb1
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmThumb1/test_dummy_LArmThumb2
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LArmUpperArm/test_dummy_LArmForeArm/test_dummy_LArmPalm/test_dummy_LArmThumb1/test_dummy_LArmThumb2/test_dummy_LArmThumb3
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_LArmCollarbone/test_dummy_LShouderPad
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_Neck
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_Neck/test_dummy_Head
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RShouderPad
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RIndex1
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RIndex1/test_dummy_RIndex2
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RIndex1/test_dummy_RIndex2/test_dummy_RIndex3
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RMiddle1
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RMiddle1/test_dummy_RMiddle2
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RMiddle1/test_dummy_RMiddle2/test_dummy_RMiddle3
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RPinkie1
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RPinkie1/test_dummy_RPinkie2
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RPinkie1/test_dummy_RPinkie2/test_dummy_RPinkie3
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RThumb1
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RThumb1/test_dummy_RThumb2
+        weight: 1
+      - path: test_dummy_Pelvis/test_dummy_Spine1/test_dummy_Spine2/test_dummy_Spine3/test_dummy_Ribcage/test_dummy_RCollarbone/test_dummy_RUpperArm/test_dummy_RForeArm/test_dummy_RPalm/test_dummy_RThumb1/test_dummy_RThumb2/test_dummy_RThumb3
+        weight: 1
+      - path: test_dummy_RIKTarget
+        weight: 1
+      - path: test_dummy_RPlatform
+        weight: 1
+      - path: testman
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
