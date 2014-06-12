@@ -16,12 +16,14 @@ public class GameManager : MonoBehaviour {
     public GameObject stonesDeposit;
     public Camera playerCam;
     public Camera rockCam;
+    public Camera bullseyeCam;
     private eGameState mGameState;
     private Player player;
     
     public enum eGameState {
         ePlayer = 0,
         eRock,
+        eBullseye
     }
 
     void Awake() {
@@ -138,14 +140,21 @@ public class GameManager : MonoBehaviour {
     public void ChangeState( eGameState state ) {
         mGameState = state;
 
+        // disable all cameras
+        rockCam.enabled = false;
+        playerCam.enabled = false;
+        bullseyeCam.enabled = false;
+
         if ( state == eGameState.ePlayer ) {
             playerCam.enabled = true;
-            rockCam.enabled = false;
         }
 
         if ( state == eGameState.eRock ) {
-            playerCam.enabled = false;
             rockCam.enabled = true;
+        }
+
+        if (state == eGameState.eBullseye) {
+            bullseyeCam.enabled = true;
         }
     }
 
