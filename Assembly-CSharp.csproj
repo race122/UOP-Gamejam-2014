@@ -52,7 +52,12 @@
      <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\HudScript.cs" />
      <Compile Include="Assets\Code\MainMenuScript.cs" />
+<<<<<<< HEAD
+     <Compile Include="Assets\Code\MouseTest.cs" />
+     <Compile Include="Assets\Code\OptionsMenu.cs" />
+=======
      <Compile Include="Assets\Code\OptionsMenuScript.cs" />
+>>>>>>> c028f3aaa3d945a155eca1a200dba5b333db2837
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\Player2.cs" />
      <Compile Include="Assets\Code\Rock.cs" />
