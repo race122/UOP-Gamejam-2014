@@ -14,6 +14,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
     public GameManager.eTeam team;
+    private GameManager.eTeam teamPrev;
     public Camera rockCamera;
     public Camera playerCamera;
 
@@ -140,14 +141,22 @@ public class Player : MonoBehaviour {
 
     public void StoneFired() {
         if ( StonesInSupply() > 0 ) {
-            SwitchTeam();
             GiveStone();
+            EndOfTurn();
             canShoot = true;
         } else {
             EndOfRound();
         }
+    }
 
-        SwitchCamera( GameManager.eGameState.ePlayer );
+    private void EndOfTurn() {
+        // if i've been the same team for the last 2 turns switch team
+        if (teamPrev == team)
+        {
+            SwitchTeam();
+        }
+
+        SwitchCamera(GameManager.eGameState.ePlayer);
     }
 
     private int StonesInSupply() {
@@ -166,6 +175,8 @@ public class Player : MonoBehaviour {
     }
 
     private void SwitchTeam() {
+        teamPrev = team;
+
         switch ( team ) {
             case GameManager.eTeam.TEAM_RED:
             {
