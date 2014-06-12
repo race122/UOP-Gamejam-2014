@@ -17,12 +17,16 @@ public class Player : MonoBehaviour {
     private GameManager.eTeam teamPrev;
     public Camera rockCamera;
     public Camera playerCamera;
-
+    
+    
 	private float speed =							0.0f;
 	private float acceleration =					0.05f;
 	private const float MAX_SPEED =					0.3f;
 	private float sensitivity =						12.0f;
-	private bool canShoot =							true;
+    private float frictionValue;
+    private float FRICTION_MAX =                    0.4f;
+    private float FRICTION_MIN =                    0.2f;
+    private bool canShoot = true;
 	private bool canControl =						true;
 
 	private Rock stoneClone;
@@ -48,6 +52,7 @@ public class Player : MonoBehaviour {
 	void Update() {
 		Move();
 		Look();
+        UpdateFriction();
         UpdateAnimation();
 		UpdateStone();
 
@@ -227,5 +232,15 @@ public class Player : MonoBehaviour {
                 Destroy(stone);
             }
         }
+    }
+
+    private void UpdateFriction() {
+        if (IsMoving()) {
+            rigidbody.AddForce(rigidbody.velocity * frictionValue * -1f);
+        }
+    }
+
+    public bool IsMoving() {
+        return (rigidbody.velocity.magnitude > 0.05f);
     }
 }
