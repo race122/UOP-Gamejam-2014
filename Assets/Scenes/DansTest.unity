@@ -117,6 +117,7 @@ GameObject:
   - 64: {fileID: 111216939}
   - 135: {fileID: 111216937}
   - 114: {fileID: 111216936}
+  - 54: {fileID: 111216938}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -163,6 +164,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &111216938
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 1424940564}
+  m_GameObject: {fileID: 111216934}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &111216939
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -349,6 +366,7 @@ GameObject:
   - 64: {fileID: 185975144}
   - 135: {fileID: 185975142}
   - 114: {fileID: 185975147}
+  - 54: {fileID: 185975143}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -381,6 +399,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &185975143
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 1212294746}
+  m_GameObject: {fileID: 185975140}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &185975144
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -535,7 +569,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -780,6 +814,7 @@ GameObject:
   - 64: {fileID: 336004829}
   - 135: {fileID: 336004827}
   - 114: {fileID: 336004833}
+  - 54: {fileID: 336004828}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -800,6 +835,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &336004828
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 1303284163}
+  m_GameObject: {fileID: 336004826}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &336004829
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1003,7 +1054,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -1211,6 +1262,7 @@ GameObject:
   - 64: {fileID: 508645381}
   - 135: {fileID: 508645379}
   - 114: {fileID: 508645384}
+  - 54: {fileID: 508645380}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -1243,6 +1295,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &508645380
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 633901907}
+  m_GameObject: {fileID: 508645377}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &508645381
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1478,7 +1546,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -1618,7 +1686,7 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: team
@@ -1670,7 +1738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -1698,6 +1766,7 @@ GameObject:
   - 64: {fileID: 663233181}
   - 135: {fileID: 663233179}
   - 114: {fileID: 663233184}
+  - 54: {fileID: 663233180}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -1730,6 +1799,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &663233180
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 655255523}
+  m_GameObject: {fileID: 663233177}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &663233181
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1969,6 +2054,7 @@ GameObject:
   - 64: {fileID: 728718325}
   - 135: {fileID: 728718323}
   - 114: {fileID: 728718322}
+  - 54: {fileID: 728718324}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -2015,6 +2101,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &728718324
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 1830420783}
+  m_GameObject: {fileID: 728718320}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &728718325
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2071,6 +2173,7 @@ GameObject:
   - 64: {fileID: 734847756}
   - 135: {fileID: 734847754}
   - 114: {fileID: 734847759}
+  - 54: {fileID: 734847755}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -2103,6 +2206,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &734847755
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 1658481191}
+  m_GameObject: {fileID: 734847752}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &734847756
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2313,7 +2432,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -2397,6 +2516,7 @@ GameObject:
   - 64: {fileID: 1001261306}
   - 135: {fileID: 1001261304}
   - 114: {fileID: 1001261303}
+  - 54: {fileID: 1001261305}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -2443,6 +2563,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &1001261305
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 1010683043}
+  m_GameObject: {fileID: 1001261301}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &1001261306
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2527,7 +2663,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -2555,6 +2691,7 @@ GameObject:
   - 64: {fileID: 1028775327}
   - 135: {fileID: 1028775325}
   - 114: {fileID: 1028775324}
+  - 54: {fileID: 1028775326}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -2601,6 +2738,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &1028775326
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 922967071}
+  m_GameObject: {fileID: 1028775322}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &1028775327
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2685,6 +2838,7 @@ GameObject:
   - 64: {fileID: 1080187594}
   - 135: {fileID: 1080187592}
   - 114: {fileID: 1080187597}
+  - 54: {fileID: 1080187593}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -2717,6 +2871,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &1080187593
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 212124356}
+  m_GameObject: {fileID: 1080187590}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &1080187594
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2873,13 +3043,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
       value: 
       objectReference: {fileID: 1542263584}
-    - target: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Constraints
       value: 80
       objectReference: {fileID: 0}
@@ -2961,7 +3131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -3083,6 +3253,7 @@ GameObject:
   - 64: {fileID: 1295420641}
   - 135: {fileID: 1295420639}
   - 114: {fileID: 1295420644}
+  - 54: {fileID: 1295420640}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -3115,6 +3286,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &1295420640
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 2081709876}
+  m_GameObject: {fileID: 1295420637}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &1295420641
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3213,7 +3400,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -3504,7 +3691,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -3589,7 +3776,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -3739,6 +3926,7 @@ GameObject:
   - 64: {fileID: 1500712622}
   - 135: {fileID: 1500712620}
   - 114: {fileID: 1500712625}
+  - 54: {fileID: 1500712621}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -3771,6 +3959,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &1500712621
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 1231838215}
+  m_GameObject: {fileID: 1500712618}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &1500712622
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4227,6 +4431,7 @@ GameObject:
   - 64: {fileID: 1649835399}
   - 135: {fileID: 1649835397}
   - 114: {fileID: 1649835396}
+  - 54: {fileID: 1649835398}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -4273,6 +4478,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &1649835398
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 1765850847}
+  m_GameObject: {fileID: 1649835394}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &1649835399
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4357,7 +4578,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -4552,7 +4773,7 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: team
@@ -4576,6 +4797,7 @@ GameObject:
   - 64: {fileID: 1789288698}
   - 135: {fileID: 1789288696}
   - 114: {fileID: 1789288695}
+  - 54: {fileID: 1789288697}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -4622,6 +4844,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &1789288697
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 1406197523}
+  m_GameObject: {fileID: 1789288693}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &1789288698
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4757,6 +4995,7 @@ GameObject:
   - 64: {fileID: 1815126304}
   - 135: {fileID: 1815126302}
   - 114: {fileID: 1815126301}
+  - 54: {fileID: 1815126303}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -4803,6 +5042,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &1815126303
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 543521289}
+  m_GameObject: {fileID: 1815126299}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &1815126304
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4887,7 +5142,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
@@ -5152,6 +5407,7 @@ GameObject:
   - 64: {fileID: 2036713647}
   - 135: {fileID: 2036713645}
   - 114: {fileID: 2036713644}
+  - 54: {fileID: 2036713646}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -5186,6 +5442,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .510843158
   m_Center: {x: 0, y: 1.1920929e-07, z: 0}
+--- !u!54 &2036713646
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: 10543eeb727e7cc4fa6a02d82b116577,
+    type: 2}
+  m_PrefabInternal: {fileID: 356465301}
+  m_GameObject: {fileID: 2036713643}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &2036713647
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5309,7 +5581,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 10543eeb727e7cc4fa6a02d82b116577, type: 2}
       propertyPath: rockCamera
