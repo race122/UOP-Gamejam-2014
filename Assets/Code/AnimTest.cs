@@ -6,6 +6,8 @@ public class AnimTest : MonoBehaviour {
 	}
 	
 	void Update() {
-		animation.Play();
+		if ( Input.GetKey( KeyCode.W ) ) {
+			animation.CrossFade( "Running", 0.35f );
+		}
 	}
 }
