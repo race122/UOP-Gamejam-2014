@@ -149,10 +149,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public eGameState getState() {
-        return mGameState;
-    }
-
 	public static float GetVolume() {
 		return volume;
 	}
@@ -207,5 +203,9 @@ public class GameManager : MonoBehaviour {
 
     public void SetFriction(float friction) {
         player.SetFriction(friction);
+    }
+
+    public eGameState GetGameState() {
+        return mGameState;
     }
 }
