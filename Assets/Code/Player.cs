@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
     private float slowestSpeed =                    0.075f;
     private bool canShoot =                         true;
 	private bool canControl =						true;
+	private bool passedTheLine =					false;
 
 	private Rock stoneClone;
 
@@ -96,8 +97,8 @@ public class Player : MonoBehaviour {
 
 
 	public void Look() {
-		float dy = Input.GetAxis( "Mouse Y" ) * sensitivity;        
-		transform.Rotate( 0f, -dy, 0f );
+		float dx = Input.GetAxis( "Mouse X" ) * sensitivity;
+		transform.Rotate( 0f, dx, 0f );
 	}
     
     public void GiveStone() {
@@ -133,22 +134,34 @@ public class Player : MonoBehaviour {
 	public void UpdateStone() {
 		if ( stoneClone.IsPickedUp() ) {
 			stoneClone.transform.position = transform.position + ( transform.forward + transform.forward );
-			if ( Input.GetMouseButtonDown( 0 ) && canShoot ) {
-				ShootStone();
+			if ( canShoot ) {
+				// Turns out the order in which you do the delta matters.
+				// Having this the other way around caused a bug...
+				if ( HOGLINE_POSITION.z - transform.position.z <= 0 ) {
+					passedTheLine = true;
+					EndOfTurn();
+					GiveStone();
+				}
+
+				if ( Input.GetMouseButtonDown( 0 ) ) {
+					ShootStone();
+				}
 			}
 		}
 	}
 
-    public void ShootStone() {
-        canShoot = false;
-        canControl = false;
-		stoneClone.transform.parent = null;
+	public void ShootStone() {
+		if ( !passedTheLine ) {
+			canShoot = false;
+			canControl = false;
+			stoneClone.transform.parent = null;
 
-        // apply our current velocity to the stone
-        stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
+			// apply our current velocity to the stone
+			stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
 
-        SwitchCamera(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
-        stoneClone.Fire();                              //this will call StoneFired() when the stone stops moving
+			SwitchCamera(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
+			stoneClone.Fire();                              //this will call StoneFired() when the stone stops moving
+    	}
 	}
 
     public void StoneFired() {
