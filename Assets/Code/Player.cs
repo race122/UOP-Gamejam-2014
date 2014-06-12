@@ -23,14 +23,15 @@ public class Player : MonoBehaviour {
 	private float acceleration =					0.05f;
 	private const float MAX_SPEED =					0.1f;
 	private float sensitivity =						12.0f;
-    private float frictionValue =                   0.1f;
-    private bool canShoot = true;
+    private float frictionValue =                   0.2f;
+    private float slowestSpeed =                    0.075f;
+    private bool canShoot =                         true;
 	private bool canControl =						true;
 
 	private Rock stoneClone;
 
 
-    private int DEFAULT_FORCE =                     40;
+    private int DEFAULT_FORCE =                     85;
 
     private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 1.5f, -61.5f);
     private Vector3 CAMERA_POSITION =               Vector3.zero; 
@@ -244,6 +245,6 @@ public class Player : MonoBehaviour {
     }
 
     public bool IsMoving() {
-        return (rigidbody.velocity.magnitude > 0.1f);
+        return (rigidbody.velocity.magnitude > slowestSpeed);
     }
 }

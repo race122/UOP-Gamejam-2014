@@ -24,6 +24,7 @@ public class Rock : MonoBehaviour
     public GameManager.eTeam team;
     private bool inSupply, isPickedUp, isFiring;
     private float frictionValue;
+    private float slowestSpeed =                0.075f;
 
     private float FRICTION_MAX =                0.2f;
     private float FRICTION_MIN =                0.1f;
@@ -78,7 +79,7 @@ public class Rock : MonoBehaviour
     }
 
     public bool IsMoving() {
-        return (rigidbody.velocity.magnitude > 0.1f);
+        return (rigidbody.velocity.magnitude > slowestSpeed);
     }
 
     public void StopMovingSlow() {
