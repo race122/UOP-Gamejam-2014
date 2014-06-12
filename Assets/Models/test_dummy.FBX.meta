@@ -141,11 +141,19 @@ ModelImporter:
       takeName: Take 001
       firstFrame: 10
       lastFrame: 30
+<<<<<<< HEAD
       wrapMode: 2
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 1
+=======
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+>>>>>>> 14f9fe656e9ec71239b6dfc1ae68cad2e788a17b
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
