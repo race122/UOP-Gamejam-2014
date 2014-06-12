@@ -31,7 +31,6 @@ public class Rock : MonoBehaviour
     // --------------------------------------
     // functions
     // --------------------------------------
-
     void Start() {
         player =                FindObjectOfType<Player>();
         inSupply =              true;

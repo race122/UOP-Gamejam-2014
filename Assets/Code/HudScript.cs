@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class HudScript : MonoBehaviour {
-
     public GameObject score1;
 	public GameObject score2;
 	public GameObject currentTeam;
@@ -15,10 +14,12 @@ public class HudScript : MonoBehaviour {
 
     private int stonesLeftTeamOne;
     private int stonesLeftTeamTwo;
+
+    private Color32 redTeamTextColor =	new Color32( 248, 18, 18, 255 );
+    private Color32 blueTeamTextColor =	new Color32( 131, 177, 219, 255 );
     
 	// Use this for initialization
-	void Start () {
-	
+	void Start() {
 	}
 
 	// Update is called once per frame
@@ -41,14 +42,19 @@ public class HudScript : MonoBehaviour {
 	}
 
 	//A function that updates the display for the current team
+	// Dan: Surely then, this would be better called "UpdateCurrentTeam()"?
 	private void UpdateCurrentPlayer() {
-        if (GameManager.Singleton().IsTeamOne()) {
-			currentTeam.guiText.text = "Team 1's turn";
-			currentTeam.guiText.material.color = new Color32( 248, 18, 18, 255 );
-		} else {
-			currentTeam.guiText.text = "Team 2's turn";
-			currentTeam.guiText.material.color = new Color32( 131, 177, 210, 255 );
-		}
+        // if ( GameManager.Singleton().IsTeamOne() ) {
+		// 	currentTeam.guiText.text = "Team 1's turn";
+		// 	currentTeam.guiText.material.color = new Color32( 248, 18, 18, 255 );
+		// } else {
+		// 	currentTeam.guiText.text = "Team 2's turn";
+		// 	currentTeam.guiText.material.color = new Color32( 131, 177, 210, 255 );
+		// }
+
+		// Dan: My way is better...
+		currentTeam.guiText.text =				GameManager.Singleton().IsTeamOne() ? "Red team's turn" : "Blue team's turn";
+		currentTeam.guiText.material.color =	GameManager.Singleton().IsTeamOne() ? redTeamTextColor : blueTeamTextColor;
 	}
 
     private void UpdateStonesLeft() {
@@ -64,10 +70,7 @@ public class HudScript : MonoBehaviour {
 
 	private void UpdateStoneCounter() {
 		//Draw stones for team one
-	
-
         for (int i = 0; i < stonesLeftTeamOne; i++) {
-
 			GUI.DrawTexture(new Rect( ( Screen.width ) * 0.41f + redOffset, ( Screen.height ) * 0.02f, 32, 32 ), redStones);
 			redOffset += 40;
 		}
@@ -79,8 +82,12 @@ public class HudScript : MonoBehaviour {
 			blueOffset += 40;
 		}
 
-		redOffset = 0;
-		blueOffset = 0;
+		redOffset =		0;
+		blueOffset =	0;
 	}
-	
+
+	private void DrawStoneDirection() {
+		//GUI.DrawTexture( new Rect( (  ) ) );
+		//float theta = Vector3.Dot( Vector3 lhs, Vector3 rhs );
+	}
 }
