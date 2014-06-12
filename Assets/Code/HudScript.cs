@@ -59,13 +59,13 @@ public class HudScript : MonoBehaviour {
 	private void UpdateStoneCounter() {
 		//Draw stones for team one
         for (int i = 0; i <= stonesLeftTeamOne; i++) {
-			GUI.DrawTexture(new Rect( ( Screen.width / 2 ) - 100 + redOffset, ( Screen.height / 2 ) - 260, 32, 32 ), redStones);
+			GUI.DrawTexture(new Rect( ( Screen.width * 0.5f ) - 100 + redOffset, ( Screen.height * 0.5f  ) - 260, 32, 32 ), redStones);
 			redOffset += 40;
 		}
 
         //Draw stones for team two
 		for (int i = 0; i <= stonesLeftTeamTwo; i++) {
-			GUI.DrawTexture(new Rect( ( Screen.width / 2 ) - 100 + blueOffset, ( Screen.height / 2 ) - 220, 32, 32 ), blueStones);
+			//GUI.DrawTexture(new Rect( ( Screen.width * 0.5f ) - 100 + blueOffset, ( Screen.height* 0.5f 2 ) - 220, 32, 32 ), blueStones);
 			blueOffset += 40;
 		}
 
