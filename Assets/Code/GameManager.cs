@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public Camera playerCam;
     public Camera rockCam;
     private eGameState mGameState;
+    private Player player;
     
     public enum eGameState {
         ePlayer = 0,
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour {
         Screen.lockCursor = true;
         Screen.showCursor = false;
 		ChangeState (eGameState.ePlayer);
+        player = FindObjectOfType<Player>();
 	}
 
 	private static float checkVolume() {
@@ -192,5 +194,9 @@ public class GameManager : MonoBehaviour {
         }
 
         return i;
+    }
+
+    public void SetFriction(float friction) {
+        player.SetFriction(friction);
     }
 }
