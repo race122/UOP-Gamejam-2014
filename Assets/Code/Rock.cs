@@ -30,7 +30,6 @@ public class Rock : MonoBehaviour
 
     private Vector3 BULLSEYE_POSITION;
     private Vector3 BACK_OF_HOUSE_POSITION;
-    private Vector3 LAST_HACK_POSITION;
 
     // --------------------------------------
     // functions
@@ -41,9 +40,8 @@ public class Rock : MonoBehaviour
         isPickedUp =                false;
         isFiring =                  false;
         frictionValue =             FRICTION_MAX;
-        BULLSEYE_POSITION =         GameObject.FindGameObjectWithTag("Bullseye").transform.position;
-        BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
-        LAST_HACK_POSITION =        GameObject.FindGameObjectWithTag("LastHack").transform.position;
+        BULLSEYE_POSITION =         GameObject.FindGameObjectWithTag( "Bullseye" ).transform.position;
+        BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag( "BackOfHouse" ).transform.position;
         // NEED TO ADD: GameObjects with the tags above at the correct locations
     }
 
