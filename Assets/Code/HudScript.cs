@@ -15,8 +15,8 @@ public class HudScript : MonoBehaviour {
     private int stonesLeftTeamOne;
     private int stonesLeftTeamTwo;
 
-    private Color32 redTeamTextColor = new Color32( 248, 18, 18, 255 );
-    private Color32 blueTeamTextColor = new Color32( 131, 177, 219, 255 );
+    private Color32 redTeamTextColor =	new Color32( 248, 18, 18, 255 );
+    private Color32 blueTeamTextColor =	new Color32( 131, 177, 219, 255 );
     
 	// Use this for initialization
 	void Start() {
@@ -53,13 +53,13 @@ public class HudScript : MonoBehaviour {
 		// }
 
 		// Dan: My way is better...
-		currentTeam.guiText.text = GameManager.Singleton().IsTeamOne() ? "Team 1's turn" : "Team 2's turn";
-		currentTeam.guiText.material.color = GameManager.Singleton().IsTeamOne() ? redTeamTextColor : blueTeamTextColor;
+		currentTeam.guiText.text =				GameManager.Singleton().IsTeamOne() ? "Red team's turn" : "Blue team's turn";
+		currentTeam.guiText.material.color =	GameManager.Singleton().IsTeamOne() ? redTeamTextColor : blueTeamTextColor;
 	}
 
     private void UpdateStonesLeft() {
-        stonesLeftTeamOne = GameManager.Singleton().TeamOneStonesLeft();
-        stonesLeftTeamTwo = GameManager.Singleton().TeamTwoStonesLeft();
+        stonesLeftTeamOne =	GameManager.Singleton().TeamOneStonesLeft();
+        stonesLeftTeamTwo =	GameManager.Singleton().TeamTwoStonesLeft();
     }
 
 	private void UpdateStoneCounter() {
@@ -75,8 +75,8 @@ public class HudScript : MonoBehaviour {
 			blueOffset += 40;
 		}
 
-		redOffset = 0;
-		blueOffset = 0;
+		redOffset =		0;
+		blueOffset =	0;
 	}
 
 	private void DrawStoneDirection() {

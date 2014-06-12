@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
 
     private int DEFAULT_FORCE =                     100;
 	private Vector3 DEFAULT_PLAYER_POSITION =		new Vector3( 0f, 1f, -22f );
-    private Vector3 ROCK_CAMERA_DEFAULT_POSITION;
+    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  Vector3.zero;
     private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3( 30.0f, 0.0f, 0.0f );
 
 	void Start() {
@@ -37,6 +37,7 @@ public class Player : MonoBehaviour {
 		cameraToPlayerOffset =           new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
 
 		GiveStone();
+        animation.Play( "Idle" );
 	}
 
 	void Update() {
@@ -71,13 +72,13 @@ public class Player : MonoBehaviour {
 
 			if ( speed < MAX_SPEED && MovementKeysPressed() ) {
 				speed += acceleration;
+                animation.CrossFade( "Running" );
 			}
 		}
 	}
 
 	public void Look() {
-		float dy = Input.GetAxis( "Mouse Y" ) * sensitivity;
-        
+		float dy = Input.GetAxis( "Mouse Y" ) * sensitivity;        
 		transform.Rotate( 0f, -dy, 0f );
 	}
 
@@ -195,6 +196,7 @@ public class Player : MonoBehaviour {
     }
 
     private bool MovementKeysPressed() {
+        // FFFFUUUUUUUUUUUUUUUUUUUUCCCCCCCKKKKK
         return (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0);
     }
 }
