@@ -31,6 +31,7 @@ public class Player : MonoBehaviour {
 
     private Vector3 DEFAULT_PLAYER_POSITION =       new Vector3(0f, 1f, -61.5f);
     private Vector3 CAMERA_POSITION =               Vector3.zero; 
+    private Vector3 CAMERA_ROTATION =	            new Vector3( 30f, -90f, 0f );
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  Vector3.zero;
     private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3( 30.0f, 0.0f, 0.0f );
     private Vector3 FIRST_HACK_POSITION =           Vector3.zero;
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour {
 	void Start() {
         ROCK_CAMERA_DEFAULT_POSITION =   new Vector3( 0.0f, DEFAULT_PLAYER_POSITION.y + 3f, DEFAULT_PLAYER_POSITION.z - 2.5f );
 		CAMERA_POSITION =                new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
+        
         FIRST_HACK_POSITION =            GameObject.FindGameObjectWithTag("FirstHack").transform.position;
 
 		GiveStone();
@@ -54,8 +56,8 @@ public class Player : MonoBehaviour {
 		}
 
 		if ( playerCamera.transform.parent == transform ) {
-			camera.transform.position =	CAMERA_POSITION;
-			camera.transform.rotation =	Quaternion.Euler( 30f, -90f, 0f );
+			playerCamera.transform.position = CAMERA_POSITION;
+            playerCamera.transform.rotation = Quaternion.Euler(CAMERA_ROTATION);
 		}
 	}
 
