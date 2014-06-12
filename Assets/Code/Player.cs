@@ -13,14 +13,13 @@ using UnityEngine;
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	public GameManager.eTeam team;
-	public GameObject camera;
+    public GameManager.eTeam team;
     public Camera rockCamera;
+    public Camera playerCamera;
 
 	private float speed =							0.0f;
-	private float acceleration =					0.0005f;
-	private const float MAX_SPEED =					5.0f;
-	private float shootSpeed =						25.0f;
+	private float acceleration =					0.05f;
+	private const float MAX_SPEED =					0.5f;
 	private float sensitivity =						12.0f;
 	private bool canShoot =							true;
 	private bool canControl =						true;
@@ -28,8 +27,9 @@ public class Player : MonoBehaviour {
 	private Vector3 cameraToPlayerOffset;
 	private Rock stoneClone;
 
-	private Vector3 DEFAULT_PLAYER_POSITION =		new Vector3( 0f, 1f, 0f );
-    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =	new Vector3( 0.0f, 4.0f, -5.5f );
+    private int DEFAULT_FORCE =                     100;
+	private Vector3 DEFAULT_PLAYER_POSITION =		new Vector3( 0f, 1f, -18f );
+    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =	new Vector3( 0.0f, 4.0f, -19.5f );
     private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3( 30.0f, 0.0f, 0.0f );
 
 	void Start() {
@@ -44,11 +44,11 @@ public class Player : MonoBehaviour {
 		UpdateStone();
 		// ShootStone();
 
-		// if ( speed > 0 ) {
-		// 	speed -= acceleration;
-		// }
+		if ( speed >= (acceleration * 2f) && !MovementKeysPressed() ) {
+		 	speed -= acceleration;
+		}
 
-		if ( camera.transform.parent == transform ) {
+		if ( playerCamera.transform.parent == transform ) {
 			camera.transform.position =	cameraToPlayerOffset;
 			camera.transform.rotation =	Quaternion.Euler( 30f, -90f, 0f );
 		}
@@ -56,8 +56,8 @@ public class Player : MonoBehaviour {
 
 	public void Move() {
 		if ( canControl ) {
-			float dx =				Input.GetAxis( "Horizontal" ) * speed;
-			float dz =				Input.GetAxis( "Vertical" ) * speed;
+			float dx =				Input.GetAxis( "Horizontal" );
+			float dz =				Input.GetAxis( "Vertical" );
 
 			dx =					Mathf.Clamp( dx, -speed, speed );
 			dz =					Mathf.Clamp( dz, -speed, speed );
@@ -65,10 +65,10 @@ public class Player : MonoBehaviour {
 			Vector3 direction =		new Vector3( dx, 0f, dz );
 			direction =				transform.TransformDirection( direction );
 
-			// rigidbody.AddForce( direction );
-			transform.Translate( direction, Space.World );
+            // move player
+			rigidbody.AddForce( direction * DEFAULT_FORCE );
 
-			if ( speed < MAX_SPEED ) {
+			if ( speed < MAX_SPEED && MovementKeysPressed() ) {
 				speed += acceleration;
 			}
 		}
@@ -76,8 +76,14 @@ public class Player : MonoBehaviour {
 
 	public void Look() {
 		float dy = Input.GetAxis( "Mouse Y" ) * sensitivity;
+        
 		transform.Rotate( 0f, -dy, 0f );
 	}
+
+    /*public void Look()
+    {
+        transform.rotation = Quaternion.Euler(0f, Input.mousePosition.y, 0f);
+    }*/
 
     public void GiveStone() {
         bool found = false;
@@ -123,16 +129,10 @@ public class Player : MonoBehaviour {
 
         SwitchCamera( GameManager.eGameState.eRock );
 		
-        Vector3 forwardForce =			transform.forward;
-        
-        forwardForce.x *= rigidbody.velocity.magnitude * 100f;
-        forwardForce.y *= rigidbody.velocity.magnitude * 100f;
-        forwardForce.z *= rigidbody.velocity.magnitude * 100f;
-		//stoneClone.rigidbody.velocity = rigidbody.velocity;
+        Vector3 forwardForce =			rigidbody.velocity;
 
-        stoneClone.rigidbody.AddForce(forwardForce);
-
-
+        stoneClone.rigidbody.AddForce(forwardForce * DEFAULT_FORCE);
+                        
         stoneClone.Fire();
         canShoot = false;
         canControl = false;
@@ -161,36 +161,6 @@ public class Player : MonoBehaviour {
                 i++;
             }
         }
-
-        print( i );
-
-        return i;
-    }
-
-    private int TeamOneStonesLeft() {
-        int i = 0;
-
-        foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
-            if ( stone.InSupply() && stone.team == GameManager.eTeam.TEAM_1 ) {
-                i++;
-            }
-        }
-
-        print( i );
-
-        return i;
-    }
-
-    private int TeamTwoStonesInSupply() {
-        int i = 0;
-
-        foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
-            if ( stone.InSupply() && stone.team == GameManager.eTeam.TEAM_2 ) {
-                i++;
-            }
-        }
-
-        print( i );
 
         return i;
     }
@@ -223,5 +193,9 @@ public class Player : MonoBehaviour {
     private void EndOfRound() {
         GameManager.Singleton().UpdateScores();
         //reset game or load a scene to show the winner
+    }
+
+    private bool MovementKeysPressed() {
+        return (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0);
     }
 }

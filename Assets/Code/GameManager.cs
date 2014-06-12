@@ -12,7 +12,6 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 	
 	public static float volume = checkVolume();
-    static Vector2 BULLSEYE_POSITION = new Vector2( 10.0f, 10.0f );
     private static int team1score = 0, team2score = 0;
     public GameObject stonesDeposit;
     public Camera playerCam;
@@ -66,11 +65,9 @@ public class GameManager : MonoBehaviour {
 
     public void UpdateScores() {
         eTeam winningTeam = GetRoundWinner();
-        float nmeDistanceFromBullseye = GetNMEClosestToBullseye( winningTeam );
-        GivePoints( winningTeam, nmeDistanceFromBullseye );
-        print(winningTeam);
-        print(team1score);
-        print(team2score);
+        GivePoints(winningTeam, GetEnemyClosestToBullseye(winningTeam) );
+        Debug.Log("Game Over");
+        Debug.Log(winningTeam + "won the game");
     }
 
     private eTeam GetRoundWinner() {
@@ -87,7 +84,7 @@ public class GameManager : MonoBehaviour {
         return winningTeam;
     }
 
-    private float GetNMEClosestToBullseye( eTeam winningTeam ) {
+    private float GetEnemyClosestToBullseye( eTeam winningTeam ) {
         float closestToBullseye = 99999.9f;
         foreach ( Rock rock in FindObjectsOfType<Rock>() ) {
             if ( rock.team != winningTeam ) {
@@ -100,12 +97,12 @@ public class GameManager : MonoBehaviour {
         return closestToBullseye;
     }
 
-	private void GivePoints( eTeam winningTeam, float nmeDistanceFromBullseye ) {
+	private void GivePoints( eTeam winningTeam, float enemyDistanceFromBullseye ) {
         int points = 0;
 
         foreach ( Rock rock in FindObjectsOfType<Rock>() ) {
             if ( rock.team == winningTeam ) {
-                if ( rock.DistanceFromBullseye() < nmeDistanceFromBullseye ) {
+                if ( rock.DistanceFromBullseye() < enemyDistanceFromBullseye ) {
                     points++;
                 }
             }
@@ -179,8 +176,6 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        print(i);
-
         return i;
     }
 
@@ -195,8 +190,6 @@ public class GameManager : MonoBehaviour {
                 i++;
             }
         }
-
-        print(i);
 
         return i;
     }
