@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour {
 		PlayerPrefs.Save();
 	}
 
-    public int[] getScore() {
+	public static int[] getScore() {
 		int[] scores = {team1score, team2score};
 		return scores;
 	}
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    public int TeamOneStonesLeft() {
+	public static int TeamOneStonesLeft() {
         int i = 0;
 
         foreach (Rock stone in FindObjectsOfType<Rock>())
@@ -181,7 +181,8 @@ public class GameManager : MonoBehaviour {
         return i;
     }
 
-    public int TeamTwoStonesLeft() {
+	public static int TeamTwoStonesLeft()
+    {
         int i = 0;
 
         foreach (Rock stone in FindObjectsOfType<Rock>())
