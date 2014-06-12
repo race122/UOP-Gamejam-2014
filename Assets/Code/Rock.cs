@@ -15,12 +15,13 @@ public class Rock : MonoBehaviour
     // game objects
     // --------------------------------------
     public Camera rockCamera;
+    private Player player;
 
     // --------------------------------------
     // local variables
     // --------------------------------------
     public GameManager.eTeam team;
-    private bool inSupply, isPickedUp;
+    private bool inSupply, isPickedUp, isFiring;
     private Vector3 bullseyePos =           new Vector3(10.0f, 10.0f, 10.0f);
     private float frictionValue;
 
@@ -31,15 +32,19 @@ public class Rock : MonoBehaviour
     // functions
     // --------------------------------------
     void Start() {
+        player =                FindObjectOfType<Player>();
         inSupply =              true;
         isPickedUp =            false;
+        isFiring =              false;
         frictionValue =         FRICTION_MAX;
         //bullseyePos =         FindObjectOfType<Bullseye>();  <---- this will be useful when we have the proper arena positions sorted out
         // NEED TO ADD: GameObject of class bullseye / else use findobjectoftag and tag it, whichever is easier
     }
 
     void Update() {
+        StopMovingSlow();
         UpdateFriction();
+        UpdateCamera();
     }
 
     public float DistanceFromBullseye() {
@@ -53,7 +58,7 @@ public class Rock : MonoBehaviour
 
     public void Fire() {
         isPickedUp =            false;
-        // rigidbody.velocity =    player.rigidbody.velocity;
+        isFiring =              true;
     }
 
     public bool InSupply() {
@@ -64,9 +69,14 @@ public class Rock : MonoBehaviour
         return isPickedUp;
     }
 
-    public bool IsMoving()
-    {
-        return (rigidbody.velocity.magnitude > 0);
+    public bool IsMoving() {
+        return (rigidbody.velocity.magnitude > 0.05f);
+    }
+
+    public void StopMovingSlow() {
+        if (rigidbody.velocity.magnitude > 0 && !IsMoving()) {
+            rigidbody.velocity = Vector3.zero;
+        }
     }
 
     private void UpdateFriction() {
@@ -78,6 +88,22 @@ public class Rock : MonoBehaviour
     // Send a value 0-1 to this function to set the friction value 
     // (0 = lowest, 1 = highest)
     public void SetFriction(float friction) {
-        frictionValue = Mathf.Clamp(frictionValue * FRICTION_MAX,FRICTION_MIN,FRICTION_MAX);
+        frictionValue = friction * FRICTION_MAX;
+        
+        if (frictionValue < FRICTION_MIN) {
+            frictionValue = FRICTION_MIN;
+        } else if (frictionValue > FRICTION_MAX) {
+            frictionValue = FRICTION_MAX;
+        }
+    }
+
+    private void UpdateCamera() {
+        if (isFiring) {
+            print(rigidbody.velocity.magnitude);
+            if (!IsMoving()) {
+                player.StoneFired();
+                isFiring = false;
+            }
+        }
     }
 }

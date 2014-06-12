@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public Camera playerCam;
     public Camera rockCam;
     private eGameState mGameState;
+    private Player player;
     
     public enum eGameState {
         ePlayer = 0,
@@ -26,7 +27,8 @@ public class GameManager : MonoBehaviour {
     void Awake() {
         Screen.lockCursor = true;
         Screen.showCursor = false;
-		ChangeState( eGameState.ePlayer );
+		ChangeState (eGameState.ePlayer);
+        player = FindObjectOfType<Player>();
 	}
 
 	private static float checkVolume() {
@@ -155,7 +157,7 @@ public class GameManager : MonoBehaviour {
 		PlayerPrefs.Save();
 	}
 
-    public int[] getScore() {
+	public static int[] getScore() {
 		int[] scores = {team1score, team2score};
 		return scores;
 	}
@@ -168,7 +170,7 @@ public class GameManager : MonoBehaviour {
         return (FindObjectOfType<Player>().team == eTeam.TEAM_BLUE);
     }
 
-    public int TeamOneStonesLeft() {
+	public static int TeamOneStonesLeft() {
         int i = 0;
 
         foreach (Rock stone in FindObjectsOfType<Rock>())
@@ -182,7 +184,7 @@ public class GameManager : MonoBehaviour {
         return i;
     }
 
-    public int TeamTwoStonesLeft()
+	public static int TeamTwoStonesLeft()
     {
         int i = 0;
 
@@ -195,5 +197,9 @@ public class GameManager : MonoBehaviour {
         }
 
         return i;
+    }
+
+    public void SetFriction(float friction) {
+        player.SetFriction(friction);
     }
 }

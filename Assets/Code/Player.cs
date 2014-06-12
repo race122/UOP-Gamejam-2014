@@ -136,13 +136,9 @@ public class Player : MonoBehaviour {
         stoneClone.Fire();
         canShoot = false;
         canControl = false;
-
-        // must be at the end
-        StartCoroutine( StoneFired() );
 	}
 
-    private IEnumerator StoneFired() {
-        yield return new WaitForSeconds( 3 );
+    public void StoneFired() {
         if ( StonesInSupply() > 0 ) {
             SwitchTeam();
             GiveStone();
@@ -198,5 +194,9 @@ public class Player : MonoBehaviour {
     private bool MovementKeysPressed() {
         // FFFFUUUUUUUUUUUUUUUUUUUUCCCCCCCKKKKK
         return (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0);
+    }
+
+    public void SetFriction(float friction) {
+        stoneClone.SetFriction(friction);
     }
 }
