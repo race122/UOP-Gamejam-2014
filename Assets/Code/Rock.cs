@@ -22,23 +22,30 @@ public class Rock : MonoBehaviour
     // --------------------------------------
     public GameManager.eTeam team;
     private bool inSupply, isPickedUp, isFiring;
-    private Vector3 bullseyePos =           new Vector3(10.0f, 10.0f, 10.0f);
     private float frictionValue;
 
-    private float FRICTION_MAX =            0.4f;
-    private float FRICTION_MIN =            0.2f;
+    private float FRICTION_MAX =                0.4f;
+    private float FRICTION_MIN =                0.2f;
+
+    private Vector3 BULLSEYE_POSITION;
+    private Vector3 BACK_OF_HOUSE_POSITION;
+    private Vector3 FIRST_HACK_POSITION;
+    private Vector3 LAST_HACK_POSITION;
 
     // --------------------------------------
     // functions
     // --------------------------------------
     void Start() {
-        player =                FindObjectOfType<Player>();
-        inSupply =              true;
-        isPickedUp =            false;
-        isFiring =              false;
-        frictionValue =         FRICTION_MAX;
-        bullseyePos =           GameObject.FindGameObjectWithTag("Bullseye").transform.position;
-        // NEED TO ADD: GameObject of class bullseye / else use findobjectoftag and tag it, whichever is easier
+        player =                    FindObjectOfType<Player>();
+        inSupply =                  true;
+        isPickedUp =                false;
+        isFiring =                  false;
+        frictionValue =             FRICTION_MAX;
+        BULLSEYE_POSITION =               GameObject.FindGameObjectWithTag("Bullseye").transform.position;
+        BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
+        FIRST_HACK_POSITION =       GameObject.FindGameObjectWithTag("FirstHack").transform.position;
+        LAST_HACK_POSITION =        GameObject.FindGameObjectWithTag("LastHack").transform.position;
+        // NEED TO ADD: GameObjects with the tags above at the correct locations
     }
 
     void Update() {
@@ -48,7 +55,7 @@ public class Rock : MonoBehaviour
     }
 
     public float DistanceFromBullseye() {
-        return (transform.position - bullseyePos).magnitude;
+        return (transform.position - BULLSEYE_POSITION).magnitude;
     }
 
     public void Pickup() {
@@ -105,5 +112,9 @@ public class Rock : MonoBehaviour
                 isFiring = false;
             }
         }
+    }
+
+    public bool BeyondFinalHack {
+
     }
 }
