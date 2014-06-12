@@ -36,6 +36,7 @@ Credits:
  * Dan Moody
  * Kierz Phillips
  * Aidan O'leary
+ * Chris Martin
 * Sound
  * Jacob Cooper
 * Art
