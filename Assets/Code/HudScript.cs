@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class HudScript : MonoBehaviour {
-    public GUIText score1;
-    public GUIText score2;
-    public GUIText currentTeam;
+    public GameObject score1;
+    public GameObject score2;
+    public GameObject currentTeam;
 
 	public Texture2D redStones;
 	public Texture2D blueStones;
