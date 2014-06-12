@@ -14,26 +14,37 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
     public GameManager.eTeam team;
+    private GameManager.eTeam teamPrev;
     public Camera rockCamera;
     public Camera playerCamera;
-
+    
+    
 	private float speed =							0.0f;
 	private float acceleration =					0.05f;
-	private const float MAX_SPEED =					0.5f;
+	private const float MAX_SPEED =					0.3f;
 	private float sensitivity =						12.0f;
-	private bool canShoot =							true;
+    private float frictionValue;
+    private float FRICTION_MAX =                    0.4f;
+    private float FRICTION_MIN =                    0.2f;
+    private bool canShoot = true;
 	private bool canControl =						true;
 
-	private Vector3 cameraToPlayerOffset;
 	private Rock stoneClone;
 
-    private int DEFAULT_FORCE =                     100;
-	private Vector3 DEFAULT_PLAYER_POSITION =		new Vector3( 0f, 1f, -18f );
-    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =	new Vector3( 0.0f, 4.0f, -19.5f );
+
+    private int DEFAULT_FORCE =                     320;
+
+    private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 1.5f, -61.5f);
+    private Vector3 CAMERA_POSITION =               Vector3.zero; 
+    private Vector3 CAMERA_ROTATION =	            new Vector3( 30f, -90f, 0f );
+    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  Vector3.zero;
     private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3( 30.0f, 0.0f, 0.0f );
+    private Vector3 HOGLINE_POSITION =              Vector3.zero;
 
 	void Start() {
-		cameraToPlayerOffset = new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
+        ROCK_CAMERA_DEFAULT_POSITION =   new Vector3( 0.0f, PLAYER_DEFAULT_POSITION.y + 3f, PLAYER_DEFAULT_POSITION.z - 2.5f );
+		CAMERA_POSITION =                new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
+        HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
 
 		GiveStone();
 	}
@@ -41,16 +52,17 @@ public class Player : MonoBehaviour {
 	void Update() {
 		Move();
 		Look();
+        UpdateFriction();
+        UpdateAnimation();
 		UpdateStone();
-		// ShootStone();
 
 		if ( speed >= (acceleration * 2f) && !MovementKeysPressed() ) {
 		 	speed -= acceleration;
 		}
 
 		if ( playerCamera.transform.parent == transform ) {
-			camera.transform.position =	cameraToPlayerOffset;
-			camera.transform.rotation =	Quaternion.Euler( 30f, -90f, 0f );
+			playerCamera.transform.position = CAMERA_POSITION;
+            playerCamera.transform.rotation = Quaternion.Euler(CAMERA_ROTATION);
 		}
 	}
 
@@ -62,33 +74,37 @@ public class Player : MonoBehaviour {
 			dx =					Mathf.Clamp( dx, -speed, speed );
 			dz =					Mathf.Clamp( dz, -speed, speed );
 
-			Vector3 direction =		new Vector3( dx, 0f, dz );
+            Vector3 direction =		new Vector3( dx, 0f, dz );
 			direction =				transform.TransformDirection( direction );
-
+            
             // move player
 			rigidbody.AddForce( direction * DEFAULT_FORCE );
 
+            // only apply accel while below max speed and pressing movement keys
 			if ( speed < MAX_SPEED && MovementKeysPressed() ) {
 				speed += acceleration;
 			}
 		}
 	}
 
+    private void UpdateAnimation() {
+        if (speed > 0.01) {
+            //animation.CrossFade( "Running" );
+        } else {
+            //animation.Play( "Idle" );
+        }
+    }
+
+
 	public void Look() {
-		float dy = Input.GetAxis( "Mouse Y" ) * sensitivity;
-        
+		float dy = Input.GetAxis( "Mouse Y" ) * sensitivity;        
 		transform.Rotate( 0f, -dy, 0f );
 	}
-
-    /*public void Look()
-    {
-        transform.rotation = Quaternion.Euler(0f, Input.mousePosition.y, 0f);
-    }*/
-
+    
     public void GiveStone() {
         bool found = false;
 
-        transform.position = DEFAULT_PLAYER_POSITION;
+        transform.position = PLAYER_DEFAULT_POSITION;
         transform.rotation = Quaternion.identity;
 
         Vector3 clonePos = transform.position;
@@ -124,30 +140,38 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public void ShootStone() {
-		//stoneClone.transform.parent = null;
-
-        SwitchCamera( GameManager.eGameState.eRock );
-		
-        Vector3 forwardForce =			rigidbody.velocity;
-
-        stoneClone.rigidbody.AddForce(forwardForce * DEFAULT_FORCE);
-                        
-        stoneClone.Fire();
+    public void ShootStone() {
         canShoot = false;
         canControl = false;
+		stoneClone.transform.parent = null;
+
+        // apply our current velocity to the stone
+        stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
+
+        stoneClone.Fire();                              //this will call StoneFired() when the stone stops moving
+        SwitchCamera(GameManager.eGameState.eRock);     // switch to rockCamera which follows the stone
 	}
 
     public void StoneFired() {
         if ( StonesInSupply() > 0 ) {
-            SwitchTeam();
-            GiveStone();
             canShoot = true;
-        } else {
+            GiveStone();
+            EndOfTurn();
+        } else {                        // if there are no stones in the supply then it must be the end of the game
             EndOfRound();
         }
+    }
 
-        SwitchCamera( GameManager.eGameState.ePlayer );
+    private void EndOfTurn() {
+        // if i've been the same team for the last 2 turns switch team
+        if ( teamPrev == team )
+        {
+            SwitchTeam();
+        }
+
+        ClearUpBurnedStones();
+
+        SwitchCamera(GameManager.eGameState.ePlayer);
     }
 
     private int StonesInSupply() {
@@ -166,16 +190,18 @@ public class Player : MonoBehaviour {
     }
 
     private void SwitchTeam() {
+        teamPrev = team;
+
         switch ( team ) {
-            case GameManager.eTeam.TEAM_1:
+            case GameManager.eTeam.TEAM_RED:
             {
-                team = GameManager.eTeam.TEAM_2;
+                team = GameManager.eTeam.TEAM_BLUE;
                 break;
             }
 
-            case GameManager.eTeam.TEAM_2:
+            case GameManager.eTeam.TEAM_BLUE:
             {
-                team = GameManager.eTeam.TEAM_1;
+                team = GameManager.eTeam.TEAM_RED;
                 break;
             }
         }
@@ -197,5 +223,24 @@ public class Player : MonoBehaviour {
 
     public void SetFriction(float friction) {
         stoneClone.SetFriction(friction);
+    }
+
+    public void ClearUpBurnedStones() {
+        foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
+            if ( stone.IsBeyondHouse() ) {
+                //possibly add something cool here like an explosion at (stone.transform.position + Vector3(0f, 1f, 0f))
+                Destroy(stone);
+            }
+        }
+    }
+
+    private void UpdateFriction() {
+        if (IsMoving()) {
+            rigidbody.AddForce(rigidbody.velocity * frictionValue * -1f);
+        }
+    }
+
+    public bool IsMoving() {
+        return (rigidbody.velocity.magnitude > 0.05f);
     }
 }
