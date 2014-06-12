@@ -221,7 +221,8 @@ public class Player : MonoBehaviour {
     public void ClearUpBurnedStones() {
         foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
             if ( stone.IsBeyondFinalHack() ) {
-
+                //possibly add something cool here like an explosion at (stone.transform.position + Vector3(0f, 1f, 0f))
+                Destroy(stone);
             }
         }
     }
