@@ -34,7 +34,7 @@ public class MainMenuScript : MonoBehaviour {
 		if ( itemName == "start game" )
 		{
 			Debug.Log("Start Game");
-			Application.LoadLevel("dansTest");
+			Application.LoadLevel("RinkMain");
 		}
 		
 		else if ( itemName == "options" )
