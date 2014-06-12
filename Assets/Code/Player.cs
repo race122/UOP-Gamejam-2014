@@ -27,8 +27,8 @@ public class Player : MonoBehaviour {
 	private Vector3 cameraToPlayerOffset;
 	private Rock stoneClone;
 
-    private int DEFAULT_FORCE =                     100;
-	private Vector3 DEFAULT_PLAYER_POSITION =		new Vector3( 0f, 1f, -22f );
+    private int DEFAULT_FORCE =                     300;
+	private Vector3 DEFAULT_PLAYER_POSITION =		new Vector3( 0f, 1f, -61.5f );
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  Vector3.zero;
     private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3( 30.0f, 0.0f, 0.0f );
 
