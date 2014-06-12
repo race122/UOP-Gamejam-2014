@@ -88,7 +88,7 @@ public class Player : MonoBehaviour {
 
     private void UpdateAnimation() {
         if (speed > 0.01) {
-            //animation.CrossFade( "Running" );
+            //zanimation.CrossFade( "Running" );
         } else {
             //animation.Play( "Idle" );
         }
