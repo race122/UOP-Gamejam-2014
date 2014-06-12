@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 48311434150b3c74da8c69614b3541d7
+guid: 42faf7c00f2316449bfb5243e5839da9
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -102,7 +102,7 @@ ModelImporter:
     13700000: Cylinder006
   materials:
     importMaterials: 1
-    materialName: 1
+    materialName: 0
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
