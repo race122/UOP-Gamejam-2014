@@ -10,20 +10,27 @@ To Do List:
  * Add commentator sounds
  * Add team voices
 * UI
- * Score (each player)
- * Turn
- * Current team?
+ * Dynamic location for UI elements(there are issues on different aspect ratio's)
+ * Power meter (Brushing + pushing)
+ * Directional arrow of stone
 * Gameplay
- * Win condition
+ * Win condition (+ Win menu/kinda UI)
  * 2nd player
  * Brushing
  * Power of rock throw
+ * Disqualifiction if player goes off rink or touches stone
 * Art related
  * Menu Background
  * Player texture
  * Curling rink
- * Stone
  * Brushes
+ * ~~Stone~~
+* Sound related
+ * Collision of stones
+ * Crowd
+ * Whoa + hard shouts
+ * Commentator
+ 
 
 Credits:
 * Programming
