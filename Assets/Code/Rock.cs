@@ -16,6 +16,7 @@ public class Rock : MonoBehaviour
     // --------------------------------------
     public Camera rockCamera;
     private Player player;
+	public AudioClip rockCollision;
 
     // --------------------------------------
     // local variables
@@ -115,4 +116,12 @@ public class Rock : MonoBehaviour
             }
         }
     }
+
+	private void OnCollisionEnter( Collision col )
+	{
+		if ( ( col.transform.name == "Stone Blue" ) || ( col.transform.name == "Stone Red" ) )
+		{
+			AudioSource.PlayClipAtPoint ( rockCollision ,transform.position );
+		}
+	}
 }

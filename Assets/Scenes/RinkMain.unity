@@ -305,7 +305,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &90474839
 Animator:
@@ -358,11 +358,11 @@ Transform:
   m_PrefabInternal: {fileID: 1676746871}
   m_GameObject: {fileID: 90474835}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: 9.96319485, y: .380961865, z: -40.800354}
+  m_LocalPosition: {x: 9.96319485, y: .150000006, z: -40.800354}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 8
+  m_RootOrder: 5
 --- !u!114 &90474843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 1
 --- !u!1 &111455571
 GameObject:
@@ -531,11 +532,11 @@ Transform:
   m_PrefabInternal: {fileID: 1788130962}
   m_GameObject: {fileID: 137781498}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -8.34967136, y: .325545311, z: -42.0508499}
+  m_LocalPosition: {x: -8.34967136, y: .150000006, z: -42.0508499}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 15
+  m_RootOrder: 12
 --- !u!114 &137781500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,6 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 0
 --- !u!135 &137781501
 SphereCollider:
@@ -591,7 +593,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &137781504
 Animator:
@@ -946,11 +948,11 @@ Transform:
   m_PrefabInternal: {fileID: 1592785296}
   m_GameObject: {fileID: 262031955}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -8.91084194, y: .325545162, z: -43.9826431}
+  m_LocalPosition: {x: -8.91084194, y: .150000006, z: -43.9826431}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 4
+  m_RootOrder: 1
 --- !u!114 &262031957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,6 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 0
 --- !u!135 &262031958
 SphereCollider:
@@ -1006,7 +1009,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &262031961
 Animator:
@@ -1153,7 +1156,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .325545162
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1185,11 +1188,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
@@ -1329,7 +1332,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .415021062
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1357,12 +1360,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: rockCamera
       value: 
       objectReference: {fileID: 1542263584}
+    - target: {fileID: 5400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
   m_RootGameObject: {fileID: 964428815}
@@ -1438,7 +1445,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .325545222
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1470,11 +1477,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
@@ -2083,11 +2090,11 @@ Transform:
   m_PrefabInternal: {fileID: 804154728}
   m_GameObject: {fileID: 630640059}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -8.34967136, y: .325545192, z: -43.1536484}
+  m_LocalPosition: {x: -8.34967136, y: .150000006, z: -43.1536484}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 5
+  m_RootOrder: 2
 --- !u!114 &630640061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,6 +2108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 0
 --- !u!135 &630640062
 SphereCollider:
@@ -2143,7 +2151,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &630640065
 Animator:
@@ -2274,11 +2282,11 @@ Transform:
   m_PrefabInternal: {fileID: 302630422}
   m_GameObject: {fileID: 648504955}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -9.94233036, y: .325545162, z: -43.8842392}
+  m_LocalPosition: {x: -9.94233036, y: .150000006, z: -43.8842392}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 3
+  m_RootOrder: 0
 --- !u!114 &648504957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2292,6 +2300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 0
 --- !u!135 &648504958
 SphereCollider:
@@ -2334,7 +2343,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &648504961
 Animator:
@@ -2478,7 +2487,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .415020943
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2510,7 +2519,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
@@ -2664,6 +2677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 0
 --- !u!135 &754191544
 SphereCollider:
@@ -2706,7 +2720,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &754191547
 Animator:
@@ -2759,11 +2773,11 @@ Transform:
   m_PrefabInternal: {fileID: 948228957}
   m_GameObject: {fileID: 754191542}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: -9.0634203, y: .325545222, z: -41.0096664}
+  m_LocalPosition: {x: -9.0634203, y: .150000006, z: -41.0096664}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 14
+  m_RootOrder: 11
 --- !u!1 &779806037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2831,7 +2845,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .325545192
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2863,11 +2877,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
@@ -3000,7 +3014,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .380962104
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3032,11 +3046,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 5400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
@@ -3167,7 +3181,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .325545222
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3195,7 +3209,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: rockCamera
@@ -3203,7 +3217,7 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 5400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
@@ -3239,11 +3253,11 @@ Transform:
   m_PrefabInternal: {fileID: 386078810}
   m_GameObject: {fileID: 964428815}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: 9.49333286, y: .415021062, z: -44.070137}
+  m_LocalPosition: {x: 9.49333286, y: .150000006, z: -44.070137}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 6
+  m_RootOrder: 3
 --- !u!114 &964428817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3257,6 +3271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 1
 --- !u!135 &964428818
 SphereCollider:
@@ -3299,7 +3314,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &964428821
 Animator:
@@ -3430,11 +3445,11 @@ Transform:
   m_PrefabInternal: {fileID: 1366200544}
   m_GameObject: {fileID: 1051776621}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 9.19463253, y: .380961925, z: -42.8483124}
+  m_LocalPosition: {x: 9.19463253, y: .150000006, z: -42.8483124}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 9
+  m_RootOrder: 6
 --- !u!114 &1051776623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3448,6 +3463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 1
 --- !u!135 &1051776624
 SphereCollider:
@@ -3490,7 +3506,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1051776627
 Animator:
@@ -3715,6 +3731,7 @@ GameObject:
   - 33: {fileID: 1235029409}
   - 64: {fileID: 1235029408}
   - 23: {fileID: 1235029407}
+  - 65: {fileID: 1235029411}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -3749,11 +3766,11 @@ MeshCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1235029406}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
+  m_SmoothSphereCollisions: 1
+  m_Convex: 1
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1235029409
 MeshFilter:
@@ -3774,6 +3791,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!65 &1235029411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1235029406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000001, y: 2.22044605e-16, z: 10.000001}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1242147001
 GameObject:
   m_ObjectHideFlags: 0
@@ -3842,7 +3871,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .325545341
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3874,11 +3903,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
@@ -3914,11 +3943,11 @@ Transform:
   m_PrefabInternal: {fileID: 399466421}
   m_GameObject: {fileID: 1274644051}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -9.54612064, y: .325545222, z: -42.9841232}
+  m_LocalPosition: {x: -9.54612064, y: .150000006, z: -42.9841232}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 2
+  m_RootOrder: 15
 --- !u!114 &1274644053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3932,6 +3961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 0
 --- !u!135 &1274644054
 SphereCollider:
@@ -3974,7 +4004,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1274644057
 Animator:
@@ -4033,7 +4063,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .325545371
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4065,11 +4095,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
@@ -4089,7 +4119,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .380961925
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4121,11 +4151,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 5400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
@@ -4395,9 +4425,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -21.4296341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1450227178}
-  - {fileID: 1767212436}
-  - {fileID: 1274644052}
   - {fileID: 648504956}
   - {fileID: 262031956}
   - {fileID: 630640060}
@@ -4411,6 +4438,9 @@ Transform:
   - {fileID: 1444637652}
   - {fileID: 754191550}
   - {fileID: 137781499}
+  - {fileID: 1450227178}
+  - {fileID: 1767212436}
+  - {fileID: 1274644052}
   m_Father: {fileID: 0}
   m_RootOrder: 11
 --- !u!1 &1414159196
@@ -4498,11 +4528,11 @@ Transform:
   m_PrefabInternal: {fileID: 921822368}
   m_GameObject: {fileID: 1444637651}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 11.6633081, y: .380962104, z: -41.336235}
+  m_LocalPosition: {x: 11.6633081, y: .150000006, z: -41.336235}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 13
+  m_RootOrder: 10
 --- !u!114 &1444637653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4516,6 +4546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 1
 --- !u!135 &1444637654
 SphereCollider:
@@ -4558,7 +4589,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1444637657
 Animator:
@@ -4661,11 +4692,11 @@ Transform:
   m_PrefabInternal: {fileID: 1268184329}
   m_GameObject: {fileID: 1450227177}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -10.3189955, y: .325545341, z: -42.3207169}
+  m_LocalPosition: {x: -10.3189955, y: .150000006, z: -42.3207169}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 0
+  m_RootOrder: 13
 --- !u!114 &1450227179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4679,6 +4710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 0
 --- !u!135 &1450227180
 SphereCollider:
@@ -4721,7 +4753,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1450227183
 Animator:
@@ -4859,11 +4891,11 @@ Transform:
   m_PrefabInternal: {fileID: 1753464244}
   m_GameObject: {fileID: 1477538815}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 11.2197781, y: .380962044, z: -42.9135437}
+  m_LocalPosition: {x: 11.2197781, y: .150000006, z: -42.9135437}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 10
+  m_RootOrder: 7
 --- !u!114 &1477538817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4877,6 +4909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 1
 --- !u!135 &1477538818
 SphereCollider:
@@ -4919,7 +4952,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1477538821
 Animator:
@@ -5146,7 +5179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .377474099
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5174,12 +5207,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: rockCamera
       value: 
       objectReference: {fileID: 1542263584}
+    - target: {fileID: 5400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
   m_RootGameObject: {fileID: 1832711087}
@@ -5518,7 +5555,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .325545162
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5550,11 +5587,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
@@ -5674,11 +5711,11 @@ Transform:
   m_PrefabInternal: {fileID: 669822973}
   m_GameObject: {fileID: 1671167686}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 10.7054911, y: .415020943, z: -44.0241776}
+  m_LocalPosition: {x: 10.7054911, y: .150000006, z: -44.0241776}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 11
+  m_RootOrder: 8
 --- !u!114 &1671167688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5692,6 +5729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 1
 --- !u!135 &1671167689
 SphereCollider:
@@ -5734,7 +5772,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1671167692
 Animator:
@@ -5793,7 +5831,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .380961865
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5825,7 +5863,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
@@ -5983,7 +6025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .380962044
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6015,11 +6057,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 5400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
@@ -6113,6 +6155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 0
 --- !u!135 &1767212430
 SphereCollider:
@@ -6155,7 +6198,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1767212433
 Animator:
@@ -6208,11 +6251,11 @@ Transform:
   m_PrefabInternal: {fileID: 1276769663}
   m_GameObject: {fileID: 1767212428}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -9.8493166, y: .325545371, z: -41.5393753}
+  m_LocalPosition: {x: -9.8493166, y: .150000006, z: -41.5393753}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 1
+  m_RootOrder: 14
 --- !u!1 &1771933244
 GameObject:
   m_ObjectHideFlags: 0
@@ -6278,7 +6321,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .325545311
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6310,11 +6353,11 @@ Prefab:
       objectReference: {fileID: 1542263584}
     - target: {fileID: 400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b595cbf02ba3f9441a485f3acfb7ab68, type: 2}
@@ -6350,11 +6393,11 @@ Transform:
   m_PrefabInternal: {fileID: 2077444646}
   m_GameObject: {fileID: 1788939311}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: 9.34721279, y: .377474099, z: -41.9472122}
+  m_LocalPosition: {x: 9.34721279, y: .150000006, z: -41.9472122}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 7
+  m_RootOrder: 4
 --- !u!114 &1788939313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6368,6 +6411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 1
 --- !u!135 &1788939314
 SphereCollider:
@@ -6410,7 +6454,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1788939317
 Animator:
@@ -6667,11 +6711,11 @@ Transform:
   m_PrefabInternal: {fileID: 1538144060}
   m_GameObject: {fileID: 1832711087}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 10.7464895, y: .377474099, z: -42.1169014}
+  m_LocalPosition: {x: 10.7464895, y: .150000006, z: -42.1169014}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1405282346}
-  m_RootOrder: 12
+  m_RootOrder: 9
 --- !u!114 &1832711089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6685,6 +6729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 1542263584}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 1
 --- !u!135 &1832711090
 SphereCollider:
@@ -6727,7 +6772,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1832711093
 Animator:
@@ -7017,6 +7062,7 @@ GameObject:
   - 4: {fileID: 1969493735}
   - 33: {fileID: 1969493737}
   - 23: {fileID: 1969493736}
+  - 64: {fileID: 1969493738}
   m_Layer: 0
   m_Name: Cylinder007
   m_TagString: Untagged
@@ -7064,6 +7110,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1934492788}
   m_GameObject: {fileID: 1969493734}
+  m_Mesh: {fileID: 4300002, guid: 42faf7c00f2316449bfb5243e5839da9, type: 3}
+--- !u!64 &1969493738
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400000, guid: 42faf7c00f2316449bfb5243e5839da9,
+    type: 3}
+  m_PrefabInternal: {fileID: 1934492788}
+  m_GameObject: {fileID: 1969493734}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 42faf7c00f2316449bfb5243e5839da9, type: 3}
 --- !u!1 &1973697055
 GameObject:
@@ -7290,7 +7350,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 0}
 --- !u!54 &2063091386
 Rigidbody:
@@ -7299,13 +7359,13 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2063091382}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: .100000001
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!111 &2063091387
 Animation:
@@ -7364,7 +7424,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .377474099
+      value: .150000006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7392,12 +7452,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
       propertyPath: rockCamera
       value: 
       objectReference: {fileID: 1542263584}
+    - target: {fileID: 5400000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b71c807810ade3a44af76ae1cd2f4753, type: 2}
   m_RootGameObject: {fileID: 1788939311}

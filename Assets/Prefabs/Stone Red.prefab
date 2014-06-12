@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockCamera: {fileID: 0}
+  rockCollision: {fileID: 8300000, guid: 1500ad8372c8463429f3d483b657524e, type: 3}
   team: 0
 --- !u!135 &13500000
 SphereCollider:
