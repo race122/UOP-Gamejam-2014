@@ -31,6 +31,7 @@ public class Player : MonoBehaviour {
 
 	private Rock stoneClone;
 
+
     private int DEFAULT_FORCE =                     320;
 
     private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 1.5f, -61.5f);
