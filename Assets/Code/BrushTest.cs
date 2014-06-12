@@ -35,7 +35,7 @@ public class BrushTest : MonoBehaviour {
 	//debug gui
 	void OnGUI () {
 		// Make a background box
-		GUI.Box(new Rect(10,10,160,160), "Y: " + MousePositionY.ToString()
+		GUI.Box(new Rect(50,50,160,160), "Y: " + MousePositionY.ToString()
 		        + "\n topClip: " + topClip
 		        + "\n bottomClip: " + bottomClip
 		        + "\n leftClip: " + leftClip
