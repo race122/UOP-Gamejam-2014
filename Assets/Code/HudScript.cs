@@ -52,19 +52,14 @@ public class HudScript : MonoBehaviour {
 	}
 
     private void UpdateStonesLeft() {
-<<<<<<< HEAD
-        stonesLeftTeamOne = GameManager.Singleton().TeamOneStonesLeft();
-        stonesLeftTeamTwo = GameManager.Singleton().TeamTwoStonesLeft();
+        stonesLeftTeamOne = GameManager.TeamOneStonesLeft();
+        stonesLeftTeamTwo = GameManager.TeamTwoStonesLeft();
 		if (GameManager.Singleton ().IsTeamOne ()) {
 			stonesLeftTeamOne++;
 		} 
 		else {
 			stonesLeftTeamTwo++;
 		}
-=======
-        stonesLeftTeamOne = GameManager.TeamOneStonesLeft();
-        stonesLeftTeamTwo = GameManager.TeamTwoStonesLeft();
->>>>>>> d49de79633b15be540094facae34c68b20459d2b
     }
 
 	private void UpdateStoneCounter() {
