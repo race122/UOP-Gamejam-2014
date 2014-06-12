@@ -39,29 +39,17 @@ Start Game
  
 (Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-UnloadTime: 0.238006 ms
+UnloadTime: 0.234799 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 395.
-Total: 0.556846 ms (FindLiveObjects: 0.012189 ms CreateObjectMapping: 0.006736 ms MarkObjects: 0.055492 ms  DeleteObjects: 0.060945 ms)
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 383.
+Total: 0.559091 ms (FindLiveObjects: 0.011547 ms CreateObjectMapping: 0.006736 ms MarkObjects: 0.067039 ms  DeleteObjects: 0.060303 ms)
 
-15
- 
-(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-14
- 
-(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-13
- 
-(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 0.558129 ms
+UnloadTime: 0.560695 ms
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 110.
-Total: 0.503599 ms (FindLiveObjects: 0.004490 ms CreateObjectMapping: 0.006094 ms MarkObjects: 0.051963 ms  DeleteObjects: 0.096549 ms)
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 109.
+Total: 0.512580 ms (FindLiveObjects: 0.003849 ms CreateObjectMapping: 0.006094 ms MarkObjects: 0.053246 ms  DeleteObjects: 0.097191 ms)
 
 NullReferenceException: Object reference not set to an instance of an object
   at MenuScript.Start () [0x00000] in <filename unknown>:0 
@@ -82,8 +70,4 @@ NullReferenceException: Object reference not set to an instance of an object
   at MenuScript.Start () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
-
-Exit
- 
-(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
