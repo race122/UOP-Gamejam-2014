@@ -5,7 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
+<<<<<<< HEAD
 	<ProjectGuid>{126116F6-B781-431A-6764-466B14FA96CB}</ProjectGuid>
+=======
+	<ProjectGuid>{26BEAA7C-4BB2-4E68-3384-49DC06EE3EC6}</ProjectGuid>
+>>>>>>> d49de79633b15be540094facae34c68b20459d2b
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -39,20 +43,32 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
+<<<<<<< HEAD
 	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
 	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+=======
+	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+>>>>>>> d49de79633b15be540094facae34c68b20459d2b
 	</Reference>
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Code\AnimTest.cs" />
+     <Compile Include="Assets\Code\BrushTest.cs" />
      <Compile Include="Assets\Code\CameraTrolley.cs" />
      <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\HudScript.cs" />
      <Compile Include="Assets\Code\MainMenuScript.cs" />
+<<<<<<< HEAD
      <Compile Include="Assets\Code\MouseTest.cs" />
      <Compile Include="Assets\Code\OptionsMenu.cs" />
+=======
+     <Compile Include="Assets\Code\OptionsMenuScript.cs" />
+>>>>>>> d49de79633b15be540094facae34c68b20459d2b
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\Player2.cs" />
      <Compile Include="Assets\Code\Rock.cs" />

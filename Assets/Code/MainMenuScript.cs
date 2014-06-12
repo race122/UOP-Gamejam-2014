@@ -14,7 +14,7 @@ public class MainMenuScript : MonoBehaviour {
 		Screen.lockCursor = false;
 		Screen.showCursor = true;
 		
-		if (PlayerPrefs.HasKey ("volume")) {
+		if ( PlayerPrefs.HasKey ("volume") ) {
 						AudioListener.volume = GameManager.GetVolume ();
 			
 				} else {

@@ -35,7 +35,7 @@ public class HudScript : MonoBehaviour {
 
 	//A function that updates the display for teams current scores
 	private void UpdateScores() {
-		int[] scores = GameManager.Singleton().getScore ();
+		int[] scores = GameManager.getScore ();
 		score1.guiText.text = "Team 1: " + scores[0].ToString();
 		score2.guiText.text = "Team 2: " + scores[1].ToString();
 	}
@@ -52,6 +52,7 @@ public class HudScript : MonoBehaviour {
 	}
 
     private void UpdateStonesLeft() {
+<<<<<<< HEAD
         stonesLeftTeamOne = GameManager.Singleton().TeamOneStonesLeft();
         stonesLeftTeamTwo = GameManager.Singleton().TeamTwoStonesLeft();
 		if (GameManager.Singleton ().IsTeamOne ()) {
@@ -60,6 +61,10 @@ public class HudScript : MonoBehaviour {
 		else {
 			stonesLeftTeamTwo++;
 		}
+=======
+        stonesLeftTeamOne = GameManager.TeamOneStonesLeft();
+        stonesLeftTeamTwo = GameManager.TeamTwoStonesLeft();
+>>>>>>> d49de79633b15be540094facae34c68b20459d2b
     }
 
 	private void UpdateStoneCounter() {
