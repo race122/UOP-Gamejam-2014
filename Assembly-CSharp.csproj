@@ -47,11 +47,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Code\AnimTest.cs" />
+     <Compile Include="Assets\Code\BrushTest.cs" />
      <Compile Include="Assets\Code\CameraTrolley.cs" />
      <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\HudScript.cs" />
      <Compile Include="Assets\Code\MainMenuScript.cs" />
-     <Compile Include="Assets\Code\MouseTest.cs" />
      <Compile Include="Assets\Code\OptionsMenuScript.cs" />
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\Player2.cs" />
