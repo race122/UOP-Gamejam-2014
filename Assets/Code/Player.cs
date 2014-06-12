@@ -21,18 +21,17 @@ public class Player : MonoBehaviour {
     
 	private float speed =							0.0f;
 	private float acceleration =					0.05f;
-	private const float MAX_SPEED =					0.3f;
+	private const float MAX_SPEED =					0.1f;
 	private float sensitivity =						12.0f;
-    private float frictionValue;
-    private float FRICTION_MAX =                    0.4f;
-    private float FRICTION_MIN =                    0.2f;
-    private bool canShoot = true;
+    private float frictionValue =                   0.2f;
+    private float slowestSpeed =                    0.075f;
+    private bool canShoot =                         true;
 	private bool canControl =						true;
 
 	private Rock stoneClone;
 
 
-    private int DEFAULT_FORCE =                     320;
+    private int DEFAULT_FORCE =                     85;
 
     private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 1.5f, -61.5f);
     private Vector3 CAMERA_POSITION =               Vector3.zero; 
@@ -112,7 +111,7 @@ public class Player : MonoBehaviour {
 		foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
 			if ( stone.InSupply() && stone.team == team ) {
 				stoneClone =					stone;
-				stone.transform.position =		clonePos;
+				stoneClone.transform.position =		clonePos;
 				//stoneClone.transform.parent =	transform;
 				rockCamera.transform.parent =	stoneClone.transform;
                 ResetRockCamera();
@@ -148,8 +147,8 @@ public class Player : MonoBehaviour {
         // apply our current velocity to the stone
         stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
 
+        SwitchCamera(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
         stoneClone.Fire();                              //this will call StoneFired() when the stone stops moving
-        SwitchCamera(GameManager.eGameState.eRock);     // switch to rockCamera which follows the stone
 	}
 
     public void StoneFired() {
@@ -235,12 +234,17 @@ public class Player : MonoBehaviour {
     }
 
     private void UpdateFriction() {
+        // stop moving if im barely moving anyway
+        if (rigidbody.velocity.magnitude > 0 && !IsMoving()) {
+            rigidbody.velocity = Vector3.zero;
+        }
+
         if (IsMoving()) {
             rigidbody.AddForce(rigidbody.velocity * frictionValue * -1f);
         }
     }
 
     public bool IsMoving() {
-        return (rigidbody.velocity.magnitude > 0.05f);
+        return (rigidbody.velocity.magnitude > slowestSpeed);
     }
 }
