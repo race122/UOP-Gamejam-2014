@@ -3,11 +3,11 @@ using System.Collections;
 
 public class OptionsMenu : MonoBehaviour {
 
-	public float newVolume;
+	private float newVolume;
 
 	// Use this for initialization
 	void Start () {
-        newVolume = GameManager.Singleton().getVolume() * 100;
+        newVolume = GameManager.GetVolume() * 100;
 		Debug.Log (newVolume);
 	}
 	
@@ -17,11 +17,13 @@ public class OptionsMenu : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		newVolume = GUI.HorizontalSlider(new Rect( ( Screen.width / 2 ) - 150, ( Screen.height / 2 ) , 300, 150), newVolume, 0.0F, 100.0F);
+		//newVolume = GUI.HorizontalSlider(new Rect(  ( ( Screen.width * 0.5f) * 0.7f ), ( Screen.height * 0.5f ) , 300, 150), newVolume, 0.0F, 100.0F);
+		newVolume = GUI.HorizontalSlider(new Rect(  ( ( Screen.width * 0.5f) - 150), ( Screen.height * 0.5f ) , 300, 150), newVolume, 0.0F, 100.0F);
 
-        GameManager.Singleton().setVolume((newVolume));
+        GameManager.SetVolume(newVolume);
 
-		GUI.Label( new Rect( ( Screen.width / 2 ) - 40, ( Screen.height / 2 ) - 25 , 300, 25 ), "Volume: " + Mathf.Round( newVolume ) );
+		//GUI.Label( new Rect( ( ( Screen.width * 0.5f ) * 0.95f ), ( ( Screen.height * 0.5f ) * 0.9f ) , 300, 25 ), "Volume: " + Mathf.Round( newVolume ) );
+		GUI.Label( new Rect( ( ( Screen.width * 0.5f ) * 0.95f ), ( ( Screen.height * 0.5f ) - 25 ) , 300, 25 ), "Volume: " + Mathf.Round( newVolume ) );
 
 	}
 }

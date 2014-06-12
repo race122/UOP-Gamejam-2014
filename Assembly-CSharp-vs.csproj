@@ -9,7 +9,7 @@
 	<ProjectGuid>{26BEAA7C-4BB2-4E68-3384-49DC06EE3EC6}</ProjectGuid>
 =======
 	<ProjectGuid>{126116F6-B781-431A-6764-466B14FA96CB}</ProjectGuid>
->>>>>>> 615f5c90328637894cdc80e233db45006e14ff80
+>>>>>>> bdba444ece99feed8969f2a2b55f46b2991b470c
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -53,28 +53,29 @@
 	</Reference>
 	<Reference Include="UnityEditor">
 	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
->>>>>>> 615f5c90328637894cdc80e233db45006e14ff80
+>>>>>>> bdba444ece99feed8969f2a2b55f46b2991b470c
 	</Reference>
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Code\AnimTest.cs" />
+     <Compile Include="Assets\Code\CameraTrolley.cs" />
      <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\HudScript.cs" />
 <<<<<<< HEAD
      <Compile Include="Assets\Code\MenuScript.cs" />
      <Compile Include="Assets\Code\MouseTest.cs" />
+     <Compile Include="Assets\Code\Player.cs" />
+     <Compile Include="Assets\Code\Player2.cs" />
+     <Compile Include="Assets\Code\Rock.cs" />
+     <Compile Include="Assets\Code\optionsMenu.cs" />
+=======
+     <Compile Include="Assets\Code\MainMenuScript.cs" />
+     <Compile Include="Assets\Code\MouseTest.cs" />
      <Compile Include="Assets\Code\OptionsMenu.cs" />
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\Player2.cs" />
      <Compile Include="Assets\Code\Rock.cs" />
-=======
-     <Compile Include="Assets\Code\MouseTest.cs" />
-     <Compile Include="Assets\Code\Player.cs" />
-     <Compile Include="Assets\Code\Player2.cs" />
-     <Compile Include="Assets\Code\Rock.cs" />
-     <Compile Include="Assets\Code\menuScript.cs" />
-     <Compile Include="Assets\Code\optionsMenu.cs" />
->>>>>>> 615f5c90328637894cdc80e233db45006e14ff80
+>>>>>>> bdba444ece99feed8969f2a2b55f46b2991b470c
      <None Include="Assets\Models\hi.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
