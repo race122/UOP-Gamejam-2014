@@ -64,8 +64,6 @@ public class HudScript : MonoBehaviour {
 
 	private void UpdateStoneCounter() {
 		//Draw stones for team one
-	
-
         for (int i = 0; i < stonesLeftTeamOne; i++) {
 
 			GUI.DrawTexture(new Rect( ( Screen.width ) * 0.41f + redOffset, ( Screen.height ) * 0.02f, 32, 32 ), redStones);
@@ -81,6 +79,10 @@ public class HudScript : MonoBehaviour {
 
 		redOffset = 0;
 		blueOffset = 0;
+	}
+
+	private void OutputWinner() {
+
 	}
 	
 }
