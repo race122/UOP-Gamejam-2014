@@ -49,12 +49,12 @@
      <Compile Include="Assets\Code\AnimTest.cs" />
      <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\HudScript.cs" />
+     <Compile Include="Assets\Code\MainMenuScript.cs" />
      <Compile Include="Assets\Code\MouseTest.cs" />
+     <Compile Include="Assets\Code\OptionsMenu.cs" />
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\Player2.cs" />
      <Compile Include="Assets\Code\Rock.cs" />
-     <Compile Include="Assets\Code\menuScript.cs" />
-     <Compile Include="Assets\Code\optionsMenu.cs" />
      <None Include="Assets\Models\hi.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

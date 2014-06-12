@@ -148,11 +148,11 @@ public class GameManager : MonoBehaviour {
         return mGameState;
     }
 
-    public float getVolume() {
+	public static float GetVolume() {
 		return volume;
 	}
 
-    public void setVolume(float newVolume) {
+    public static void SetVolume(float newVolume) {
 		volume = newVolume / 100;
 		PlayerPrefs.SetFloat( "volume", volume );
 		PlayerPrefs.Save();

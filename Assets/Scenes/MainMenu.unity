@@ -83,8 +83,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 190643210}
   - 212: {fileID: 190643209}
-  - 114: {fileID: 190643211}
   - 61: {fileID: 190643212}
+  - 114: {fileID: 190643211}
   m_Layer: 0
   m_Name: button1
   m_TagString: Untagged
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 190643208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 770842337cbd04d4c9d8d78de122d874, type: 3}
+  m_Script: {fileID: 11500000, guid: 285e050a0285cdb489d750e8b294e0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: start game
@@ -246,8 +246,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 528177399}
   - 212: {fileID: 528177398}
-  - 114: {fileID: 528177397}
   - 61: {fileID: 528177400}
+  - 114: {fileID: 528177397}
   m_Layer: 0
   m_Name: exit_Button
   m_TagString: Untagged
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 528177396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 770842337cbd04d4c9d8d78de122d874, type: 3}
+  m_Script: {fileID: 11500000, guid: 285e050a0285cdb489d750e8b294e0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: exit
@@ -325,8 +325,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1020186892}
   - 212: {fileID: 1020186891}
-  - 114: {fileID: 1020186893}
   - 61: {fileID: 1020186894}
+  - 114: {fileID: 1020186893}
   m_Layer: 0
   m_Name: Options_Button
   m_TagString: Untagged
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1020186890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 770842337cbd04d4c9d8d78de122d874, type: 3}
+  m_Script: {fileID: 11500000, guid: 285e050a0285cdb489d750e8b294e0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: options
@@ -404,8 +404,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1087872193}
   - 212: {fileID: 1087872192}
-  - 114: {fileID: 1087872194}
   - 61: {fileID: 1087872195}
+  - 114: {fileID: 1087872194}
   m_Layer: 0
   m_Name: credits_Button
   m_TagString: Untagged
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1087872191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 770842337cbd04d4c9d8d78de122d874, type: 3}
+  m_Script: {fileID: 11500000, guid: 285e050a0285cdb489d750e8b294e0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: credits
