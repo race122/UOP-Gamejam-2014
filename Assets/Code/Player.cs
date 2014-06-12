@@ -139,8 +139,10 @@ public class Player : MonoBehaviour {
 				// Having this the other way around caused a bug...
 				if ( HOGLINE_POSITION.z - transform.position.z <= 0 ) {
 					passedTheLine = true;
-					EndOfTurn();
-					GiveStone();
+					Disqualify();
+					StoneFired();
+					// EndOfTurn();
+					// GiveStone();
 				}
 
 				if ( Input.GetMouseButtonDown( 0 ) ) {
@@ -166,6 +168,7 @@ public class Player : MonoBehaviour {
 
     public void StoneFired() {
         if ( StonesInSupply() > 0 ) {
+        	passedTheLine = false;
             canShoot = true;
             GiveStone();
             EndOfTurn();
@@ -259,5 +262,11 @@ public class Player : MonoBehaviour {
 
     public bool IsMoving() {
         return (rigidbody.velocity.magnitude > slowestSpeed);
+    }
+
+    public void Disqualify() {
+    	float disqualifyOffset =		GameManager.Singleton().BACK_OF_HOUSE_POSITION.z - 1.0f;
+    	Vector3 pos =					stoneClone.transform.position;
+    	stoneClone.transform.position =	new Vector3( pos.x, pos.y, disqualifyOffset );
     }
 }
