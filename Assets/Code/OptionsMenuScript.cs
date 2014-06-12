@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OptionsMenu : MonoBehaviour {
+public class OptionsMenuScript : MonoBehaviour {
 
 	private float newVolume;
 
