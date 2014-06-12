@@ -21,6 +21,8 @@ To Do List:
  * Curling rink
  * Brushes
  * ~~Stone~~
+ * Custom font?
+ * Animations
 * Sound related
  * Collision of stones
  * Crowd
