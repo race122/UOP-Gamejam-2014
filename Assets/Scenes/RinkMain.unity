@@ -3715,6 +3715,7 @@ GameObject:
   - 33: {fileID: 1235029409}
   - 64: {fileID: 1235029408}
   - 23: {fileID: 1235029407}
+  - 65: {fileID: 1235029411}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -3749,11 +3750,11 @@ MeshCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1235029406}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
+  m_SmoothSphereCollisions: 1
+  m_Convex: 1
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1235029409
 MeshFilter:
@@ -3774,6 +3775,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!65 &1235029411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1235029406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000001, y: 2.22044605e-16, z: 10.000001}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1242147001
 GameObject:
   m_ObjectHideFlags: 0
@@ -7017,6 +7030,7 @@ GameObject:
   - 4: {fileID: 1969493735}
   - 33: {fileID: 1969493737}
   - 23: {fileID: 1969493736}
+  - 64: {fileID: 1969493738}
   m_Layer: 0
   m_Name: Cylinder007
   m_TagString: Untagged
@@ -7064,6 +7078,20 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 1934492788}
   m_GameObject: {fileID: 1969493734}
+  m_Mesh: {fileID: 4300002, guid: 42faf7c00f2316449bfb5243e5839da9, type: 3}
+--- !u!64 &1969493738
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400000, guid: 42faf7c00f2316449bfb5243e5839da9,
+    type: 3}
+  m_PrefabInternal: {fileID: 1934492788}
+  m_GameObject: {fileID: 1969493734}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 42faf7c00f2316449bfb5243e5839da9, type: 3}
 --- !u!1 &1973697055
 GameObject:
@@ -7290,7 +7318,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 0}
 --- !u!54 &2063091386
 Rigidbody:
@@ -7302,10 +7330,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!111 &2063091387
 Animation:
