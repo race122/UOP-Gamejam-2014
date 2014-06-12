@@ -30,7 +30,6 @@ public class Rock : MonoBehaviour
     private float FRICTION_MIN =                0.1f;
 
     private Vector3 BULLSEYE_POSITION;
-    private Vector3 BACK_OF_HOUSE_POSITION;
 
     // --------------------------------------
     // functions
@@ -42,7 +41,6 @@ public class Rock : MonoBehaviour
         isFiring =                  false;
         frictionValue =             FRICTION_MAX;
         BULLSEYE_POSITION =         GameObject.FindGameObjectWithTag("Bullseye").transform.position;
-        BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
         // NEED TO ADD: GameObjects with the tags above at the correct locations
     }
 
@@ -57,7 +55,7 @@ public class Rock : MonoBehaviour
     }
 
     public bool IsBeyondHouse() {
-        return ((transform.position.z - BACK_OF_HOUSE_POSITION.z) > 0);
+        return ((transform.position.z - GameManager.Singleton().BACK_OF_HOUSE_POSITION.z) > 0);
     }
 
     public void Pickup() {

@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
     private float slowestSpeed =                    0.075f;
     private bool canShoot =                         true;
 	private bool canControl =						true;
+	private bool passedTheLine =					false;
 
 	private Rock stoneClone;
 
@@ -120,30 +121,43 @@ public class Player : MonoBehaviour {
 	}
 
 	public void UpdateStone() {
-		if ( stoneClone.IsPickedUp() && canShoot ) {
-			stoneClone.transform.position = transform.position + transform.forward + transform.forward + transform.forward;
-			if ( Input.GetMouseButtonDown( 0 ) ) {
-				ShootStone();
+		if ( stoneClone.IsPickedUp() ) {
+			stoneClone.transform.position = transform.position + ( transform.forward + transform.forward );
+			if ( canShoot ) {
+				// Turns out the order in which you do the delta matters.
+				// Having this the other way around caused a bug...
+				if ( HOGLINE_POSITION.z - transform.position.z <= 0 ) {
+					passedTheLine = true;
+					Disqualify();
+					StoneFired();
+					// EndOfTurn();
+					// GiveStone();
+				}
+
+				if ( Input.GetMouseButtonDown( 0 ) ) {
+					ShootStone();
+				}
 			}
 		}
 	}
 
-    public void ShootStone() {
-        canShoot = false;
-        canControl = false;
-        //stoneClone.transform.parent = null;
+	public void ShootStone() {
+		if ( !passedTheLine ) {
+			canShoot = false;
+			canControl = false;
+			stoneClone.transform.parent = null;
 
-        SwitchCamera(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
+			// apply our current velocity to the stone
+			stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
 
-        // apply our current velocity to the stone
-        stoneClone.rigidbody.velocity = rigidbody.velocity;
-        //stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
-
-        stoneClone.Fire();                              //this will call StoneFired() when the stone stops moving
+			SwitchCamera(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
+			stoneClone.Fire();                              //this will call StoneFired() when the stone stops moving
+    	}
 	}
 
     public void StoneFired() {
         if ( StonesInSupply() > 0 ) {
+        	passedTheLine = false;
             canShoot = true;
             GiveStone();
             EndOfTurn();
@@ -240,5 +254,11 @@ public class Player : MonoBehaviour {
 
     public bool IsMoving() {
         return (rigidbody.velocity.magnitude > slowestSpeed);
+    }
+
+    public void Disqualify() {
+    	float disqualifyOffset =		GameManager.Singleton().BACK_OF_HOUSE_POSITION.z - 1.0f;
+    	Vector3 pos =					stoneClone.transform.position;
+    	stoneClone.transform.position =	new Vector3( pos.x, pos.y, disqualifyOffset );
     }
 }

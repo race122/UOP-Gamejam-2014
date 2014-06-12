@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
     public Camera bullseyeCam;
     private eGameState mGameState;
     private Player player;
+
+    public Vector3 BACK_OF_HOUSE_POSITION;
     
     public enum eGameState {
         ePlayer = 0,
@@ -31,6 +33,8 @@ public class GameManager : MonoBehaviour {
         Screen.showCursor = false;
 		ChangeState (eGameState.ePlayer);
         player = FindObjectOfType<Player>();
+
+        BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
 	}
 
 	private static float checkVolume() {
