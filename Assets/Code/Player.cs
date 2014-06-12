@@ -32,10 +32,14 @@ public class Player : MonoBehaviour {
 	private Vector3 DEFAULT_PLAYER_POSITION =		new Vector3( 0f, 1f, -61.5f );
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  Vector3.zero;
     private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3( 30.0f, 0.0f, 0.0f );
+    private Vector3 BACK_OF_HOUSE_POSITION;
+    private Vector3 FIRST_HACK_POSITION;
 
 	void Start() {
         ROCK_CAMERA_DEFAULT_POSITION =   new Vector3( 0.0f, DEFAULT_PLAYER_POSITION.y + 3f, DEFAULT_PLAYER_POSITION.z - 2.5f );
 		cameraToPlayerOffset =           new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
+        BACK_OF_HOUSE_POSITION =         GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
+        FIRST_HACK_POSITION =            GameObject.FindGameObjectWithTag("FirstHack").transform.position;
 
 		GiveStone();
         animation.Play( "Idle" );
@@ -131,10 +135,9 @@ public class Player : MonoBehaviour {
 		stoneClone.transform.parent = null;
 
         SwitchCamera( GameManager.eGameState.eRock );
-        Vector3 forwardForce =			rigidbody.velocity;
-        stoneClone.rigidbody.AddForce(forwardForce * DEFAULT_FORCE);
+        stoneClone.rigidbody.AddForce(rigidbody.velocity * DEFAULT_FORCE);
 
-        stoneClone.Fire();
+        stoneClone.Fire();      //this will call StoneFired() when the stone stops moving
         canShoot = false;
         canControl = false;
 	}

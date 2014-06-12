@@ -25,8 +25,8 @@ public class Rock : MonoBehaviour
     private Vector3 bullseyePos =           new Vector3(10.0f, 10.0f, 10.0f);
     private float frictionValue;
 
-    private float FRICTION_MAX =            0.5f;
-    private float FRICTION_MIN =            0.01f;
+    private float FRICTION_MAX =            0.4f;
+    private float FRICTION_MIN =            0.2f;
 
     // --------------------------------------
     // functions
@@ -37,7 +37,7 @@ public class Rock : MonoBehaviour
         isPickedUp =            false;
         isFiring =              false;
         frictionValue =         FRICTION_MAX;
-        //bullseyePos =         FindObjectOfType<Bullseye>();  <---- this will be useful when we have the proper arena positions sorted out
+        bullseyePos =           GameObject.FindGameObjectWithTag("Bullseye").transform.position;
         // NEED TO ADD: GameObject of class bullseye / else use findobjectoftag and tag it, whichever is easier
     }
 
