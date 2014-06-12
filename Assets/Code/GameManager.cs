@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private static float checkVolume() {
-		if ( PlayerPrefs.HasKey("volume")) 
+		if ( PlayerPrefs.HasKey("volume") ) 
 		{
 			volume = PlayerPrefs.GetFloat( "volume" );
 			return volume;
@@ -145,11 +145,11 @@ public class GameManager : MonoBehaviour {
         return mGameState;
     }
 
-    public float getVolume() {
+	public static float GetVolume() {
 		return volume;
 	}
 
-    public void setVolume(float newVolume) {
+    public static void SetVolume(float newVolume) {
 		volume = newVolume / 100;
 		PlayerPrefs.SetFloat( "volume", volume );
 		PlayerPrefs.Save();
