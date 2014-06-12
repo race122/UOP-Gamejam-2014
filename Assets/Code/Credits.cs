@@ -12,6 +12,6 @@ public class Credits : MonoBehaviour {
 			Application.LoadLevel( "MainMenu" );
 		}
 
-		camera.transform.translate( 0f, cameraSpeed, 0f );
+		//camera.transform.translate( 0f, cameraSpeed, 0f );
 	}
 }
