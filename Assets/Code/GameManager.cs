@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
     void Awake() {
         Screen.lockCursor = true;
         Screen.showCursor = false;
-		ChangeState (eGameState.ePlayer);
+		ChangeState( eGameState.ePlayer );
 	}
 
 	private static float checkVolume() {
@@ -50,8 +50,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public enum eTeam {
-		TEAM_1,
-		TEAM_2
+		TEAM_RED,
+		TEAM_BLUE
 	}
 
 	private static GameManager gm;
@@ -113,13 +113,13 @@ public class GameManager : MonoBehaviour {
 
     private void GiveWinningTeamPoints( eTeam team, int points ) {
         switch ( team ) {
-            case eTeam.TEAM_1:
+            case eTeam.TEAM_RED:
             {
                 team1score += points;
                 break;
             }
                 
-            case eTeam.TEAM_2:
+            case eTeam.TEAM_BLUE:
             {
                 team2score += points;
                 break;
@@ -161,16 +161,19 @@ public class GameManager : MonoBehaviour {
 	}
 
     public bool IsTeamOne() {
-        return (FindObjectOfType<Player>().team == eTeam.TEAM_1);
+        return (FindObjectOfType<Player>().team == eTeam.TEAM_RED);
     }
 
+    public bool IsTeamTwo() {
+        return (FindObjectOfType<Player>().team == eTeam.TEAM_BLUE);
+    }
 
     public int TeamOneStonesLeft() {
         int i = 0;
 
         foreach (Rock stone in FindObjectsOfType<Rock>())
         {
-            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_1)
+            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_RED)
             {
                 i++;
             }
@@ -185,7 +188,7 @@ public class GameManager : MonoBehaviour {
 
         foreach (Rock stone in FindObjectsOfType<Rock>())
         {
-            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_2)
+            if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_BLUE)
             {
                 i++;
             }

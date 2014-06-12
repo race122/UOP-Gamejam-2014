@@ -30,7 +30,6 @@ public class Rock : MonoBehaviour
     // --------------------------------------
     // functions
     // --------------------------------------
-
     void Start() {
         inSupply =              true;
         isPickedUp =            false;

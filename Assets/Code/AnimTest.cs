@@ -7,7 +7,7 @@ public class AnimTest : MonoBehaviour {
 	
 	void Update() {
 		if ( Input.GetKey( KeyCode.W ) ) {
-			animation.CrossFade( "Running", 0.35f );
+			animation.CrossFade( "Running", 0.001f );
 		}
 	}
 }
