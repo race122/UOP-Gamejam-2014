@@ -64,6 +64,7 @@ public class HudScript : MonoBehaviour {
         stonesLeftTeamOne = GameManager.TeamOneStonesLeft();
         stonesLeftTeamTwo = GameManager.TeamTwoStonesLeft();
 
+
         // check to see if the player still has the stone
         if (GameManager.Singleton().GetGameState() == GameManager.eGameState.ePlayer) {
             if (GameManager.Singleton().IsTeamOne()) {

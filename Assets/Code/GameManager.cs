@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour {
     public Camera rockCam;
     private eGameState mGameState;
     private Player player;
+	//Added by Aidan
+	private static int roundCounter;
     
     public enum eGameState {
         ePlayer = 0,
@@ -75,7 +77,11 @@ public class GameManager : MonoBehaviour {
     }
 
     private void EndOfRound() {
-        //put stuff here
+		//Application.LoadLevel ("mainMenu");
+		//Added by Aidan
+		roundCounter++;
+		print ("Round number: " + roundCounter.ToString ());
+		Application.LoadLevel ("EndOfRound");
     }
 
     private eTeam GetRoundWinner() {
@@ -208,4 +214,9 @@ public class GameManager : MonoBehaviour {
     public eGameState GetGameState() {
         return mGameState;
     }
+
+	//Added by Aidan
+	public static int getRoundNumber() {
+		return roundCounter;
+	}
 }
