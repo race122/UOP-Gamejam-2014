@@ -97,14 +97,8 @@ ModelImporter:
     3300000: Cylinder007
     4300000: Cylinder006
     4300002: Cylinder007
-<<<<<<< HEAD
     7400000: Take 001
     9500000: //RootNode
-=======
-    7400000: Running
-    9500000: //RootNode
-    11100000: //RootNode
->>>>>>> 13a81807ff7774ad258cafed011e80c8d032aed5
     13700000: Cylinder006
   materials:
     importMaterials: 1
@@ -121,183 +115,7 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-<<<<<<< HEAD
     clipAnimations: []
-=======
-    clipAnimations:
-    - serializedVersion: 16
-      name: Running
-      takeName: Take 001
-      firstFrame: 10
-      lastFrame: 100
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Base HumanPelvis
-        weight: 1
-      - path: Base HumanPelvis/Base HumanLLegThigh
-        weight: 1
-      - path: Base HumanPelvis/Base HumanLLegThigh/Base HumanLLegCalf
-        weight: 1
-      - path: Base HumanPelvis/Base HumanLLegThigh/Base HumanLLegCalf/Base HumanLLegFoot
-        weight: 1
-      - path: Base HumanPelvis/Base HumanRThigh
-        weight: 1
-      - path: Base HumanPelvis/Base HumanRThigh/Base HumanRCalf
-        weight: 1
-      - path: Base HumanPelvis/Base HumanRThigh/Base HumanRCalf/Base HumanRFoot
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Base HumanLArmDigit11
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Base HumanLArmDigit11/Base HumanLArmDigit12
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Base HumanLArmDigit21
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Base HumanLArmDigit21/Base HumanLArmDigit22
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Base HumanLArmDigit31
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Base HumanLArmDigit31/Base HumanLArmDigit32
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Base HumanLArmDigit41
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Base HumanLArmDigit41/Base HumanLArmDigit42
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Base HumanLArmDigit51
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Base HumanLArmDigit51/Base HumanLArmDigit52
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanLArmCollarbone/Base HumanLArmUpperarm/Base HumanLArmForearm/Base
-          HumanLArmPalm/Cylinder007
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanNeck1
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanNeck1/Base HumanNeck2
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanNeck1/Base HumanNeck2/Base HumanHead
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm/Base HumanRDigit11
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm/Base HumanRDigit11/Base HumanRDigit12
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm/Base HumanRDigit21
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm/Base HumanRDigit21/Base HumanRDigit22
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm/Base HumanRDigit31
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm/Base HumanRDigit31/Base HumanRDigit32
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm/Base HumanRDigit41
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm/Base HumanRDigit41/Base HumanRDigit42
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm/Base HumanRDigit51
-        weight: 1
-      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanSpine3/Base
-          HumanRibcage/Base HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base
-          HumanRPalm/Base HumanRDigit51/Base HumanRDigit52
-        weight: 1
-      - path: Cylinder006
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
->>>>>>> 13a81807ff7774ad258cafed011e80c8d032aed5
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -333,10 +151,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-<<<<<<< HEAD
   animationType: 2
-=======
-  animationType: 1
->>>>>>> 13a81807ff7774ad258cafed011e80c8d032aed5
   additionalBone: 0
   userData: 
