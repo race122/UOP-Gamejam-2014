@@ -70,15 +70,12 @@ public class GameManager : MonoBehaviour {
         GivePoints(winningTeam, GetEnemyClosestToBullseye(winningTeam) );
         Debug.Log("Game Over");
         Debug.Log(winningTeam + "won the game");
-
-<<<<<<< HEAD
-=======
+		
         EndOfRound();
     }
 
     private void EndOfRound() {
         //put stuff here
->>>>>>> 1e073484e9f5f137c43e5fdcaeea401b6af31988
     }
 
     private eTeam GetRoundWinner() {

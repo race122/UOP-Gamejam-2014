@@ -92,12 +92,6 @@ public class HudScript : MonoBehaviour {
 		//GUI.DrawTexture( new Rect( (  ) ) );
 		//float theta = Vector3.Dot( Vector3 lhs, Vector3 rhs );
 	}
-<<<<<<< HEAD
 
-	private void OutputWinner() {
 
-	}
-	
-=======
->>>>>>> 1e073484e9f5f137c43e5fdcaeea401b6af31988
 }
