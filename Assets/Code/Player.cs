@@ -198,4 +198,8 @@ public class Player : MonoBehaviour {
     private bool MovementKeysPressed() {
         return (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0);
     }
+
+    public void SetFriction(float friction) {
+        stoneClone.SetFriction(friction);
+    }
 }
