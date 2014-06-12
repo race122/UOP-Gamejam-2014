@@ -11,17 +11,11 @@ public class MenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-<<<<<<< HEAD
 		Screen.lockCursor = false;
         Screen.showCursor = true;
 
-		if ( PlayerPrefs.GetFloat("volume") < 0.0f ) {
-			GameManager.setVolume( 1.0f );
-=======
-		if ( PlayerPrefs.GetFloat("volume") < 0.0f )
-		{
+		if ( !PlayerPrefs.HasKey("volume") ) {
 			GameManager.Singleton().setVolume( 1.0f );
->>>>>>> fcda01fe8164635569ba1eb670574f9dc2d5c758
 			Debug.Log ("Volume was reset");
 		}
 

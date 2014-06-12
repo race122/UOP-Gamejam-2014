@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 	private float acceleration =					0.0005f;
 	private const float MAX_SPEED =					5.0f;
 	private float shootSpeed =						25.0f;
-	private float sensitivity =						8.0f;
+	private float sensitivity =						12.0f;
 	private bool canShoot =							true;
 	private bool canControl =						true;
 
@@ -119,13 +119,19 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ShootStone() {
-		stoneClone.transform.parent = null;
+		//stoneClone.transform.parent = null;
 
         SwitchCamera( GameManager.eGameState.eRock );
 		
-        //Vector3 forwardForce =			transform.forward;
-        //forwardForce *= ( shootSpeed * shootSpeed );
+        Vector3 forwardForce =			transform.forward;
+        
+        forwardForce.x *= rigidbody.velocity.magnitude * 100f;
+        forwardForce.y *= rigidbody.velocity.magnitude * 100f;
+        forwardForce.z *= rigidbody.velocity.magnitude * 100f;
 		//stoneClone.rigidbody.velocity = rigidbody.velocity;
+
+        stoneClone.rigidbody.AddForce(forwardForce);
+
 
         stoneClone.Fire();
         canShoot = false;
