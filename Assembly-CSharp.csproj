@@ -47,18 +47,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Code\AnimTest.cs" />
+     <Compile Include="Assets\Code\CameraTrolley.cs" />
      <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\HudScript.cs" />
-<<<<<<< HEAD
      <Compile Include="Assets\Code\MenuScript.cs" />
      <Compile Include="Assets\Code\MouseTest.cs" />
-     <Compile Include="Assets\Code\OptionsMenu.cs" />
-=======
-     <Compile Include="Assets\Code\MouseTest.cs" />
->>>>>>> 615f5c90328637894cdc80e233db45006e14ff80
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\Player2.cs" />
      <Compile Include="Assets\Code\Rock.cs" />
+     <Compile Include="Assets\Code\optionsMenu.cs" />
      <None Include="Assets\Models\hi.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
