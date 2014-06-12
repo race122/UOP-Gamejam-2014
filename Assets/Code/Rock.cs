@@ -29,7 +29,6 @@ public class Rock : MonoBehaviour
 
     private Vector3 BULLSEYE_POSITION;
     private Vector3 BACK_OF_HOUSE_POSITION;
-    private Vector3 FIRST_HACK_POSITION;
     private Vector3 LAST_HACK_POSITION;
 
     // --------------------------------------
@@ -41,9 +40,8 @@ public class Rock : MonoBehaviour
         isPickedUp =                false;
         isFiring =                  false;
         frictionValue =             FRICTION_MAX;
-        BULLSEYE_POSITION =               GameObject.FindGameObjectWithTag("Bullseye").transform.position;
+        BULLSEYE_POSITION =         GameObject.FindGameObjectWithTag("Bullseye").transform.position;
         BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
-        FIRST_HACK_POSITION =       GameObject.FindGameObjectWithTag("FirstHack").transform.position;
         LAST_HACK_POSITION =        GameObject.FindGameObjectWithTag("LastHack").transform.position;
         // NEED TO ADD: GameObjects with the tags above at the correct locations
     }
@@ -56,6 +54,10 @@ public class Rock : MonoBehaviour
 
     public float DistanceFromBullseye() {
         return (transform.position - BULLSEYE_POSITION).magnitude;
+    }
+
+    public bool IsBeyondFinalHack() {
+        return ((transform.position.z - BACK_OF_HOUSE_POSITION.z) > 0);
     }
 
     public void Pickup() {
@@ -112,9 +114,5 @@ public class Rock : MonoBehaviour
                 isFiring = false;
             }
         }
-    }
-
-    public bool BeyondFinalHack {
-
     }
 }

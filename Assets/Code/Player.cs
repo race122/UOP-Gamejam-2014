@@ -33,10 +33,12 @@ public class Player : MonoBehaviour {
     private Vector3 CAMERA_POSITION =               Vector3.zero; 
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  Vector3.zero;
     private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3( 30.0f, 0.0f, 0.0f );
+    private Vector3 FIRST_HACK_POSITION =           Vector3.zero;
 
 	void Start() {
         ROCK_CAMERA_DEFAULT_POSITION =   new Vector3( 0.0f, DEFAULT_PLAYER_POSITION.y + 3f, DEFAULT_PLAYER_POSITION.z - 2.5f );
 		CAMERA_POSITION =                new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
+        FIRST_HACK_POSITION =            GameObject.FindGameObjectWithTag("FirstHack").transform.position;
 
 		GiveStone();
 	}
@@ -218,7 +220,7 @@ public class Player : MonoBehaviour {
 
     public void ClearUpBurnedStones() {
         foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
-            if ( stone.BeyondFinalHack() ) {
+            if ( stone.IsBeyondFinalHack() ) {
 
             }
         }
