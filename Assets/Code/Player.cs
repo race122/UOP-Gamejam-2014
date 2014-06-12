@@ -27,20 +27,20 @@ public class Player : MonoBehaviour {
 
 	private Rock stoneClone;
 
-    private int DEFAULT_FORCE =                     30;
 
-    private Vector3 DEFAULT_PLAYER_POSITION =       new Vector3( 0f, 3f, -61.5f );
+    private int DEFAULT_FORCE =                     320;
+
+    private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 1.5f, -61.5f);
     private Vector3 CAMERA_POSITION =               Vector3.zero; 
     private Vector3 CAMERA_ROTATION =	            new Vector3( 30f, -90f, 0f );
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  Vector3.zero;
     private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3( 30.0f, 0.0f, 0.0f );
-    private Vector3 HOGLINE_POSITION =				Vector3.zero;
+    private Vector3 HOGLINE_POSITION =              Vector3.zero;
 
 	void Start() {
-        ROCK_CAMERA_DEFAULT_POSITION =   new Vector3( 0.0f, DEFAULT_PLAYER_POSITION.y + 3f, DEFAULT_PLAYER_POSITION.z - 2.5f );
+        ROCK_CAMERA_DEFAULT_POSITION =   new Vector3( 0.0f, PLAYER_DEFAULT_POSITION.y + 3f, PLAYER_DEFAULT_POSITION.z - 2.5f );
 		CAMERA_POSITION =                new Vector3( transform.position.x + 8, transform.position.y + 6, transform.position.z + 4 );
-        
-        HOGLINE_POSITION =               GameObject.FindGameObjectWithTag( "Hogline" ).transform.position;
+        HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
 
 		GiveStone();
 	}
@@ -69,9 +69,9 @@ public class Player : MonoBehaviour {
 			dx =					Mathf.Clamp( dx, -speed, speed );
 			dz =					Mathf.Clamp( dz, -speed, speed );
 
-			Vector3 direction =		new Vector3( dx, 0f, dz );
+            Vector3 direction =		new Vector3( dx, 0f, dz );
 			direction =				transform.TransformDirection( direction );
-
+            
             // move player
 			rigidbody.AddForce( direction * DEFAULT_FORCE );
 
@@ -84,9 +84,9 @@ public class Player : MonoBehaviour {
 
     private void UpdateAnimation() {
         if (speed > 0.01) {
-            animation.CrossFade("Running");
+            //animation.CrossFade( "Running" );
         } else {
-            animation.Play( "Idle" );
+            //animation.Play( "Idle" );
         }
     }
 
@@ -99,7 +99,7 @@ public class Player : MonoBehaviour {
     public void GiveStone() {
         bool found = false;
 
-        transform.position = DEFAULT_PLAYER_POSITION;
+        transform.position = PLAYER_DEFAULT_POSITION;
         transform.rotation = Quaternion.identity;
 
         Vector3 clonePos = transform.position;
@@ -222,7 +222,7 @@ public class Player : MonoBehaviour {
 
     public void ClearUpBurnedStones() {
         foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
-            if ( stone.IsBeyondFinalHack() ) {
+            if ( stone.IsBeyondHouse() ) {
                 //possibly add something cool here like an explosion at (stone.transform.position + Vector3(0f, 1f, 0f))
                 Destroy(stone);
             }

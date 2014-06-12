@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class HudScript : MonoBehaviour {
-    public GameObject score1;
-	public GameObject score2;
-	public GameObject currentTeam;
+    public GUIText score1;
+    public GUIText score2;
+    public GUIText currentTeam;
 
 	public Texture2D redStones;
 	public Texture2D blueStones;
@@ -25,7 +25,6 @@ public class HudScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         UpdateStonesLeft();
-
 	}
 
 	void OnGUI() {
@@ -60,12 +59,15 @@ public class HudScript : MonoBehaviour {
     private void UpdateStonesLeft() {
         stonesLeftTeamOne = GameManager.TeamOneStonesLeft();
         stonesLeftTeamTwo = GameManager.TeamTwoStonesLeft();
-		if (GameManager.Singleton ().IsTeamOne ()) {
-			stonesLeftTeamOne++;
-		} 
-		else {
-			stonesLeftTeamTwo++;
-		}
+
+        // check to see if the player still has the stone
+        if (GameManager.Singleton().GetGameState() == GameManager.eGameState.ePlayer) {
+            if (GameManager.Singleton().IsTeamOne()) {
+                stonesLeftTeamOne++;
+            } else {
+                stonesLeftTeamTwo++;
+            }
+        }
     }
 
 	private void UpdateStoneCounter() {
