@@ -54,18 +54,28 @@ public class HudScript : MonoBehaviour {
     private void UpdateStonesLeft() {
         stonesLeftTeamOne = GameManager.Singleton().TeamOneStonesLeft();
         stonesLeftTeamTwo = GameManager.Singleton().TeamTwoStonesLeft();
+		if (GameManager.Singleton ().IsTeamOne ()) {
+			stonesLeftTeamOne++;
+		} 
+		else {
+			stonesLeftTeamTwo++;
+		}
     }
 
 	private void UpdateStoneCounter() {
 		//Draw stones for team one
-        for (int i = 0; i <= stonesLeftTeamOne; i++) {
-			GUI.DrawTexture(new Rect( ( Screen.width * 0.5f ) - 100 + redOffset, ( Screen.height * 0.5f ) - 260, 32, 32 ), redStones);
+	
+
+        for (int i = 0; i < stonesLeftTeamOne; i++) {
+
+			GUI.DrawTexture(new Rect( ( Screen.width ) * 0.41f + redOffset, ( Screen.height ) * 0.02f, 32, 32 ), redStones);
 			redOffset += 40;
 		}
 
         //Draw stones for team two
-		for (int i = 0; i <= stonesLeftTeamTwo; i++) {
-			GUI.DrawTexture(new Rect( ( Screen.width * 0.5f ) - 100 + blueOffset, ( Screen.height * 0.5f ) - 220, 32, 32 ), blueStones);
+		for (int i = 0; i < stonesLeftTeamTwo; i++) {
+			//GUI.DrawTexture(new Rect( ( Screen.width * 0.5f ) - 100 + blueOffset, ( Screen.height * 0.02f ) - 220, 32, 32 ), blueStones);
+			GUI.DrawTexture(new Rect( ( Screen.width ) * 0.41f + blueOffset, ( Screen.height ) * 0.07f, 32, 32 ), blueStones);
 			blueOffset += 40;
 		}
 
