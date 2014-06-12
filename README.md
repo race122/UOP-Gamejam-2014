@@ -21,6 +21,8 @@ To Do List:
  * Curling rink
  * Brushes
  * ~~Stone~~
+ * Custom font?
+ * Animations
 * Sound related
  * Collision of stones
  * Crowd
@@ -34,6 +36,7 @@ Credits:
  * Dan Moody
  * Kierz Phillips
  * Aidan O'leary
+ * Chris Martin
 * Sound
  * Jacob Cooper
 * Art
