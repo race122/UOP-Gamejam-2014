@@ -72,5 +72,25 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
+    - name: exit_Button
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 590
+        width: 600
+        height: 150
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: back_Button
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 437
+        width: 598
+        height: 150
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

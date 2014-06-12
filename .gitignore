@@ -3,8 +3,8 @@
 #
 
 # FOLDERS
-/Library/*
-/Build/*
+Library/*
+Build/*
 
 # FILES
 *.csproj
