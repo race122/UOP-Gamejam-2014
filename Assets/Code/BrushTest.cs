@@ -120,16 +120,16 @@ public class BrushTest : MonoBehaviour {
 	}
 
 	void setFriction(float scrubPercent)
-	{
+	{/*
 		if ((scrubPercent * 0.075) > 1.0f)
 		{
 			//pass max 1
 			//GameManager.Singleton().SetFriction(0);
 		}
 		else
-		{
-			//GameManager.Singleton().SetFriction(1.0f - scrubPercent);
-		}
+		{*/
+			GameManager.Singleton().SetFriction(1.0f - scrubPercent);
+		//}
 	}
 
 	void scrubX()

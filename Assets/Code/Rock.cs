@@ -26,7 +26,7 @@ public class Rock : MonoBehaviour
     private float frictionValue;
     private float slowestSpeed =                0.075f;
 
-    private float FRICTION_MAX =                0.2f;
+    private float FRICTION_MAX =                0.4f;
     private float FRICTION_MIN =                0.05f;
 
     private Vector3 BULLSEYE_POSITION;
@@ -56,6 +56,14 @@ public class Rock : MonoBehaviour
 
     public bool IsBeyondHouse() {
         return ((transform.position.z - GameManager.Singleton().BACK_OF_HOUSE_POSITION.z) > 0);
+    }
+
+    public bool IsBeforeGuardLine() {
+        return ((transform.position.z - GameManager.Singleton().GUARD_LINE_POSITION.z) < 0);
+    }
+
+    public bool HasBeenFired() {
+        return (!inSupply && !isPickedUp);
     }
 
     public void Pickup() {
@@ -95,6 +103,8 @@ public class Rock : MonoBehaviour
     // Send a value 0-1 to this function to set the friction value 
     // (0 = lowest, 1 = highest)
     public void SetFriction(float friction) {
+        print(friction);
+
         frictionValue = friction * (FRICTION_MAX - FRICTION_MIN);
         
         if (frictionValue < FRICTION_MIN) {
@@ -113,11 +123,9 @@ public class Rock : MonoBehaviour
         }
     }
 
-	private void OnCollisionEnter( Collision col )
-	{
-		if ( ( col.transform.name == "Stone Blue" ) || ( col.transform.name == "Stone Red" ) )
-		{
-			AudioSource.PlayClipAtPoint ( rockCollision ,transform.position );
+	private void OnCollisionEnter( Collision col ) {
+		if (col.gameObject.GetType() == typeof(Rock)) {
+            AudioSource.PlayClipAtPoint ( rockCollision ,transform.position );
 		}
 	}
 }

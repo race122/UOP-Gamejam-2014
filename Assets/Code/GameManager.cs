@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
 	//Added by Aidan
 	private static int roundCounter;
     public Vector3 BACK_OF_HOUSE_POSITION;
+    public Vector3 GUARD_LINE_POSITION;
     
     public enum eGameState {
         ePlayer = 0,
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour {
         player = FindObjectOfType<Player>();
 
         BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
+        GUARD_LINE_POSITION =       GameObject.FindGameObjectWithTag("GuardLine").transform.position;
 	}
 
 	private static float checkVolume() {
