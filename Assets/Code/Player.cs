@@ -25,6 +25,7 @@ public class Player : MonoBehaviour {
 	private float sensitivity =						6.0f;
     private float frictionValue =                   0.2f;
     private float slowestSpeed =                    0.075f;
+    private float maxLookAngle =                    10f;
     private bool canShoot =                         true;
 	private bool canControl =						true;
 	private bool passedTheLine =					false;
@@ -91,10 +92,18 @@ public class Player : MonoBehaviour {
         }
     }
 
+    float dx;
 
 	public void Look() {
-		float dy = Input.GetAxis( "Mouse X" ) * sensitivity;     
-		transform.Rotate( 0f, -dy, 0f );
+		dx += Input.GetAxis( "Mouse X" ) * sensitivity;
+        dx = Mathf.Clamp( dx, -maxLookAngle, maxLookAngle );
+        transform.Rotate( 0f, -dx, 0f );
+
+        Quaternion totalRotation = transform.rotation;
+        float yaw = totalRotation.y;
+        // yaw = Mathf.Clamp( totalRotation.y, -90, 90 );
+
+        transform.rotation = Quaternion.Euler( transform.rotation.x, dx + transform.rotation.y, transform.rotation.z );
 	}
     
     public void GiveStone() {

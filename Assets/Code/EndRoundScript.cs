@@ -31,19 +31,19 @@ public class EndRoundScript : MonoBehaviour {
 	}
 
 	private void updateRoundScore(int[] scores) {
-		roundScores.text = "Team 1: " + scores [0] + "\n" + "Team 2: " + scores [1];
+		roundScores.text = "Red Team: " + scores [0] + "\n" + "Blue Team: " + scores [1];
 	}
 	
 	private void UpdateRoundWinner(int[] scores) {
 		//int[] scores = GameManager.getScore ();
 		if (scores [0] > scores [1]) {
-			roundWinner.text = "Team 1 won the round";
+			roundWinner.text = "Red Team wins!";
 		} 
 		else if (scores [0] < scores [1]) {
-			roundWinner.text = "Team 2 won the round";
+			roundWinner.text = "Blue Team wins!";
 		} 
 		else {
-			roundWinner.text = "The round was a draw";
+			roundWinner.text = "Round Draw!";
 		}
 	}
 }
