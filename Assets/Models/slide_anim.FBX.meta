@@ -99,6 +99,7 @@ ModelImporter:
     4300002: Cylinder007
     7400000: Running
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Cylinder006
   materials:
     importMaterials: 1
@@ -323,6 +324,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   additionalBone: 0
   userData: 
