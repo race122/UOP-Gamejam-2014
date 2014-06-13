@@ -38,6 +38,8 @@ public class Player : MonoBehaviour {
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  new Vector3(0f, 5f, -3f);
     private Vector3 HOGLINE_POSITION =              Vector3.zero;
     private Vector3 STONE_SPAWN_OFFSET =            new Vector3(0f, -1f, 2.5f);
+    private float BOUNDARY_RESTRICTION_X_OFFSET =   7f;
+    private float BOUNDARY_RESTRICTION_Z_OFFSET =   32f;
 
 	void Start() {
         HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
@@ -49,10 +51,11 @@ public class Player : MonoBehaviour {
 
     void Update() {
         UpdateStone();      // this needs to go first
+        ResetIfOutOfBounds();
 		Move();
 		Look();
         UpdateFriction();
-        UpdateAnimation();
+        //UpdateAnimation();
 
 		if ( speed >= (acceleration * 2f) && !MovementKeysPressed() ) {
 		 	speed -= acceleration;
@@ -61,17 +64,17 @@ public class Player : MonoBehaviour {
 
 	public void Move() {
 		if ( canControl ) {
-			//float dx =				Input.GetAxis( "Horizontal" );
 			float dz =				Input.GetAxis( "Vertical" );
 
-			//dx =					Mathf.Clamp( dx, -speed, speed );
 			dz =					Mathf.Clamp( dz, -(speed * 0.5f), speed );
 
-            Vector3 direction =		new Vector3( 0f, 0f, dz );
-			direction =				transform.TransformDirection( direction );
-            
-            // move player
-			rigidbody.AddForce( direction * DEFAULT_FORCE );
+            Vector3 direction = new Vector3(0f, 0f, dz);
+
+            if (CanMoveInDirection(direction)) {
+                direction = transform.TransformDirection(direction);
+                // move player
+                rigidbody.AddForce(direction * DEFAULT_FORCE);
+            }
 
             // only apply accel while below max speed and pressing movement keys
 			if ( speed < MAX_SPEED && MovementKeysPressed() ) {
@@ -106,9 +109,7 @@ public class Player : MonoBehaviour {
     public void GiveStone() {
         bool found = false;
 
-        transform.position = PLAYER_DEFAULT_POSITION;
-        transform.rotation = Quaternion.identity;
-
+        RespawnPlayer();
         
 		foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
 			if ( stone.InSupply() && stone.team == team ) {
@@ -279,5 +280,39 @@ public class Player : MonoBehaviour {
     	float disqualifyOffset =		GameManager.Singleton().BACK_OF_HOUSE_POSITION.z - 1.0f;
     	Vector3 pos =					stoneClone.transform.position;
     	stoneClone.transform.position =	new Vector3( pos.x, pos.y, disqualifyOffset );
+    }
+
+    private bool CanMoveInDirection(Vector3 direction) {
+        Vector3 newPosition = transform.position + direction;
+
+        // left boundary restriction
+        if (newPosition.x < (HOGLINE_POSITION.x - BOUNDARY_RESTRICTION_X_OFFSET)) {
+            return false;
+        }
+
+        // right boundary restriction
+        if (newPosition.x > (HOGLINE_POSITION.x + BOUNDARY_RESTRICTION_X_OFFSET)) {
+            return false;
+        }
+
+        // nearest boundary restriction
+        if (newPosition.z < (HOGLINE_POSITION.z - BOUNDARY_RESTRICTION_Z_OFFSET)) {
+            return false;
+        }
+
+
+        return true;
+    }
+
+    private void RespawnPlayer() {
+        transform.position = PLAYER_DEFAULT_POSITION;
+        transform.rotation = Quaternion.identity;
+    }
+
+    private void ResetIfOutOfBounds() {
+        // if player is already out of bounds disqualify them && "Z-kill"
+        if ( !CanMoveInDirection(Vector3.zero) || transform.position.y < -10 ) {
+            RespawnPlayer();
+        }
     }
 }
