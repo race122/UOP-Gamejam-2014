@@ -250,7 +250,6 @@ public class Player : MonoBehaviour {
         foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
             if ( stone.HasBeenFired() ) {
                 if ( stone.IsBeyondHouse() || stone.IsBeforeGuardLine() ) {
-                    Debug.Log(stone.name + "<-- name " + stone.IsBeyondHouse() + "<-- house " + "guard-> " + stone.IsBeforeGuardLine());
                     //possibly add something cool here like an explosion at (stone.transform.position + Vector3(0f, 1f, 0f))
                     stone.transform.position = (stone.transform.position + new Vector3(0f, -50f, 0f));
                     stone.renderer.enabled =        false;

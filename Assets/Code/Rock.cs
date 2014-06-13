@@ -126,8 +126,6 @@ public class Rock : MonoBehaviour
     // Send a value 0-1 to this function to set the friction value 
     // (0 = lowest, 1 = highest)
     public void SetFriction(float friction) {
-        print(friction);
-
         frictionValue = friction * (FRICTION_MAX - FRICTION_MIN);
         
         if (frictionValue < FRICTION_MIN) {

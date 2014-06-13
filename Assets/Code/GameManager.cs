@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour {
         rockCam.enabled = false;
         playerCam.enabled = false;
         bullseyeCam.enabled = false;
-        Scrubbers(false);
+        //Scrubbers(false);
 
         if ( state == eGameState.ePlayer ) {
             playerCam.enabled = true;
@@ -195,43 +195,23 @@ public class GameManager : MonoBehaviour {
 	public static int TeamOneStonesLeft() {
         int i = 0;
 
-        foreach (Rock stone in FindObjectsOfType<Rock>())
-        {
-			if ((stone.IsPickedUp() || stone.InSupply()) && stone.team == GameManager.eTeam.TEAM_RED)
-			{
+        foreach (Rock stone in FindObjectsOfType<Rock>()) {
+			if ((stone.IsPickedUp() || stone.InSupply()) && stone.team == GameManager.eTeam.TEAM_RED) {
 				i++;
 			}
-            /*
-			if (stone.InSupply() && stone.team == GameManager.eTeam.TEAM_RED)
-            {
-                i++;
-            }
-            */
         }
 
         return i;
     }
 
-	public static int TeamTwoStonesLeft()
-    {
+	public static int TeamTwoStonesLeft() {
         int i = 0;
 
-        foreach (Rock stone in FindObjectsOfType<Rock>())
-        {
-			if ((stone.IsPickedUp() || stone.InSupply()) && stone.team == GameManager.eTeam.TEAM_BLUE)
-            {
+        foreach (Rock stone in FindObjectsOfType<Rock>()) {
+			if ((stone.IsPickedUp() || stone.InSupply()) && stone.team == GameManager.eTeam.TEAM_BLUE) {
                 i++;
             }
-
-			/*
-			if (stone.IsFired() && stone.team == GameManager.eTeam.TEAM_BLUE)
-			{
-				i--;
-			}
-			*/
         }
-
-
 
         return i;
     }
@@ -250,8 +230,8 @@ public class GameManager : MonoBehaviour {
 	}
 
     private void Scrubbers(bool setting) {
-        foreach(GameObject scrub in GameObject.FindGameObjectsWithTag("Scrub")) {
-            scrub.SetActive(setting);
+        foreach(BrushTest scrub in FindObjectsOfType<BrushTest>()) {
+            scrub.meshRenderer.enabled = setting;
         }
     }
 }
