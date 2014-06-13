@@ -10,37 +10,23 @@ Platform assembly: I:\CODING\Portsmouth GameJam 2014\New\game\Curling_Data\Manag
 Loading I:\CODING\Portsmouth GameJam 2014\New\game\Curling_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: I:\CODING\Portsmouth GameJam 2014\New\game\Curling_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading I:\CODING\Portsmouth GameJam 2014\New\game\Curling_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.066 seconds
+- Completed reload, in  0.057 seconds
 desktop: 1920x1080 120Hz; virtual: 3840x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-back
- 
-(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 0.352017 ms
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 104.
-Total: 0.769536 ms (FindLiveObjects: 0.006894 ms CreateObjectMapping: 0.014555 ms MarkObjects: 0.074693 ms  DeleteObjects: 0.018386 ms)
-
 Start Game
  
 (Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-UnloadTime: 0.284984 ms
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+UnloadTime: 0.381512 ms
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 521.
-Total: 0.673391 ms (FindLiveObjects: 0.021833 ms CreateObjectMapping: 0.012640 ms MarkObjects: 0.082354 ms  DeleteObjects: 0.077374 ms)
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 523.
+Total: 0.782176 ms (FindLiveObjects: 0.030260 ms CreateObjectMapping: 0.012257 ms MarkObjects: 0.087334 ms  DeleteObjects: 0.062436 ms)
 
-UnloadTime: 1.265195 ms
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+UnloadTime: 1.886876 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 33 unused Assets to reduce memory usage. Loaded Objects now: 143.
-Total: 1.158709 ms (FindLiveObjects: 0.011491 ms CreateObjectMapping: 0.019152 ms MarkObjects: 0.219101 ms  DeleteObjects: 0.281920 ms)
-
-Exit
- 
-(Filename: C:/BuildAgent/work/aeedb04a1292f85a/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+Unloading 33 unused Assets to reduce memory usage. Loaded Objects now: 147.
+Total: 1.765451 ms (FindLiveObjects: 0.016853 ms CreateObjectMapping: 0.026047 ms MarkObjects: 0.327119 ms  DeleteObjects: 0.397983 ms)
 
