@@ -19,13 +19,9 @@ public class GameManager : MonoBehaviour {
     public Camera bullseyeCam;
     private eGameState mGameState;
     private Player player;
-<<<<<<< HEAD
 	//Added by Aidan
 	private static int roundCounter;
-=======
-
     public Vector3 BACK_OF_HOUSE_POSITION;
->>>>>>> fdf7486ad1fa7740eed89e1ce588c53939b4bf00
     
     public enum eGameState {
         ePlayer = 0,
@@ -86,7 +82,6 @@ public class GameManager : MonoBehaviour {
     }
 
     private void EndOfRound() {
-		//Application.LoadLevel ("mainMenu");
 		//Added by Aidan
 		roundCounter++;
 		print ("Round number: " + roundCounter.ToString ());
