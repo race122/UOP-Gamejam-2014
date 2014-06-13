@@ -38,7 +38,10 @@ public class Player : MonoBehaviour {
     private Vector3 HOGLINE_POSITION =              Vector3.zero;
     private Vector3 STONE_SPAWN_OFFSET =            new Vector3(0f, -1f, 2.5f);
 
+	BrushTest bt;
+
 	void Start() {
+		bt = 							 FindObjectOfType<BrushTest>();
         HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
         ROCK_CAMERA_DEFAULT_POSITION =   PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
         
@@ -146,6 +149,7 @@ public class Player : MonoBehaviour {
 		if ( !passedTheLine ) {
 			canShoot = false;
 			canControl = false;
+			bt.SendMessage("setAnimation", 100.0f);
 
 			// apply our current velocity to the stone
 			stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
