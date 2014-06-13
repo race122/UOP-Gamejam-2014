@@ -10,6 +10,7 @@ public class EndRoundScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//roundWinner.text = "This guy won";
+		Screen.lockCursor = false;
 		updateRoundNumber ();
 
 		//I think it's more efficient to call GameManagers.getScore method once

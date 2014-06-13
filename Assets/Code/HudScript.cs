@@ -20,9 +20,12 @@ public class HudScript : MonoBehaviour {
 
     private Color32 redTeamTextColor =	new Color32( 248, 18, 18, 255 );
     private Color32 blueTeamTextColor =	new Color32( 131, 177, 219, 255 );
+
+	//Rock[] stone;
     
 	// Use this for initialization
 	void Start() {
+		//stone = FindObjectsOfType<Rock> ();
 	}
 
 	// Update is called once per frame
@@ -47,14 +50,6 @@ public class HudScript : MonoBehaviour {
 	//A function that updates the display for the current team
 	// Dan: Surely then, this would be better called "UpdateCurrentTeam()"?
 	private void UpdateCurrentPlayer() {
-        // if ( GameManager.Singleton().IsTeamOne() ) {
-		// 	currentTeam.guiText.text = "Team 1's turn";
-		// 	currentTeam.guiText.material.color = new Color32( 248, 18, 18, 255 );
-		// } else {
-		// 	currentTeam.guiText.text = "Team 2's turn";
-		// 	currentTeam.guiText.material.color = new Color32( 131, 177, 210, 255 );
-		// }
-
 		// Dan: My way is better...
 		currentTeam.guiText.text =				GameManager.Singleton().IsTeamOne() ? "Red team's turn" : "Blue team's turn";
 		currentTeam.guiText.material.color =	GameManager.Singleton().IsTeamOne() ? redTeamTextColor : blueTeamTextColor;
@@ -66,28 +61,33 @@ public class HudScript : MonoBehaviour {
 
 
         // check to see if the player still has the stone
-        if (GameManager.Singleton().GetGameState() == GameManager.eGameState.ePlayer) {
-            if (GameManager.Singleton().IsTeamOne()) {
-                stonesLeftTeamOne++;
-            } else {
-                stonesLeftTeamTwo++;
-            }
-        }
+        //if (GameManager.Singleton().GetGameState() == GameManager.eGameState.ePlayer) {
+        //    if (GameManager.Singleton().IsTeamOne()) {
+        //        stonesLeftTeamOne++;
+        //    } else {
+        //        stonesLeftTeamTwo++;
+        //    }
+        //}
     }
 
 	private void UpdateStoneCounter() {
 		//Draw stones for team one
-        for (int i = 0; i < stonesLeftTeamOne; i++) {
-			GUI.DrawTexture(new Rect( ( Screen.width ) * 0.41f + redOffset, ( Screen.height ) * 0.02f, 32, 32 ), redStones);
+		/*
+		if (stone.InSupply () && stone.team == GameManager.eTeam.TEAM_RED) {
+
+		}
+		*/
+		for (int i = 0; i < stonesLeftTeamOne; i++) {
+			GUI.DrawTexture (new Rect ((Screen.width) * 0.41f + redOffset, (Screen.height) * 0.02f, 32, 32), redStones);
 			redOffset += 40;
 		}
 
-        //Draw stones for team two
-		for (int i = 0; i < stonesLeftTeamTwo; i++) {
-			//GUI.DrawTexture(new Rect( ( Screen.width * 0.5f ) - 100 + blueOffset, ( Screen.height * 0.02f ) - 220, 32, 32 ), blueStones);
-			GUI.DrawTexture(new Rect( ( Screen.width ) * 0.41f + blueOffset, ( Screen.height ) * 0.07f, 32, 32 ), blueStones);
-			blueOffset += 40;
-		}
+	        //Draw stones for team two
+			for (int i = 0; i < stonesLeftTeamTwo; i++) {
+				//GUI.DrawTexture(new Rect( ( Screen.width * 0.5f ) - 100 + blueOffset, ( Screen.height * 0.02f ) - 220, 32, 32 ), blueStones);
+				GUI.DrawTexture(new Rect( ( Screen.width ) * 0.41f + blueOffset, ( Screen.height ) * 0.07f, 32, 32 ), blueStones);
+				blueOffset += 40;
+			}
 
 		redOffset =		0;
 		blueOffset =	0;
