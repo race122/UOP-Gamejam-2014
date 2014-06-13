@@ -32,17 +32,11 @@ public class Rock : MonoBehaviour
     private float FRICTION_MIN =                0.2f;
 
     private Vector3 BULLSEYE_POSITION;
-
-	public Vector3 myPosition;
-	ScrubbersMovement sm;
-	ScrubbersMovementR smR;
-
+    
     // --------------------------------------
     // functions
     // --------------------------------------
     void Start() {
-		sm  =						FindObjectOfType<ScrubbersMovement>();
-		smR  =						FindObjectOfType<ScrubbersMovementR>();
 		player =                    FindObjectOfType<Player>();
         inSupply =                  true;
         isPickedUp =                false;
@@ -54,16 +48,7 @@ public class Rock : MonoBehaviour
     }
 
     void Update() {
-		myPosition = transform.position;
-		
-		if (isPickedUp == true || isFiring == true)
-		{
-			sm.SendMessage("positionUpdate", myPosition);
-			smR.SendMessage("positionUpdate", myPosition);
-		}
-
-
-        UpdateCamera();
+		UpdateCamera();
         StopMovingSlow();
         UpdateFriction();
     }
@@ -163,4 +148,8 @@ public class Rock : MonoBehaviour
             AudioSource.PlayClipAtPoint ( rockCollision ,transform.position );
 		}
 	}
+
+    public Vector3 GetPosition() {
+        return transform.position;
+    }
 }

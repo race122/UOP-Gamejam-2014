@@ -2,36 +2,31 @@
 using System.Collections;
 
 public class BrushTest : MonoBehaviour {
-	
-	static float _SCRUBTIME = 10f;
-	static int _SCREENHEIGHT = Screen.height;
-	static int _SCREENWIDTH = Screen.width;
-	
 	//x/y mouse position coords
-	float MousePositionY;
-	float MousePositionX;
+	private float MousePositionY;
+    private float MousePositionX;
 	
 	//get scrub motion
-	bool bottomClip;
-	bool topClip;
-	bool leftClip;
-	bool rightClip;
+    private bool bottomClip;
+    private bool topClip;
+    private bool leftClip;
+    private bool rightClip;
 	
 	//elapsed time
-	float timeElapse = 0;
+    private float timeElapse = 0;
 	//Overall scrub elapsed time
-	float scrubValue = 0;
+    private float scrubValue = 0;
 	//per scrub elapsed time
-	float scrubPercent = 0;
+    private float scrubPercent = 0;
 	//start animating
-	float scrubFinal = 0;
+	private float scrubFinal = 100;
 
 	Vector3 scrubVector = new Vector3(0, 0, 0);
 	
-	// Use this for initialization
 	void Start () {
 		
 	}
+
 	//debug gui
 	void OnGUI () {
 		// Make a background box
@@ -56,23 +51,23 @@ public class BrushTest : MonoBehaviour {
 		MousePositionX = Input.mousePosition.x;
 
 		//Get clipping NS
-		if (MousePositionY > _SCREENHEIGHT / 2)
+		if (MousePositionY > Screen.height / 2)
 		{
 			topClip = true;
 			bottomClip = false;
 		}
-		if (MousePositionY < _SCREENHEIGHT / 2)
+		if (MousePositionY < Screen.height / 2)
 		{
 			topClip = false;
 			bottomClip = true;
 		}
 		//EW
-		if (MousePositionX > _SCREENWIDTH / 2)
+		if (MousePositionX > Screen.width / 2)
 		{
 			rightClip = true;
 			leftClip = false;
 		}
-		if (MousePositionX < _SCREENWIDTH / 2)
+		if (MousePositionX < Screen.width / 2)
 		{
 			rightClip = false;
 			leftClip = true;
