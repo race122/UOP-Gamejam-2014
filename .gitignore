@@ -5,6 +5,7 @@
 # FOLDERS
 Library/*
 Build/*
+game/*
 
 # FILES
 *.csproj
