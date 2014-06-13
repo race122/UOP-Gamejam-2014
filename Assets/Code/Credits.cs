@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+	FILE:			Credits.cs
+	AUHTOR:			Dan
+	PROJECT:		Geri-Lynn Ramsey's Xtreme Curling 2014
+	SOUNDTRACK:		Custom Carnival Mix - http://www.mixcloud.com/floormanuk/carnival-style-mix/
+
+	DESCRIPTION:	Hey Pete! I can do fancy credits screens too!
+*/
+using UnityEngine;
 using System.Collections;
 
 public class Credits : MonoBehaviour {
