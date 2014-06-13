@@ -20,11 +20,12 @@ public class Player : MonoBehaviour {
     
     
 	private float speed =							0.0f;
-	private float acceleration =					0.025f;
-	private const float MAX_SPEED =					0.03f;
+	private float acceleration =					0.02f;
+	private const float MAX_SPEED =					0.06f;
 	private float sensitivity =						6.0f;
     private float frictionValue =                   0.2f;
     private float slowestSpeed =                    0.075f;
+    private float maxLookAngle =                    10f;
     private bool canShoot =                         true;
 	private bool canControl =						true;
 	private bool passedTheLine =					false;
@@ -34,14 +35,13 @@ public class Player : MonoBehaviour {
     private int DEFAULT_FORCE =                     85;
 
     private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 1.5f, -61.5f);
-    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  Vector3.zero;
-    private Vector3 ROCK_CAMERA_DEFAULT_ROTATION =	new Vector3( 30.0f, 0.0f, 0.0f );
+    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  new Vector3(0f, 5f, -3f);
     private Vector3 HOGLINE_POSITION =              Vector3.zero;
     private Vector3 STONE_SPAWN_OFFSET =            new Vector3(0f, -1f, 2.5f);
 
 	void Start() {
-        ROCK_CAMERA_DEFAULT_POSITION =   new Vector3( 0.0f, PLAYER_DEFAULT_POSITION.y + 7f, PLAYER_DEFAULT_POSITION.z - 18f );
         HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
+        ROCK_CAMERA_DEFAULT_POSITION =   PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
         
         SwitchCamera(GameManager.eGameState.ePlayer);
         GiveStone();
@@ -81,17 +81,26 @@ public class Player : MonoBehaviour {
 	}
 
     private void UpdateAnimation() {
-        if (speed > 0.01) {
-            //zanimation.CrossFade( "Running" );
+        if (IsMoving()) {
+            animation.CrossFade( "Running" );
         } else {
             //animation.Play( "Idle" );
+            animation.CrossFade( "Idle" );
         }
     }
 
+    float dx;
 
 	public void Look() {
-		float dy = Input.GetAxis( "Mouse X" ) * sensitivity;     
-		transform.Rotate( 0f, -dy, 0f );
+		dx += Input.GetAxis( "Mouse X" ) * sensitivity;
+        dx = Mathf.Clamp( dx, -maxLookAngle, maxLookAngle );
+        transform.Rotate( 0f, -dx, 0f );
+
+        Quaternion totalRotation = transform.rotation;
+        float yaw = totalRotation.y;
+        // yaw = Mathf.Clamp( totalRotation.y, -90, 90 );
+
+        transform.rotation = Quaternion.Euler( transform.rotation.x, dx + transform.rotation.y, transform.rotation.z );
 	}
     
     public void GiveStone() {
@@ -99,13 +108,15 @@ public class Player : MonoBehaviour {
 
         transform.position = PLAYER_DEFAULT_POSITION;
         transform.rotation = Quaternion.identity;
+
         
 		foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
 			if ( stone.InSupply() && stone.team == team ) {
 				stoneClone =					stone;
-				rockCamera.transform.parent =	stoneClone.transform;
-			    stoneClone.transform.parent =   null;
+                stoneClone.transform.parent =   null;
+                stoneClone.transform.position = transform.position + (transform.forward + transform.forward);
                 ResetRockCamera();
+                rockCamera.transform.parent =   stoneClone.transform;
                 stone.Pickup();
                 found = true;
 				break;
@@ -124,15 +135,13 @@ public class Player : MonoBehaviour {
 	public void UpdateStone() {
 		if ( stoneClone.IsPickedUp() ) {
 			stoneClone.transform.position = transform.position + ( transform.forward + transform.forward );
-			if ( canShoot ) {
+			if ( canShoot && IsMoving() ) {
 				// Turns out the order in which you do the delta matters.
 				// Having this the other way around caused a bug...
 				if ( HOGLINE_POSITION.z - transform.position.z <= 0 ) {
 					passedTheLine = true;
 					Disqualify();
 					StoneFired();
-					// EndOfTurn();
-					// GiveStone();
 				}
 
 				if ( Input.GetMouseButtonDown( 0 ) ) {
@@ -156,6 +165,7 @@ public class Player : MonoBehaviour {
     	}
 	}
 
+    // resets the stone after being fired
     public void StoneFired() {
         if ( StonesInSupply() > 0 ) {
         	passedTheLine = false;
@@ -215,8 +225,10 @@ public class Player : MonoBehaviour {
     }
 
     private void ResetRockCamera() {
+        rockCamera.transform.parent = null;
+        //rockCamera.transform.position = Vector3.zero;
+        
         rockCamera.transform.position = ROCK_CAMERA_DEFAULT_POSITION;
-        rockCamera.transform.rotation = Quaternion.Euler( ROCK_CAMERA_DEFAULT_ROTATION );
     }
 
     private void EndOfRound() {
@@ -235,10 +247,15 @@ public class Player : MonoBehaviour {
 
     public void ClearUpBurnedStones() {
         foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
-            if ( stone.IsBeyondHouse() ) {
-                //possibly add something cool here like an explosion at (stone.transform.position + Vector3(0f, 1f, 0f))
-                transform.Translate(0f,-20f,0f);
-                Destroy(stone);
+            if ( stone.HasBeenFired() ) {
+                if ( stone.IsBeyondHouse() || stone.IsBeforeGuardLine() ) {
+                    Debug.Log(stone.name + "<-- name " + stone.IsBeyondHouse() + "<-- house " + "guard-> " + stone.IsBeforeGuardLine());
+                    //possibly add something cool here like an explosion at (stone.transform.position + Vector3(0f, 1f, 0f))
+                    stone.transform.position = (stone.transform.position + new Vector3(0f, -50f, 0f));
+                    stone.renderer.enabled = false;
+                    stone.enabled = false;
+                    Destroy(stone);
+                }
             }
         }
     }

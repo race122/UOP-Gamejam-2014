@@ -9,3 +9,14 @@ I:\CODING\Portsmouth GameJam 2014\New\Temp\bin\Debug\ICSharpCode.NRefactory.dll
 I:\CODING\Portsmouth GameJam 2014\New\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
 I:\CODING\Portsmouth GameJam 2014\New\obj\Debug\Assembly-CSharp.dll
 I:\CODING\Portsmouth GameJam 2014\New\obj\Debug\Assembly-CSharp.pdb
+F:\CODING\Portsmouth GameJam 2014\current\Temp\bin\Debug\Assembly-CSharp.dll
+F:\CODING\Portsmouth GameJam 2014\current\Temp\bin\Debug\Assembly-CSharp.pdb
+F:\CODING\Portsmouth GameJam 2014\current\Temp\bin\Debug\UnityEditor.dll
+F:\CODING\Portsmouth GameJam 2014\current\Temp\bin\Debug\UnityEngine.dll
+F:\CODING\Portsmouth GameJam 2014\current\Temp\bin\Debug\Mono.Cecil.dll
+F:\CODING\Portsmouth GameJam 2014\current\Temp\bin\Debug\nunit.framework.dll
+F:\CODING\Portsmouth GameJam 2014\current\Temp\bin\Debug\Unity.DataContract.dll
+F:\CODING\Portsmouth GameJam 2014\current\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+F:\CODING\Portsmouth GameJam 2014\current\obj\Debug\ResolveAssemblyReference.cache
+F:\CODING\Portsmouth GameJam 2014\current\obj\Debug\Assembly-CSharp.dll
+F:\CODING\Portsmouth GameJam 2014\current\obj\Debug\Assembly-CSharp.pdb
