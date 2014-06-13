@@ -86,10 +86,10 @@ public class Player : MonoBehaviour {
 
     private void UpdateAnimation() {
         if (IsMoving()) {
-            //animation.CrossFade( "Running" );
+            animation.CrossFade( "Running" );
         } else {
-            //animation.Play( "Idle" );
-            //animation.CrossFade( "Idle" );
+            animation.Play( "Idle" );
+            animation.CrossFade( "Idle" );
         }
     }
 

@@ -26,12 +26,13 @@ public class BrushTest : MonoBehaviour {
     public MeshRenderer meshRenderer;
 	
 	void Start () {
-        meshRenderer = GetComponent<MeshRenderer>();
+       meshRenderer = GetComponent<MeshRenderer>();
 	}
 
 	//debug gui
 	void OnGUI () {
 		// Make a background box
+		/*
 		GUI.Box(new Rect(50,50,160,160), "Y: " + MousePositionY.ToString()
 		        + "\n topClip: " + topClip
 		        + "\n bottomClip: " + bottomClip
@@ -42,7 +43,7 @@ public class BrushTest : MonoBehaviour {
 		        + "\n scrub%: " + scrubPercent
 		        + "\n scrub% / 0.075: " + scrubPercent * 0.75
 		        + "\n scrub Vector: " + scrubVector);
-		
+		*/
 	}
 	
 	

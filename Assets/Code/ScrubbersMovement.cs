@@ -38,6 +38,11 @@ public class ScrubbersMovement : MonoBehaviour {
 	}
 
 	private void PositionUpdate() {
-        thePosition = rock.GetPosition();
+		foreach (Rock stone in FindObjectsOfType<Rock>()) {
+			if (stone.IsPickedUp()) {
+				rock = stone;
+				thePosition = rock.GetPosition();
+			}
+		}
 	}
 }

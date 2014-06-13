@@ -18,7 +18,8 @@ public class ScrubbersMovementR : MonoBehaviour {
 	Vector3 difference;
 	// Update is called once per frame
 	void Update () {
-		
+		PositionUpdate();
+
 		if (rock.IsPickedUp() == true || rock.IsFiring() == true)
 		{
 			thePosition = rock.transform.position;
@@ -37,8 +38,12 @@ public class ScrubbersMovementR : MonoBehaviour {
 		
 	}
 	
-	void positionUpdate(Vector3 pos)
-	{
-		thePosition = pos;
+	private void PositionUpdate() {
+		foreach (Rock stone in FindObjectsOfType<Rock>()) {
+			if (stone.IsPickedUp()) {
+				rock = stone;
+				thePosition = rock.GetPosition();
+			}
+		}
 	}
 }

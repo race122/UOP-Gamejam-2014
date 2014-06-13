@@ -153,7 +153,6 @@ public class GameManager : MonoBehaviour {
         rockCam.enabled = false;
         playerCam.enabled = false;
         bullseyeCam.enabled = false;
-        //Scrubbers(false);
 
         if ( state == eGameState.ePlayer ) {
             playerCam.enabled = true;
@@ -161,7 +160,6 @@ public class GameManager : MonoBehaviour {
 
         if ( state == eGameState.eRock ) {
             rockCam.enabled = true;
-            Scrubbers(true);
         }
 
         if (state == eGameState.eBullseye) {
@@ -229,9 +227,4 @@ public class GameManager : MonoBehaviour {
 		return roundCounter;
 	}
 
-    private void Scrubbers(bool setting) {
-        foreach(BrushTest scrub in FindObjectsOfType<BrushTest>()) {
-            scrub.meshRenderer.enabled = setting;
-        }
-    }
 }
