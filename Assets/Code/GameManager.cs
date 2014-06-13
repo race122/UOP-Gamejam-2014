@@ -16,14 +16,21 @@ public class GameManager : MonoBehaviour {
     public GameObject stonesDeposit;
     public Camera playerCam;
     public Camera rockCam;
+    public Camera bullseyeCam;
     private eGameState mGameState;
     private Player player;
+<<<<<<< HEAD
 	//Added by Aidan
 	private static int roundCounter;
+=======
+
+    public Vector3 BACK_OF_HOUSE_POSITION;
+>>>>>>> fdf7486ad1fa7740eed89e1ce588c53939b4bf00
     
     public enum eGameState {
         ePlayer = 0,
         eRock,
+        eBullseye
     }
 
     void Awake() {
@@ -31,6 +38,8 @@ public class GameManager : MonoBehaviour {
         Screen.showCursor = false;
 		ChangeState (eGameState.ePlayer);
         player = FindObjectOfType<Player>();
+
+        BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
 	}
 
 	private static float checkVolume() {
@@ -144,14 +153,21 @@ public class GameManager : MonoBehaviour {
     public void ChangeState( eGameState state ) {
         mGameState = state;
 
+        // disable all cameras
+        rockCam.enabled = false;
+        playerCam.enabled = false;
+        bullseyeCam.enabled = false;
+
         if ( state == eGameState.ePlayer ) {
             playerCam.enabled = true;
-            rockCam.enabled = false;
         }
 
         if ( state == eGameState.eRock ) {
-            playerCam.enabled = false;
             rockCam.enabled = true;
+        }
+
+        if (state == eGameState.eBullseye) {
+            bullseyeCam.enabled = true;
         }
     }
 

@@ -49,7 +49,11 @@
      <Compile Include="Assets\Code\AnimTest.cs" />
      <Compile Include="Assets\Code\BrushTest.cs" />
      <Compile Include="Assets\Code\CameraTrolley.cs" />
+<<<<<<< HEAD
      <Compile Include="Assets\Code\EndRoundScript.cs" />
+=======
+     <Compile Include="Assets\Code\Credits.cs" />
+>>>>>>> fdf7486ad1fa7740eed89e1ce588c53939b4bf00
      <Compile Include="Assets\Code\GameManager.cs" />
      <Compile Include="Assets\Code\HudScript.cs" />
      <Compile Include="Assets\Code\MainMenuScript.cs" />
