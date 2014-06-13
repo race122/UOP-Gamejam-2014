@@ -91,7 +91,7 @@ public class BrushTest : MonoBehaviour {
 		}
 		else
 		{
-			scrubFinal -= 1.0f;
+			scrubFinal -= 0.7f;
 			scrubVector.x -= 0.5f;
 		}
 	}
