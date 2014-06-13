@@ -98,8 +98,8 @@ public class HudScript : MonoBehaviour {
 		//float theta = Vector3.Dot( Vector3 lhs, Vector3 rhs );
 
 		//Work out how to rotate and move pointer dependent on what direction the stone is travelling
-		//GUI.DrawTexture (new Rect ((Screen.width) * 0.49f, (Screen.height) * 0.81f, 32, 32), hudPointer);
-		//GUI.DrawTexture (new Rect ((Screen.width) * 0.4f, (Screen.height) * 0.85f, 256, 64), hudArc);
+		GUI.DrawTexture (new Rect ((Screen.width) * 0.49f, (Screen.height) * 0.81f, 32, 32), hudPointer);
+		GUI.DrawTexture (new Rect ((Screen.width) * 0.4f, (Screen.height) * 0.85f, 256, 64), hudArc);
 	}
 
 
