@@ -307,6 +307,7 @@ public class Player : MonoBehaviour {
     private void RespawnPlayer() {
         transform.position = PLAYER_DEFAULT_POSITION;
         transform.rotation = Quaternion.identity;
+        rigidbody.velocity = Vector3.zero;
     }
 
     private void ResetIfOutOfBounds() {
