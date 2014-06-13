@@ -18,6 +18,7 @@ public class Rock : MonoBehaviour
     private Player player;
 	public AudioClip rockCollision;
 	public AudioClip[] commentatorSounds;
+    public SphereCollider sphereCollider;
 
     // --------------------------------------
     // local variables
@@ -48,6 +49,7 @@ public class Rock : MonoBehaviour
         isFiring =                  false;
         frictionValue =             FRICTION_MAX;
         BULLSEYE_POSITION =         GameObject.FindGameObjectWithTag("Bullseye").transform.position;
+        sphereCollider =            GetComponent<SphereCollider>();
         // NEED TO ADD: GameObjects with the tags above at the correct locations
     }
 
