@@ -149,10 +149,11 @@ public class GameManager : MonoBehaviour {
     public void ChangeState( eGameState state ) {
         mGameState = state;
 
-        // disable all cameras
+        // disable all cameras and turn scrubbers off
         rockCam.enabled = false;
         playerCam.enabled = false;
         bullseyeCam.enabled = false;
+        Scrubbers(false);
 
         if ( state == eGameState.ePlayer ) {
             playerCam.enabled = true;
@@ -160,6 +161,7 @@ public class GameManager : MonoBehaviour {
 
         if ( state == eGameState.eRock ) {
             rockCam.enabled = true;
+            Scrubbers(true);
         }
 
         if (state == eGameState.eBullseye) {
@@ -246,4 +248,10 @@ public class GameManager : MonoBehaviour {
 	public static int getRoundNumber() {
 		return roundCounter;
 	}
+
+    private void Scrubbers(bool setting) {
+        foreach(GameObject scrub in GameObject.FindGameObjectsWithTag("Scrub")) {
+            scrub.SetActive(setting);
+        }
+    }
 }
