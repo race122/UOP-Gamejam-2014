@@ -21,10 +21,10 @@ public class EndRoundScript : MonoBehaviour {
 
 	}
 	
-	void OnMouseUp() {
-		//if (buttonName == "Next Round") {
-		//	print("Next round clicked");
-		//}
+	void OnGUI() {
+		if (GUI.Button (new Rect (Screen.width / 2 - 200, Screen.height / 2 + 80, 100, 50), "Next Round")) {
+			Application.LoadLevel("RinkMain");
+		}
 	}
 
 	private void updateRoundNumber() {

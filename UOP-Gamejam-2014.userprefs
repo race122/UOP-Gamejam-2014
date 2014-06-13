@@ -1,4 +1,5 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\BrushTest.cs">
     <Files>
@@ -9,6 +10,12 @@
       <File FileName="Assets\Code\ScrubbersMovement.cs" Line="21" Column="26" />
       <File FileName="Assets\Code\ScrubbersMovementR.cs" Line="21" Column="20" />
       <File FileName="Assets\Code\Player.cs" Line="94" Column="6" />
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\BrushTest.cs">
+    <Files>
+      <File FileName="Assets\Code\BrushTest.cs" Line="177" Column="1" />
+>>>>>>> 3c07583afe6b69cec518e9016ccf15090fb7aa6b
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
