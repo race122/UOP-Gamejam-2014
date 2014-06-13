@@ -5,12 +5,19 @@ public class EndRoundScript : MonoBehaviour {
 
 	public GUIText roundWinner;
 	public GUIText roundNumber;
+	public GUIText roundScores;
 	//public string buttonName;
 	// Use this for initialization
 	void Start () {
 		//roundWinner.text = "This guy won";
-		UpdateRoundWinner ();
 		updateRoundNumber ();
+
+		//I think it's more efficient to call GameManagers.getScore method once
+		//and then pass array to both functions
+		int[] scores = GameManager.getScore ();
+		UpdateRoundWinner (scores);
+		updateRoundScore (scores);
+
 	}
 	
 	void OnMouseUp() {
@@ -19,12 +26,16 @@ public class EndRoundScript : MonoBehaviour {
 		//}
 	}
 
-	public void updateRoundNumber() {
+	private void updateRoundNumber() {
 		roundNumber.text = "Round: " + GameManager.getRoundNumber ();
 	}
+
+	private void updateRoundScore(int[] scores) {
+		roundScores.text = "Team 1: " + scores [0] + "\n" + "Team 2: " + scores [1];
+	}
 	
-	public void UpdateRoundWinner() {
-		int[] scores = GameManager.getScore ();
+	private void UpdateRoundWinner(int[] scores) {
+		//int[] scores = GameManager.getScore ();
 		if (scores [0] > scores [1]) {
 			roundWinner.text = "Team 1 won the round";
 		} 
@@ -35,9 +46,4 @@ public class EndRoundScript : MonoBehaviour {
 			roundWinner.text = "The round was a draw";
 		}
 	}
-	
-	// Update is called once per frame
-	//void Update () {
-	
-	//}
 }
