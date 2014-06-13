@@ -22,9 +22,11 @@ public class BrushTest : MonoBehaviour {
 	private float scrubFinal = 100;
 
 	Vector3 scrubVector = new Vector3(0, 0, 0);
+
+    public MeshRenderer meshRenderer;
 	
 	void Start () {
-		
+        meshRenderer = GetComponent<MeshRenderer>();
 	}
 
 	//debug gui
