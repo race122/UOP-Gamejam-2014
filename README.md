@@ -14,7 +14,7 @@ To Do List:
  * 2nd player
  * Brushing
  * Power of rock throw
- * Disqualifiction if player goes off rink or touches stone
+ * ~~Disqualifiction if player goes off rink or touches stone~~
 * Art related
  * Menu Background
  * Player texture
@@ -24,9 +24,9 @@ To Do List:
  * Custom font?
  * Animations
 * Sound related
- * Collision of stones
- * Crowd
- * Whoa + hard shouts
+ * ~~Collision of stones~~
+ * ~~Crowd~~
+ * ~~Whoa + hard shouts~~
  * Commentator
  
 
