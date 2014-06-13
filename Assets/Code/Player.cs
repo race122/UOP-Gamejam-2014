@@ -255,8 +255,9 @@ public class Player : MonoBehaviour {
                     Debug.Log(stone.name + "<-- name " + stone.IsBeyondHouse() + "<-- house " + "guard-> " + stone.IsBeforeGuardLine());
                     //possibly add something cool here like an explosion at (stone.transform.position + Vector3(0f, 1f, 0f))
                     stone.transform.position = (stone.transform.position + new Vector3(0f, -50f, 0f));
-                    stone.renderer.enabled = false;
-                    stone.enabled = false;
+                    stone.renderer.enabled =        false;
+                    stone.enabled =                 false;
+                    stone.sphereCollider.enabled =  false;
                     Destroy(stone);
                 }
             }
@@ -309,6 +310,7 @@ public class Player : MonoBehaviour {
     private void RespawnPlayer() {
         transform.position = PLAYER_DEFAULT_POSITION;
         transform.rotation = Quaternion.identity;
+        rigidbody.velocity = Vector3.zero;
     }
 
     private void ResetIfOutOfBounds() {
