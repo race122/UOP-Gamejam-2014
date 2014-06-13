@@ -55,7 +55,7 @@ public class Player : MonoBehaviour {
 		Move();
 		Look();
         UpdateFriction();
-        //UpdateAnimation();
+        UpdateAnimation();
 
 		if ( speed >= (acceleration * 2f) && !MovementKeysPressed() ) {
 		 	speed -= acceleration;
