@@ -17,6 +17,7 @@ public class Rock : MonoBehaviour
     public Camera rockCamera;
     private Player player;
 	public AudioClip rockCollision;
+	public AudioClip[] commentatorSounds;
 
     // --------------------------------------
     // local variables
@@ -74,7 +75,20 @@ public class Rock : MonoBehaviour
     public void Fire() {
         isPickedUp =            false;
         isFiring =              true;
+
+
     }
+
+	private void PlayCommentatorSound()
+	{
+		if (audio.isPlaying) 
+		{
+			return;
+		}
+
+		audio.clip = commentatorSounds[ Random.Range( 0, commentatorSounds.Length ) ];
+		audio.PlayDelayed(0.7f);
+	}
 
     public bool InSupply() {
         return inSupply;
@@ -116,6 +130,7 @@ public class Rock : MonoBehaviour
 
     private void UpdateCamera() {
         if (isFiring) {
+			PlayCommentatorSound ();
             if (!IsMoving()) {
                 player.StoneFired();
                 isFiring = false;
