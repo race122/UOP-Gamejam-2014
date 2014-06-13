@@ -18,6 +18,7 @@ public class Rock : MonoBehaviour
     private Player player;
 	public AudioClip rockCollision;
 	public AudioClip[] commentatorSounds;
+    public SphereCollider sphereCollider;
 
     // --------------------------------------
     // local variables
@@ -28,24 +29,40 @@ public class Rock : MonoBehaviour
     private float slowestSpeed =                0.075f;
 
     private float FRICTION_MAX =                0.4f;
-    private float FRICTION_MIN =                0.05f;
+    private float FRICTION_MIN =                0.2f;
 
     private Vector3 BULLSEYE_POSITION;
+
+	public Vector3 myPosition;
+	ScrubbersMovement sm;
+	ScrubbersMovementR smR;
 
     // --------------------------------------
     // functions
     // --------------------------------------
     void Start() {
-        player =                    FindObjectOfType<Player>();
+		sm  =						FindObjectOfType<ScrubbersMovement>();
+		smR  =						FindObjectOfType<ScrubbersMovementR>();
+		player =                    FindObjectOfType<Player>();
         inSupply =                  true;
         isPickedUp =                false;
         isFiring =                  false;
         frictionValue =             FRICTION_MAX;
         BULLSEYE_POSITION =         GameObject.FindGameObjectWithTag("Bullseye").transform.position;
+        sphereCollider =            GetComponent<SphereCollider>();
         // NEED TO ADD: GameObjects with the tags above at the correct locations
     }
 
     void Update() {
+		myPosition = transform.position;
+		
+		if (isPickedUp == true || isFiring == true)
+		{
+			sm.SendMessage("positionUpdate", myPosition);
+			smR.SendMessage("positionUpdate", myPosition);
+		}
+
+
         UpdateCamera();
         StopMovingSlow();
         UpdateFriction();
@@ -72,11 +89,14 @@ public class Rock : MonoBehaviour
         isPickedUp =            true;
     }
 
+	public bool IsFiring() {
+		return isFiring;
+	}
+
+
     public void Fire() {
         isPickedUp =            false;
         isFiring =              true;
-
-
     }
 
 	private void PlayCommentatorSound()

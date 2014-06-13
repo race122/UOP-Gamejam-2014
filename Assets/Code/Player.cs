@@ -41,7 +41,10 @@ public class Player : MonoBehaviour {
     private float BOUNDARY_RESTRICTION_X_OFFSET =   7f;
     private float BOUNDARY_RESTRICTION_Z_OFFSET =   32f;
 
+	BrushTest bt;
+
 	void Start() {
+		bt = 							 FindObjectOfType<BrushTest>();
         HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
         ROCK_CAMERA_DEFAULT_POSITION =   PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
         
@@ -156,6 +159,7 @@ public class Player : MonoBehaviour {
 		if ( !passedTheLine ) {
 			canShoot = false;
 			canControl = false;
+			bt.SendMessage("setAnimation", 100.0f);
 
 			// apply our current velocity to the stone
 			stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
@@ -253,8 +257,9 @@ public class Player : MonoBehaviour {
                     Debug.Log(stone.name + "<-- name " + stone.IsBeyondHouse() + "<-- house " + "guard-> " + stone.IsBeforeGuardLine());
                     //possibly add something cool here like an explosion at (stone.transform.position + Vector3(0f, 1f, 0f))
                     stone.transform.position = (stone.transform.position + new Vector3(0f, -50f, 0f));
-                    stone.renderer.enabled = false;
-                    stone.enabled = false;
+                    stone.renderer.enabled =        false;
+                    stone.enabled =                 false;
+                    stone.sphereCollider.enabled =  false;
                     Destroy(stone);
                 }
             }
