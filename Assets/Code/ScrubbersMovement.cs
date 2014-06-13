@@ -18,6 +18,7 @@ public class ScrubbersMovement : MonoBehaviour {
 	Vector3 difference;
 	// Update is called once per frame
 	void Update () {
+        PositionUpdate();
 
 		if (rock.IsPickedUp() == true || rock.IsFiring() == true)
 		{
@@ -36,8 +37,7 @@ public class ScrubbersMovement : MonoBehaviour {
 
 	}
 
-	void positionUpdate(Vector3 pos)
-	{
-		thePosition = pos;
+	private void PositionUpdate() {
+        thePosition = rock.GetPosition();
 	}
 }
