@@ -20,8 +20,8 @@ public class Player : MonoBehaviour {
     
     
 	private float speed =							0.0f;
-	private float acceleration =					0.05f;
-	private const float MAX_SPEED =					0.02f;
+	private float acceleration =					0.025f;
+	private const float MAX_SPEED =					0.03f;
 	private float sensitivity =						6.0f;
     private float frictionValue =                   0.2f;
     private float slowestSpeed =                    0.075f;
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
     private Vector3 STONE_SPAWN_OFFSET =            new Vector3(0f, -1f, 2.5f);
 
 	void Start() {
-        ROCK_CAMERA_DEFAULT_POSITION =   new Vector3( 0.0f, PLAYER_DEFAULT_POSITION.y + 7f, PLAYER_DEFAULT_POSITION.z - 10f );
+        ROCK_CAMERA_DEFAULT_POSITION =   new Vector3( 0.0f, PLAYER_DEFAULT_POSITION.y + 7f, PLAYER_DEFAULT_POSITION.z - 18f );
         HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
         
         SwitchCamera(GameManager.eGameState.ePlayer);
@@ -104,6 +104,7 @@ public class Player : MonoBehaviour {
 			if ( stone.InSupply() && stone.team == team ) {
 				stoneClone =					stone;
 				rockCamera.transform.parent =	stoneClone.transform;
+			    stoneClone.transform.parent =   null;
                 ResetRockCamera();
                 stone.Pickup();
                 found = true;
@@ -145,10 +146,10 @@ public class Player : MonoBehaviour {
 		if ( !passedTheLine ) {
 			canShoot = false;
 			canControl = false;
-			stoneClone.transform.parent = null;
 
 			// apply our current velocity to the stone
 			stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
+            
 
 			SwitchCamera(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
 			stoneClone.Fire();                              //this will call StoneFired() when the stone stops moving
@@ -236,6 +237,7 @@ public class Player : MonoBehaviour {
         foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
             if ( stone.IsBeyondHouse() ) {
                 //possibly add something cool here like an explosion at (stone.transform.position + Vector3(0f, 1f, 0f))
+                transform.Translate(0f,-20f,0f);
                 Destroy(stone);
             }
         }
