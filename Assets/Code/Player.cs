@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
     private bool canShoot =                         true;
 	private bool canControl =						true;
 	private bool passedTheLine =					false;
+    private float dx;
 
 	private Rock stoneClone;
 
@@ -40,8 +41,8 @@ public class Player : MonoBehaviour {
     private Vector3 STONE_SPAWN_OFFSET =            new Vector3(0f, -1f, 2.5f);
 
 	void Start() {
-        HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
-        ROCK_CAMERA_DEFAULT_POSITION =   PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
+        HOGLINE_POSITION =                          GameObject.FindGameObjectWithTag("Hogline").transform.position;
+        ROCK_CAMERA_DEFAULT_POSITION =              PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
         
         SwitchCamera(GameManager.eGameState.ePlayer);
         GiveStone();
@@ -89,8 +90,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-    float dx;
-
 	public void Look() {
 		dx += Input.GetAxis( "Mouse X" ) * sensitivity;
         dx = Mathf.Clamp( dx, -maxLookAngle, maxLookAngle );
@@ -98,7 +97,6 @@ public class Player : MonoBehaviour {
 
         Quaternion totalRotation = transform.rotation;
         float yaw = totalRotation.y;
-        // yaw = Mathf.Clamp( totalRotation.y, -90, 90 );
 
         transform.rotation = Quaternion.Euler( transform.rotation.x, dx + transform.rotation.y, transform.rotation.z );
 	}
