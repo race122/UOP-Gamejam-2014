@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
     private bool canShoot =                         true;
 	private bool canControl =						true;
 	private bool passedTheLine =					false;
+    private float dx;
 
 	private Rock stoneClone;
 
@@ -92,8 +93,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-    float dx;
-
 	public void Look() {
 		dx += Input.GetAxis( "Mouse X" ) * sensitivity;
         dx = Mathf.Clamp( dx, -maxLookAngle, maxLookAngle );
@@ -101,7 +100,6 @@ public class Player : MonoBehaviour {
 
         Quaternion totalRotation = transform.rotation;
         float yaw = totalRotation.y;
-        // yaw = Mathf.Clamp( totalRotation.y, -90, 90 );
 
         transform.rotation = Quaternion.Euler( transform.rotation.x, dx + transform.rotation.y, transform.rotation.z );
 	}
