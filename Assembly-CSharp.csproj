@@ -58,6 +58,8 @@
      <Compile Include="Assets\Code\Player.cs" />
      <Compile Include="Assets\Code\Player2.cs" />
      <Compile Include="Assets\Code\Rock.cs" />
+     <Compile Include="Assets\Code\ScrubbersMovement.cs" />
+     <Compile Include="Assets\Code\ScrubbersMovementR.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

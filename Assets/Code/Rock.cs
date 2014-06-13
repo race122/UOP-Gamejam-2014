@@ -32,11 +32,17 @@ public class Rock : MonoBehaviour
 
     private Vector3 BULLSEYE_POSITION;
 
+	public Vector3 myPosition;
+	ScrubbersMovement sm;
+	ScrubbersMovementR smR;
+
     // --------------------------------------
     // functions
     // --------------------------------------
     void Start() {
-        player =                    FindObjectOfType<Player>();
+		sm  =						FindObjectOfType<ScrubbersMovement>();
+		smR  =						FindObjectOfType<ScrubbersMovementR>();
+		player =                    FindObjectOfType<Player>();
         inSupply =                  true;
         isPickedUp =                false;
         isFiring =                  false;
@@ -46,6 +52,15 @@ public class Rock : MonoBehaviour
     }
 
     void Update() {
+		myPosition = transform.position;
+		
+		if (isPickedUp == true || isFiring == true)
+		{
+			sm.SendMessage("positionUpdate", myPosition);
+			smR.SendMessage("positionUpdate", myPosition);
+		}
+
+
         UpdateCamera();
         StopMovingSlow();
         UpdateFriction();
@@ -72,11 +87,14 @@ public class Rock : MonoBehaviour
         isPickedUp =            true;
     }
 
+	public bool IsFiring() {
+		return isFiring;
+	}
+
+
     public void Fire() {
         isPickedUp =            false;
         isFiring =              true;
-
-
     }
 
 	private void PlayCommentatorSound()
