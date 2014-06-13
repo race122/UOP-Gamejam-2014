@@ -28,8 +28,8 @@ public class Rock : MonoBehaviour
     private float frictionValue;
     private float slowestSpeed =                0.075f;
 
-    private float FRICTION_MAX =                0.7f;
-    private float FRICTION_MIN =                0.2f;
+    private float FRICTION_MAX =                0.5f;
+    private float FRICTION_MIN =                0.05f;
 
     private Vector3 BULLSEYE_POSITION;
 
@@ -113,6 +113,10 @@ public class Rock : MonoBehaviour
     public bool InSupply() {
         return inSupply;
     }
+
+	public bool IsFired() {
+		return isFiring;
+	}
 
     public bool IsPickedUp() {
         return isPickedUp;
