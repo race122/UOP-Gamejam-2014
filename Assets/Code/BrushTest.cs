@@ -86,6 +86,9 @@ public class BrushTest : MonoBehaviour {
 		setFriction(scrubFinal);
 		
 		//bleed off
+		if (scrubFinal >120) {
+			scrubFinal = 120.0f;
+				}
 		if (scrubFinal <= 0)
 		{
 			scrubFinal = 0;
@@ -93,7 +96,7 @@ public class BrushTest : MonoBehaviour {
 		}
 		else
 		{
-			scrubFinal -= 0.5f;
+			scrubFinal -= 1.0f;
 			scrubVector.x -= 0.5f;
 		}
 	}

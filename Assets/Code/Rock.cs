@@ -27,7 +27,7 @@ public class Rock : MonoBehaviour
     private float frictionValue;
     private float slowestSpeed =                0.075f;
 
-    private float FRICTION_MAX =                0.4f;
+    private float FRICTION_MAX =                0.7f;
     private float FRICTION_MIN =                0.05f;
 
     private Vector3 BULLSEYE_POSITION;
