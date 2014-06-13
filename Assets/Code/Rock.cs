@@ -27,7 +27,7 @@ public class Rock : MonoBehaviour
     private float slowestSpeed =                0.075f;
 
     private float FRICTION_MAX =                0.2f;
-    private float FRICTION_MIN =                0.1f;
+    private float FRICTION_MIN =                0.05f;
 
     private Vector3 BULLSEYE_POSITION;
 
@@ -45,9 +45,9 @@ public class Rock : MonoBehaviour
     }
 
     void Update() {
+        UpdateCamera();
         StopMovingSlow();
         UpdateFriction();
-        UpdateCamera();
     }
 
     public float DistanceFromBullseye() {
@@ -95,7 +95,7 @@ public class Rock : MonoBehaviour
     // Send a value 0-1 to this function to set the friction value 
     // (0 = lowest, 1 = highest)
     public void SetFriction(float friction) {
-        frictionValue = friction * FRICTION_MAX;
+        frictionValue = friction * (FRICTION_MAX - FRICTION_MIN);
         
         if (frictionValue < FRICTION_MIN) {
             frictionValue = FRICTION_MIN;
