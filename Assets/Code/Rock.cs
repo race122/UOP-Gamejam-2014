@@ -114,6 +114,10 @@ public class Rock : MonoBehaviour
         return inSupply;
     }
 
+	public bool IsFired() {
+		return isFiring;
+	}
+
     public bool IsPickedUp() {
         return isPickedUp;
     }
