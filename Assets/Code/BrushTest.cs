@@ -24,7 +24,7 @@ public class BrushTest : MonoBehaviour {
 	//per scrub elapsed time
 	float scrubPercent = 0;
 	//start animating
-	float scrubFinal = 100;
+	float scrubFinal = 0;
 
 	Vector3 scrubVector = new Vector3(0, 0, 0);
 	
@@ -80,7 +80,6 @@ public class BrushTest : MonoBehaviour {
 
 		//scrub X axis
 		scrubX();
-		scrubY();
 
 		
 		animationSpeed(scrubFinal);
@@ -106,16 +105,18 @@ public class BrushTest : MonoBehaviour {
 		if ((scrubPercent * 0.75) > 110f)
 		{
 			//max out animation - so no crazy speeds
-			//animation["Running"].speed = 120f;
+			animation["npc_action"].speed = 120f;
 		}
 		else if (scrubPercent > 0)
 		{
 			//normal
-			//animation["Running"].speed = scrubPercent / 75;
+			animation.CrossFade("npc_action");
+			animation["npc_action"].speed = scrubPercent / 75;
 		}
 		else
 		{
 			//no motion - play idle animation
+			animation.CrossFade("npc_running");
 		}
 	}
 
@@ -170,8 +171,8 @@ public class BrushTest : MonoBehaviour {
 		}
 	}
 
-	void scrubY()
+	void setAnimation(float value)
 	{
-
+		scrubFinal = value;
 	}
 }

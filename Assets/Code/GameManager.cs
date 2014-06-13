@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour {
     }
 
     void Awake() {
-        Screen.lockCursor = true;
         Screen.showCursor = false;
 		ChangeState (eGameState.ePlayer);
         player = FindObjectOfType<Player>();
