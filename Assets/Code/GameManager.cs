@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour {
     public Camera bullseyeCam;
     private eGameState mGameState;
     private Player player;
-
+	//Added by Aidan
+	private static int roundCounter;
     public Vector3 BACK_OF_HOUSE_POSITION;
     
     public enum eGameState {
@@ -76,12 +77,15 @@ public class GameManager : MonoBehaviour {
         GivePoints(winningTeam, GetEnemyClosestToBullseye(winningTeam) );
         Debug.Log("Game Over");
         Debug.Log(winningTeam + "won the game");
-
+		
         EndOfRound();
     }
 
     private void EndOfRound() {
-        //put stuff here
+		//Added by Aidan
+		roundCounter++;
+		print ("Round number: " + roundCounter.ToString ());
+		Application.LoadLevel ("EndOfRound");
     }
 
     private eTeam GetRoundWinner() {
@@ -221,4 +225,9 @@ public class GameManager : MonoBehaviour {
     public eGameState GetGameState() {
         return mGameState;
     }
+
+	//Added by Aidan
+	public static int getRoundNumber() {
+		return roundCounter;
+	}
 }
