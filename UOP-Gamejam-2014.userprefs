@@ -1,8 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\MainMenuScript.cs">
     <Files>
       <File FileName="Assets\Code\MainMenuScript.cs" Line="17" Column="41" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\Rock.cs">
+    <Files>
+      <File FileName="Assets\Code\Rock.cs" Line="1" Column="1" />
+>>>>>>> b195d6606997b591ddff2dd3bfb6ca468c7f2509
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
