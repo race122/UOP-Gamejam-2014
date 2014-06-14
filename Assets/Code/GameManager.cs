@@ -63,9 +63,8 @@ public class GameManager : MonoBehaviour {
         }
 
         if (state == eGameState.eBullseye) {
-            // i dont think this ever gets used =[ -Krz
-            EndOfRound();
             bullseyeCam.enabled = true;
+            StartCoroutine(SwitchToEndOfRound());
         }
     }
 
@@ -271,4 +270,11 @@ public class GameManager : MonoBehaviour {
             firstTeam = eTeam.TEAM_BLUE;
         }
     }
+
+    private IEnumerator SwitchToEndOfRound() {
+        yield return new WaitForSeconds(5);
+
+        EndOfRound();
+    }
+
 }
