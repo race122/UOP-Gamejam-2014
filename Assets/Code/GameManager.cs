@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
     public GUIText hudDisqualified;
     public GUIText hudResetPosition;
     public GUIText hudBrushNow;
+    public eTeam firstTeam;
 
     public enum eGameState {
         ePlayer = 0,
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour {
 		ChangeState                 (eGameState.ePlayer);
         player =                    FindObjectOfType<Player>();
         roundCounter =              1;
+        SwitchFirstTeam();
 
         BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
         GUARD_LINE_POSITION =       GameObject.FindGameObjectWithTag("GuardLine").transform.position;
@@ -260,5 +262,13 @@ public class GameManager : MonoBehaviour {
     private void HUDBrushNow(bool setting) {
         //tell player to brush now by moving the mouse up and down fast
         hudBrushNow.guiText.enabled = setting;
+    }
+
+    private void SwitchFirstTeam() {
+        if (firstTeam == eTeam.TEAM_BLUE) {
+            firstTeam = eTeam.TEAM_RED;
+        } else {
+            firstTeam = eTeam.TEAM_BLUE;
+        }
     }
 }

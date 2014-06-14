@@ -1,4 +1,4 @@
-﻿/*
+/*
 	FILE:			Player.cs
 	AUHTOR:			Dan, Krz
 	PROJECT:		Geri-Lynn Ramsey's Xtreme Curling 2014
@@ -17,8 +17,8 @@ public class Player : MonoBehaviour {
     private GameManager.eTeam teamPrev;
     public Camera rockCamera;
     public Camera playerCamera;
-    
-    
+
+
 	private float speed =							0.0f;
 	private float acceleration =					0.02f;
 	private const float MAX_SPEED =					0.06f;
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
 	    HOGLINE_POSITION =                          GameObject.FindGameObjectWithTag("Hogline").transform.position;
         ROCK_CAMERA_DEFAULT_POSITION =              PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
         transform.position =                        PLAYER_DEFAULT_POSITION;
-        
+
         SwitchState(GameManager.eGameState.ePlayer);
         GiveStone();
 	}
@@ -100,12 +100,12 @@ public class Player : MonoBehaviour {
         transform.Rotate( 0f, -dx, 0f );
         transform.rotation = Quaternion.Euler( transform.rotation.x, dx + transform.rotation.y, transform.rotation.z );
 	}
-    
+
     public void GiveStone() {
         bool found = false;
 
         RespawnPlayer();
-        
+
 		foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
 			if ( stone.InSupply() && stone.team == team ) {
 				stoneClone =					stone;
@@ -220,7 +220,7 @@ public class Player : MonoBehaviour {
     private void ResetRockCamera() {
         rockCamera.transform.parent = null;
         //rockCamera.transform.position = Vector3.zero;
-        
+
         rockCamera.transform.position = ROCK_CAMERA_DEFAULT_POSITION;
     }
 
@@ -276,7 +276,7 @@ public class Player : MonoBehaviour {
         GameManager.Singleton().HUDDisqualified();
         canControl = false;
         canShoot = false;
-        
+
         StartCoroutine( DisqualifyCont() );
     }
 
