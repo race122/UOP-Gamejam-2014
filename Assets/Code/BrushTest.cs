@@ -12,7 +12,7 @@ public class BrushTest : MonoBehaviour {
     private float timeElapse = 0;   //elapsed time
     private float scrubPercent = 0;
     private bool prevClipWasLeft = false;   //holds last frame clip (left/right state)
-    private int NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT = 6;
+    private int NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT = 4;
 
     void Start () {
 	}
@@ -34,8 +34,8 @@ public class BrushTest : MonoBehaviour {
 		MousePositionX = Input.mousePosition.x;
 
         //Get clipping EW
-        rightClip = (MousePositionX > Screen.width / 2);
-        leftClip = !(MousePositionX > Screen.width / 2);
+        rightClip = (MousePositionX > Screen.width * 0.5f);
+        leftClip = !(MousePositionX > Screen.width * 0.5f);
 
 		//scrub X axis
 		ScrubX();
@@ -47,13 +47,10 @@ public class BrushTest : MonoBehaviour {
 	//change scrub animation speed by % of passed value.
     private void AnimationSpeed(float scrubPercent) {
 		//play vareity of animations
-		if ((scrubPercent * 0.75) > 110f) {
+		if (scrubPercent > 0) {
 			//max out animation - so no crazy speeds
-			animation["npc_action"].speed = 120f;
-		} else if (scrubPercent > 0) {
-			//normal
-			animation.CrossFade("npc_action");
-			animation["npc_action"].speed = scrubPercent / 75;
+			animation["npc_action"].speed = scrubPercent * 2f;
+            animation.CrossFade("npc_action");
 		} else {
 			//no motion - play idle animation
 			animation.CrossFade("npc_running");
