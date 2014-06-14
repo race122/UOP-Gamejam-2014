@@ -8,38 +8,29 @@ public class BrushTest : MonoBehaviour {
 	//get scrub motion
     private bool leftClip;
     private bool rightClip;
-	
-	//elapsed time
-    private float timeElapse = 0;
-	//Overall scrub elapsed time
-    private float scrubValue = 0;
-	//per scrub elapsed time
+    
+    private float timeElapse = 0;   //elapsed time
     private float scrubPercent = 0;
-	//start animating
-	private float scrubFinal = 100;
+    private bool prevClipWasLeft = false;   //holds last frame clip (left/right state)
+    private int NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT = 3;
 
 	Vector3 scrubVector = new Vector3(0, 0, 0);
 
     void Start () {
 	}
 
-	//debug gui
+/*	//debug gui
 	void OnGUI () {
 		// Make a background box
-		/*
-		GUI.Box(new Rect(50,50,160,160), "Y: " + MousePositionY.ToString()
+		/
+		GUI.Box(new Rect(50,50,160,160),
+                "X: " + MousePositionX.ToString()
 		        + "\n leftClip: " + leftClip
 		        + "\n rightClip: " + rightClip
 		        + "\n timeElapse: " + timeElapse
-		        + "\n scrub: " + scrubValue
-		        + "\n scrub%: " + scrubPercent
-		        + "\n scrub% / 0.075: " + scrubPercent * 0.75
-		        + "\n scrub Vector: " + scrubVector);
-		*/
-	}
+		        + "\n scrub%: " + scrubPercent);
+	}                                               */
 	
-	
-	// Update is called once per frame
 	void Update () {
         //get mouse x position
 		MousePositionX = Input.mousePosition.x;
@@ -48,29 +39,15 @@ public class BrushTest : MonoBehaviour {
         rightClip = (MousePositionX > Screen.width / 2);
         leftClip = !(MousePositionX > Screen.width / 2);
 
-		//scrub Y axis
-		scrubY();
-		
-		// cap
-		if (scrubFinal >120) {
-			scrubFinal = 120.0f;
-		}
+		//scrub X axis
+		ScrubX();
 
-        //bleed off
-		if (scrubFinal <= 0) {
-			scrubFinal = 0;
-			scrubVector.x = 0;
-		} else {
-			scrubFinal -= 0.7f;
-			scrubVector.x -= 0.5f;
-		}
-
-        animationSpeed(scrubFinal);
-        setFriction(scrubFinal);
+        AnimationSpeed(scrubPercent);
+        SetFriction(scrubPercent);
 	}
 	
 	//change scrub animation speed by % of passed value.
-	void animationSpeed(float scrubPercent) {
+    private void AnimationSpeed(float scrubPercent) {
 		//play vareity of animations
 		if ((scrubPercent * 0.75) > 110f) {
 			//max out animation - so no crazy speeds
@@ -85,41 +62,23 @@ public class BrushTest : MonoBehaviour {
 		}
 	}
 
-	void setFriction(float scrubPercent) {
+    private void SetFriction(float scrubPercent) {
 		GameManager.Singleton().SetFriction(1.0f - scrubPercent);
 	}
 
-	void scrubY() {
-		//get scrub power
-		if (leftClip == true) {
-			timeElapse += Time.deltaTime;
-			scrubPercent = 1f - (timeElapse * 1000);
-			if (scrubPercent < 0) {
-				scrubPercent = 0;
-			}
-		}
-		
-		//reset
-		if (rightClip == false) {
-			//count total scrub elapsed time
-			scrubValue += timeElapse;
-			
-			scrubFinal += scrubPercent;
-			scrubVector.x = scrubFinal;
-			
-			//bleed off scrub percent
-			if (scrubPercent <= 0) {
-				scrubPercent = 0;
-			} else {
-				scrubPercent -= 0.5f;
-			}
-			
-			//reset
-			timeElapse = 0;
-		}
-	}
+	private void ScrubX() {
+        timeElapse += Time.deltaTime;
 
-	void setAnimation(float value) {
-		scrubFinal = value;
+        if (!prevClipWasLeft && leftClip) {
+            timeElapse = 0;
+        }
+
+        if (rightClip && prevClipWasLeft) {
+            timeElapse = 0;
+        }
+
+        prevClipWasLeft = leftClip;
+
+        scrubPercent = Mathf.Clamp(1f - (timeElapse * NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT),0f,1f);
 	}
 }
