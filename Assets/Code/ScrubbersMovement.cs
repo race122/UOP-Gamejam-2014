@@ -19,7 +19,7 @@ public class ScrubbersMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         PositionUpdate();
-
+		print (thePosition);
 		if (rock.IsPickedUp() == true || rock.IsFiring() == true)
 		{
 			thePosition = rock.transform.position;
