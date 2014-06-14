@@ -51,16 +51,12 @@ public class Player : MonoBehaviour {
 	}
 
     void Update() {
-        UpdateStone();      // this needs to go first
+        UpdateStone();            // this needs to go first
         ResetIfOutOfBounds();
 		Move();
 		Look();
         UpdateFriction();
         UpdateAnimation();
-
-		if ( speed >= (acceleration * 2f) && !MovementKeysPressed() ) {
-		 	speed -= acceleration;
-		}
 	}
 
 	public void Move() {
@@ -86,10 +82,10 @@ public class Player : MonoBehaviour {
 
     private void UpdateAnimation() {
         if (IsMoving()) {
-            //animation.CrossFade( "Running" );
+            animation.CrossFade( "Running" );
         } else {
-            //animation.Play( "Idle" );
-            //animation.CrossFade( "Idle" );
+            animation.Play( "Idle" );
+            animation.CrossFade( "Idle" );
         }
     }
 
@@ -268,6 +264,10 @@ public class Player : MonoBehaviour {
         if (IsMoving()) {
             rigidbody.AddForce(rigidbody.velocity * frictionValue * -1f);
         }
+
+        if (speed >= (acceleration * 2f) && !MovementKeysPressed()) {
+            speed -= acceleration;
+        }
     }
 
     public bool IsMoving() {
@@ -313,5 +313,8 @@ public class Player : MonoBehaviour {
         if ( !CanMoveInDirection(Vector3.zero) || transform.position.y < -10 ) {
             RespawnPlayer();
         }
+
+        // tell player their position was reset
+        GameManager.Singleton().HUDResetPosition();
     }
 }

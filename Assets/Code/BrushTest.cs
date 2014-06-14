@@ -23,15 +23,13 @@ public class BrushTest : MonoBehaviour {
 
 	Vector3 scrubVector = new Vector3(0, 0, 0);
 
-    public MeshRenderer meshRenderer;
-	
-	void Start () {
-        meshRenderer = GetComponent<MeshRenderer>();
+    void Start () {
 	}
 
 	//debug gui
 	void OnGUI () {
 		// Make a background box
+		/*
 		GUI.Box(new Rect(50,50,160,160), "Y: " + MousePositionY.ToString()
 		        + "\n topClip: " + topClip
 		        + "\n bottomClip: " + bottomClip
@@ -42,7 +40,7 @@ public class BrushTest : MonoBehaviour {
 		        + "\n scrub%: " + scrubPercent
 		        + "\n scrub% / 0.075: " + scrubPercent * 0.75
 		        + "\n scrub Vector: " + scrubVector);
-		
+		*/
 	}
 	
 	
@@ -75,8 +73,8 @@ public class BrushTest : MonoBehaviour {
 			leftClip = true;
 		}
 
-		//scrub X axis
-		scrubX();
+		//scrub Y axis
+		scrubY();
 
 		
 		animationSpeed(scrubFinal);
@@ -133,10 +131,10 @@ public class BrushTest : MonoBehaviour {
 		//}
 	}
 
-	void scrubX()
+	void scrubY()
 	{
 		//get scrub power
-		if (topClip == true)
+		if (leftClip == true)
 		{
 			timeElapse += Time.deltaTime;
 			scrubPercent = 10 - (timeElapse * 100);
@@ -147,7 +145,7 @@ public class BrushTest : MonoBehaviour {
 		}
 		
 		//reset
-		if (topClip == false)
+		if (rightClip == false)
 		{
 			//count total scrub elapsed time
 			scrubValue += timeElapse;

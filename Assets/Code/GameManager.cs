@@ -10,7 +10,7 @@ using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-	
+
 	public static float volume = checkVolume();
     private static int team1score = 0, team2score = 0;
     public GameObject stonesDeposit;
@@ -23,7 +23,10 @@ public class GameManager : MonoBehaviour {
 	private static int roundCounter;
     public Vector3 BACK_OF_HOUSE_POSITION;
     public Vector3 GUARD_LINE_POSITION;
-    
+    public GUIText hudDisqualified;
+    public GUIText hudResetPosition;
+    public GUIText hudBrushNow;
+
     public enum eGameState {
         ePlayer = 0,
         eRock,
@@ -31,29 +34,51 @@ public class GameManager : MonoBehaviour {
     }
 
     void Awake() {
-        Screen.showCursor = false;
-		ChangeState (eGameState.ePlayer);
-        player = FindObjectOfType<Player>();
+        Screen.showCursor =         false;
+		ChangeState                 (eGameState.ePlayer);
+        player =                    FindObjectOfType<Player>();
 
         BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
         GUARD_LINE_POSITION =       GameObject.FindGameObjectWithTag("GuardLine").transform.position;
 	}
 
+    public void ChangeState(eGameState state) {
+        mGameState = state;
+
+        // disable all cameras
+        rockCam.enabled =       false;
+        playerCam.enabled =     false;
+        bullseyeCam.enabled =   false;
+
+        if (state == eGameState.ePlayer) {
+            playerCam.enabled = true;
+        }
+
+        if (state == eGameState.eRock) {
+            rockCam.enabled =   true;
+        }
+
+        if (state == eGameState.eBullseye) {
+            // i dont think this ever gets used =[ -Krz
+            bullseyeCam.enabled = true;
+        }
+    }
+
 	private static float checkVolume() {
-		if ( PlayerPrefs.HasKey("volume") ) 
+		if ( PlayerPrefs.HasKey("volume") )
 		{
 			volume = PlayerPrefs.GetFloat( "volume" );
 			return volume;
 		}
-		else 
+		else
 		{
 			volume = 1.0f;
 		}
 
 		return volume;
 	}
-	
-	void Update() {	
+
+	void Update() {
 		if ( Input.GetKeyUp( KeyCode.Escape ) ) {
 			Application.LoadLevel( "mainMenu" );
 		}
@@ -78,7 +103,7 @@ public class GameManager : MonoBehaviour {
         GivePoints(winningTeam, GetEnemyClosestToBullseye(winningTeam) );
         Debug.Log("Game Over");
         Debug.Log(winningTeam + "won the game");
-		
+
         EndOfRound();
     }
 
@@ -137,35 +162,12 @@ public class GameManager : MonoBehaviour {
                 team1score += points;
                 break;
             }
-                
+
             case eTeam.TEAM_BLUE:
             {
                 team2score += points;
                 break;
             }
-        }
-    }
-
-    public void ChangeState( eGameState state ) {
-        mGameState = state;
-
-        // disable all cameras and turn scrubbers off
-        rockCam.enabled = false;
-        playerCam.enabled = false;
-        bullseyeCam.enabled = false;
-        //Scrubbers(false);
-
-        if ( state == eGameState.ePlayer ) {
-            playerCam.enabled = true;
-        }
-
-        if ( state == eGameState.eRock ) {
-            rockCam.enabled = true;
-            Scrubbers(true);
-        }
-
-        if (state == eGameState.eBullseye) {
-            bullseyeCam.enabled = true;
         }
     }
 
@@ -229,9 +231,15 @@ public class GameManager : MonoBehaviour {
 		return roundCounter;
 	}
 
-    private void Scrubbers(bool setting) {
-        foreach(BrushTest scrub in FindObjectsOfType<BrushTest>()) {
-            scrub.meshRenderer.enabled = setting;
-        }
+    public void HUDResetPosition() {
+        //turn hud reset position on for half a second
+    }
+
+    public void HUDDisqualified() {
+        //tell player disqualified they passed the hogline
+    }
+
+    public void HUDBrushNow() {
+        //tell player to brush now by moving the mouse up and down fast
     }
 }
