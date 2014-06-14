@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour {
         int i = 0;
 
         foreach (Rock stone in FindObjectsOfType<Rock>()) {
-            if ((stone.IsPickedUp() || !stone.IsFired()) && stone.team == GameManager.eTeam.TEAM_RED) {
+            if ((stone.IsPickedUp() || stone.InSupply()) && stone.team == GameManager.eTeam.TEAM_RED) {
 				i++;
 			}
         }
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour {
         int i = 0;
 
         foreach (Rock stone in FindObjectsOfType<Rock>()) {
-			if ((stone.IsPickedUp() || !stone.IsFired()) && stone.team == GameManager.eTeam.TEAM_BLUE) {
+			if ((stone.IsPickedUp() || stone.InSupply()) && stone.team == GameManager.eTeam.TEAM_BLUE) {
                 i++;
             }
         }
