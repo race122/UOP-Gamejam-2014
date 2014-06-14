@@ -1,21 +1,8 @@
 ﻿<Properties>
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\BrushTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\ResolutionManager.cs">
     <Files>
-      <File FileName="Assets\Code\GameManager.cs" Line="155" Column="37" />
-      <File FileName="Assets\Code\MainMenuScript.cs" Line="32" Column="18" />
-      <File FileName="Assets\Code\Rock.cs" Line="137" Column="2" />
-      <File FileName="Assets\Code\BrushTest.cs" Line="46" Column="5" />
-      <File FileName="Assets\Code\ScrubbersMovement.cs" Line="21" Column="26" />
-      <File FileName="Assets\Code\ScrubbersMovementR.cs" Line="21" Column="20" />
-      <File FileName="Assets\Code\Player.cs" Line="94" Column="6" />
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\BrushTest.cs">
-    <Files>
-      <File FileName="Assets\Code\BrushTest.cs" Line="177" Column="1" />
->>>>>>> 3c07583afe6b69cec518e9016ccf15090fb7aa6b
+      <File FileName="Assets\Code\ResolutionManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
