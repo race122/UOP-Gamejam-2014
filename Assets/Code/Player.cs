@@ -20,9 +20,9 @@ public class Player : MonoBehaviour {
 
 
 	private float speed =							0.0f;
-	private float acceleration =					0.02f;
+	private float acceleration =					0.015f;
 	private const float MAX_SPEED =					0.06f;
-	private float sensitivity =						6.0f;
+	private float sensitivity =						3.0f;
     private float frictionValue =                   0.2f;
     private float slowestSpeed =                    0.075f;
     private float maxLookAngle =                    10f;
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
 
     private int DEFAULT_FORCE =                     85;
 
-    private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 0.1f, -61.5f);
+    private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 0.2f, -61.5f);
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  new Vector3(0f, 5f, -3f);
     private Vector3 HOGLINE_POSITION =              Vector3.zero;
     private float BOUNDARY_RESTRICTION_X_OFFSET =   7f;
@@ -58,6 +58,8 @@ public class Player : MonoBehaviour {
 		Look();
         UpdateFriction();
         UpdateAnimation();
+        Screen.lockCursor = true;
+        Screen.showCursor = false;
 	}
 
 	public void Move() {
