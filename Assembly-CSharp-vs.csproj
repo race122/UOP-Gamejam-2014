@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Code\AnimTest.cs" />
-     <Compile Include="Assets\Code\BrushTest.cs" />
+     <Compile Include="Assets\Code\Brusher.cs" />
      <Compile Include="Assets\Code\CameraTrolley.cs" />
      <Compile Include="Assets\Code\Credits.cs" />
      <Compile Include="Assets\Code\EndRoundScript.cs" />

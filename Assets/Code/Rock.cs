@@ -28,7 +28,7 @@ public class Rock : MonoBehaviour
     private float frictionValue;
     private float slowestSpeed =                0.075f;
 
-    private float FRICTION_MAX =                0.35f;
+    private float FRICTION_MAX =                0.325f;
     private float FRICTION_MIN =                0.1f;
     private float COMMENTATOR_DELAY =           3.0f;
 
@@ -127,7 +127,11 @@ public class Rock : MonoBehaviour
 
     private void UpdateFriction() {
         if (IsMoving()) {
-            rigidbody.AddForce(rigidbody.velocity * frictionValue * -1f);
+            if (rigidbody.velocity.magnitude > 3.2f) {
+                rigidbody.AddForce(rigidbody.velocity * frictionValue * -1f);
+            } else {
+                rigidbody.AddForce(rigidbody.velocity * frictionValue * -2f);
+            }
         }
     }
 

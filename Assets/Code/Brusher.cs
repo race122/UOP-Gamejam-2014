@@ -1,18 +1,31 @@
-﻿using UnityEngine;
+﻿/*
+	FILE:			Brusher.cs
+	AUHTOR:			Krz, Chris
+	PROJECT:		Geri-Lynn Ramsey's Xtreme Curling 2014
+	SOUNDTRACK:		Bullitnuts - Dark Horse
+
+	DESCRIPTION:	The brush control script
+*/
+
+
+using UnityEngine;
 using System.Collections;
 
-public class BrushTest : MonoBehaviour {
+public class Brusher : MonoBehaviour {
 	//x/y mouse position coords
-    private float MousePositionX;
+    private float mousePositionX;
 	
 	//get scrub motion
     private bool leftClip;
     private bool rightClip;
+
+    private float farLeft = 0f;
+    private float farRight = 0f;
+    private bool movingLeft = true;
     
     private float timeElapse = 0;   //elapsed time
     private float scrubPercent = 0;
-    private bool prevClipWasLeft = false;   //holds last frame clip (left/right state)
-    private int NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT = 4;
+    private int NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT = 8;
 
     void Start () {
 	}
@@ -30,14 +43,6 @@ public class BrushTest : MonoBehaviour {
 	}                                               */
 	
 	void Update () {
-        //get mouse x position
-		MousePositionX = Input.mousePosition.x;
-
-        //Get clipping EW
-        rightClip = (MousePositionX > Screen.width * 0.5f);
-        leftClip = !(MousePositionX > Screen.width * 0.5f);
-
-		//scrub X axis
 		ScrubX();
 
         AnimationSpeed(scrubPercent);
@@ -62,17 +67,25 @@ public class BrushTest : MonoBehaviour {
 	}
 
 	private void ScrubX() {
+        //get mouse x position
+        mousePositionX = Input.mousePosition.x;
         timeElapse += Time.deltaTime;
 
-        if (!prevClipWasLeft && leftClip) {
-            timeElapse = 0;
+        if (mousePositionX < farLeft) {
+            if (!movingLeft) {
+                timeElapse = 0;
+            }
+            farLeft = mousePositionX;
+            farRight = mousePositionX;
+            movingLeft = true;
+        } else if (mousePositionX > farRight) {
+            if (movingLeft) {
+                timeElapse = 0;
+            } 
+            farLeft = mousePositionX;
+            farRight = mousePositionX;
+            movingLeft = false;
         }
-
-        if (rightClip && prevClipWasLeft) {
-            timeElapse = 0;
-        }
-
-        prevClipWasLeft = leftClip;
 
         scrubPercent = Mathf.Clamp(1f - (timeElapse * NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT),0f,1f);
 	}
