@@ -10,7 +10,7 @@ using UnityEngine;
 using System.Collections;
 
 public class ResolutionManager : MonoBehaviour {
-    private new Camera camera = FindObjectOfType<Camera>();
+        public Camera camera;
 
     	void Start () {
             float screenAspectRatio = (float)Screen.width / (float)Screen.height;
