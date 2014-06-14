@@ -185,11 +185,11 @@ public class GameManager : MonoBehaviour {
 	}
 
     public bool IsTeamOne() {
-        return (FindObjectOfType<Player>().team == eTeam.TEAM_RED);
+        return (FindObjectOfType<Player>().GetTeam() == eTeam.TEAM_RED);
     }
 
     public bool IsTeamTwo() {
-        return (FindObjectOfType<Player>().team == eTeam.TEAM_BLUE);
+        return (FindObjectOfType<Player>().GetTeam() == eTeam.TEAM_BLUE);
     }
 
 	public static int TeamOneStonesLeft() {
