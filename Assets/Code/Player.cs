@@ -327,4 +327,8 @@ public class Player : MonoBehaviour {
             GameManager.Singleton().HUDResetPosition();
         }
     }
+
+    public GameManager.eTeam GetTeam() {
+        return stoneClone.team;
+    }
 }
