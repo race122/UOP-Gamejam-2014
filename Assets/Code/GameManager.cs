@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
     public GUIText hudDisqualified;
     public GUIText hudResetPosition;
     public GUIText hudBrushNow;
-    public eTeam firstTeam;
+    public static eTeam firstTeam=eTeam.TEAM_BLUE;
 
     public enum eGameState {
         ePlayer = 0,
@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour {
         int i = 0;
 
         foreach (Rock stone in FindObjectsOfType<Rock>()) {
-			if ((stone.IsPickedUp() || stone.InSupply()) && stone.team == GameManager.eTeam.TEAM_RED) {
+			if (stone.IsPickedUp() && stone.team == GameManager.eTeam.TEAM_RED) {
 				i++;
 			}
         }
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour {
         int i = 0;
 
         foreach (Rock stone in FindObjectsOfType<Rock>()) {
-			if ((stone.IsPickedUp() || stone.InSupply()) && stone.team == GameManager.eTeam.TEAM_BLUE) {
+			if (stone.IsPickedUp() && stone.team == GameManager.eTeam.TEAM_BLUE) {
                 i++;
             }
         }
