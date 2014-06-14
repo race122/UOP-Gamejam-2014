@@ -56,6 +56,7 @@
      <Compile Include="Assets\Code\MainMenuScript.cs" />
      <Compile Include="Assets\Code\OptionsMenuScript.cs" />
      <Compile Include="Assets\Code\Player.cs" />
+     <Compile Include="Assets\Code\ResolutionManager.cs" />
      <Compile Include="Assets\Code\Rock.cs" />
      <Compile Include="Assets\Code\ScrubbersMovement.cs" />
   </ItemGroup>
