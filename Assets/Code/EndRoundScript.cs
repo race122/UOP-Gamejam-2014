@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EndRoundScript : MonoBehaviour {
@@ -15,6 +15,7 @@ public class EndRoundScript : MonoBehaviour {
 	void Start () {
 		//roundWinner.text = "This guy won";
 		Screen.lockCursor = false;
+		Screen.showCursor = true;
 		updateRoundNumber ();
 
 		//I think it's more efficient to call GameManagers.getScore method once
@@ -24,7 +25,7 @@ public class EndRoundScript : MonoBehaviour {
 		updateRoundScore (scores);
 
 	}
-	
+
 	void OnGUI() {
 		if (GUI.Button (new Rect (Screen.width / 2 - 200, Screen.height / 2 + 80, 100, 50), "Next Round")) {
 			Application.LoadLevel("RinkMain");
@@ -38,17 +39,17 @@ public class EndRoundScript : MonoBehaviour {
 	private void updateRoundScore(int[] scores) {
 		roundScores.text = "RED TEAM: " + scores [0] + "\n" + "BLUE TEAM: " + scores [1];
 	}
-	
+
 	private void UpdateRoundWinner(int[] scores) {
 		//int[] scores = GameManager.getScore ();
 		if (scores [0] > scores [1]) {
             roundWinner.guiText.color = redTeamTextColor;
             roundWinner.guiText.text = "RED TEAM WINS!";
-		} 
+		}
 		else if (scores [0] < scores [1]) {
             roundWinner.guiText.color = blueTeamTextColor;
             roundWinner.guiText.text = "BLUE TEAM WINS!";
-		} 
+		}
 		else {
             roundWinner.guiText.text = "TEAMS ARE TIED!";
 		}
