@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour {
 
         if (state == eGameState.eBullseye) {
             // i dont think this ever gets used =[ -Krz
+            EndOfRound();
             bullseyeCam.enabled = true;
         }
     }
@@ -103,12 +104,10 @@ public class GameManager : MonoBehaviour {
         GivePoints(winningTeam, GetEnemyClosestToBullseye(winningTeam) );
         Debug.Log("Game Over");
         Debug.Log(winningTeam + "won the game");
-
-        EndOfRound();
     }
 
     private void EndOfRound() {
-		//Added by Aidan
+        UpdateScores();
 		roundCounter++;
 		print ("Round number: " + roundCounter.ToString ());
 		Application.LoadLevel ("EndOfRound");

@@ -26,17 +26,17 @@ public class ScrubbersMovement : MonoBehaviour {
 
         if (GameManager.Singleton().GetGameState() == GameManager.eGameState.eRock) {
             //elastic
-            difference = currentRockPosition - transform.position;
+            difference = currentRockPosition;
             //offset
             difference.x -= 1;
 
             // move the right scrubber
             if (name == "ScrubberRight") {
-                difference.z += 3;
+                difference.z += 10f;
             }
 
             //move
-            transform.position += difference * 0.5f;
+            transform.position += difference;
         } else {
             transform.position = new Vector3(0f, 100f, 0f);         // put them in heaven?
         }
