@@ -39,11 +39,13 @@ public class Player : MonoBehaviour {
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  new Vector3(0f, 5f, -3f);
     private Vector3 HOGLINE_POSITION =              Vector3.zero;
     private float BOUNDARY_RESTRICTION_X_OFFSET =   7f;
-    private float BOUNDARY_RESTRICTION_Z_OFFSET =   32f;
+    private float BOUNDARY_RESTRICTION_Z_OFFSET =   34f;
+    private int DELAY_BETWEEN_CAMERA_SWITCH =       3;
 
 	void Start() {
 	    HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
         ROCK_CAMERA_DEFAULT_POSITION =   PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
+        transform.position =             PLAYER_DEFAULT_POSITION;
         
         SwitchState(GameManager.eGameState.ePlayer);
         GiveStone();
@@ -144,12 +146,18 @@ public class Player : MonoBehaviour {
 
 			// apply our current velocity to the stone
 			stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
-            
 
 			SwitchState(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
-			stoneClone.Fire();                              //this will call StoneFired() when the stone stops moving
+			stoneClone.Fire();                             //this will call StoneFired() when the stone stops moving
+            StartCoroutine( AllowRockToPassCameraBack() );
     	}
 	}
+
+    private IEnumerator AllowRockToPassCameraBack() {
+        yield return new WaitForSeconds(DELAY_BETWEEN_CAMERA_SWITCH);
+
+        stoneClone.CanSwitchCameraBack();
+    }
 
     // resets the stone after being fired
     public void StoneFired() {
@@ -314,9 +322,9 @@ public class Player : MonoBehaviour {
         // if player is already out of bounds disqualify them && "Z-kill"
         if ( !CanMoveInDirection(Vector3.zero) || transform.position.y < -10 ) {
             RespawnPlayer();
-        }
 
-        // tell player their position was reset
-        GameManager.Singleton().HUDResetPosition();
+            // tell player their position was reset
+            GameManager.Singleton().HUDResetPosition();
+        }
     }
 }

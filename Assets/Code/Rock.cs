@@ -24,12 +24,13 @@ public class Rock : MonoBehaviour
     // local variables
     // --------------------------------------
     public GameManager.eTeam team;
-    private bool inSupply, isPickedUp, isFiring;
+    private bool inSupply, isPickedUp, isFiring, hasJustFired;
     private float frictionValue;
     private float slowestSpeed =                0.075f;
 
     private float FRICTION_MAX =                0.5f;
     private float FRICTION_MIN =                0.2f;
+    private float COMMENTATOR_DELAY =           1.5f;
 
     private Vector3 BULLSEYE_POSITION;
     
@@ -41,6 +42,7 @@ public class Rock : MonoBehaviour
         inSupply =                  true;
         isPickedUp =                false;
         isFiring =                  false;
+        hasJustFired =              false;
         frictionValue =             FRICTION_MAX;
         BULLSEYE_POSITION =         GameObject.FindGameObjectWithTag("Bullseye").transform.position;
         sphereCollider =            GetComponent<SphereCollider>();
@@ -48,9 +50,10 @@ public class Rock : MonoBehaviour
     }
 
     void Update() {
+        UpdateFriction();               //this must be first
 		UpdateCamera();
+        UpdateCommentator();
         StopMovingSlow();
-        UpdateFriction();
     }
 
     public float DistanceFromBullseye() {
@@ -82,18 +85,23 @@ public class Rock : MonoBehaviour
     public void Fire() {
         isPickedUp =            false;
         isFiring =              true;
+        hasJustFired =          true;
     }
 
-	private void PlayCommentatorSound()
-	{
-		if (audio.isPlaying) 
-		{
+	private void PlayCommentatorSound() {
+		if (audio.isPlaying) {
 			return;
 		}
 
 		audio.clip = commentatorSounds[ Random.Range( 0, commentatorSounds.Length ) ];
-		audio.PlayDelayed(0.7f);
+		audio.PlayDelayed(COMMENTATOR_DELAY);
 	}
+
+    private void UpdateCommentator() {
+        if (isFiring) {
+            PlayCommentatorSound();
+        }
+    }
 
     public bool InSupply() {
         return inSupply;
@@ -136,8 +144,7 @@ public class Rock : MonoBehaviour
     }
 
     private void UpdateCamera() {
-        if (isFiring) {
-			PlayCommentatorSound ();
+        if (isFiring && !hasJustFired) {
             if (!IsMoving()) {
                 player.StoneFired();
                 isFiring = false;
@@ -153,5 +160,9 @@ public class Rock : MonoBehaviour
 
     public Vector3 GetPosition() {
         return transform.position;
+    }
+
+    public void CanSwitchCameraBack() {
+        hasJustFired = false;
     }
 }

@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour {
         rockCam.enabled =       false;
         playerCam.enabled =     false;
         bullseyeCam.enabled =   false;
+        HUDBrushNow(false);
 
         if (state == eGameState.ePlayer) {
             playerCam.enabled = true;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour {
 
         if (state == eGameState.eRock) {
             rockCam.enabled =   true;
+            HUDBrushNow(true);
         }
 
         if (state == eGameState.eBullseye) {
@@ -232,13 +234,34 @@ public class GameManager : MonoBehaviour {
 
     public void HUDResetPosition() {
         //turn hud reset position on for half a second
+        if (!hudResetPosition.guiText.enabled) {
+            hudResetPosition.guiText.enabled = true;
+            StartCoroutine(HUDResetPositionCont());
+        }
+    }
+
+    public IEnumerator HUDResetPositionCont() {
+        yield return new WaitForSeconds(1);
+
+        hudResetPosition.guiText.enabled = false;
     }
 
     public void HUDDisqualified() {
         //tell player disqualified they passed the hogline
+        if (!hudDisqualified.guiText.enabled) {
+            hudDisqualified.guiText.enabled = true;
+            StartCoroutine(HUDDisqualifiedCont());
+        }
     }
 
-    public void HUDBrushNow() {
+    public IEnumerator HUDDisqualifiedCont() {
+        yield return new WaitForSeconds(1);
+
+        hudDisqualified.guiText.enabled = false;
+    }
+
+    private void HUDBrushNow(bool setting) {
         //tell player to brush now by moving the mouse up and down fast
+        hudBrushNow.guiText.enabled = setting;
     }
 }

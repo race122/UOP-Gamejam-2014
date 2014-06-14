@@ -48,8 +48,10 @@ public class HudScript : MonoBehaviour {
 
 	//A function that updates the display for the current team
 	// Dan: Surely then, this would be better called "UpdateCurrentTeam()"?
+    // Krz: okay i renamed it for you :p
 	private void UpdateCurrentTeam() {
 		// Dan: My way is better...
+        currentTeam.guiText.enabled =           (GameManager.Singleton().GetGameState() == GameManager.eGameState.ePlayer);     //only display when the play is making their shot
 		currentTeam.guiText.text =				GameManager.Singleton().IsTeamOne() ? "RED TEAM MAKE YOUR SHOT" : "BLUE TEAM MAKE YOUR SHOT";
 		currentTeam.guiText.material.color =	GameManager.Singleton().IsTeamOne() ? redTeamTextColor : blueTeamTextColor;
 	}
