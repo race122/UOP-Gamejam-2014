@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
 
     private int DEFAULT_FORCE =                     85;
 
-    private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 1.5f, -61.5f);
+    private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 0.1f, -61.5f);
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  new Vector3(0f, 5f, -3f);
     private Vector3 HOGLINE_POSITION =              Vector3.zero;
     private float BOUNDARY_RESTRICTION_X_OFFSET =   7f;
@@ -43,9 +43,9 @@ public class Player : MonoBehaviour {
     private int DELAY_BETWEEN_CAMERA_SWITCH =       3;
 
 	void Start() {
-	    HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
-        ROCK_CAMERA_DEFAULT_POSITION =   PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
-        transform.position =             PLAYER_DEFAULT_POSITION;
+	    HOGLINE_POSITION =                          GameObject.FindGameObjectWithTag("Hogline").transform.position;
+        ROCK_CAMERA_DEFAULT_POSITION =              PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
+        transform.position =                        PLAYER_DEFAULT_POSITION;
         
         SwitchState(GameManager.eGameState.ePlayer);
         GiveStone();
@@ -110,7 +110,7 @@ public class Player : MonoBehaviour {
 			if ( stone.InSupply() && stone.team == team ) {
 				stoneClone =					stone;
                 stoneClone.transform.parent =   null;
-                stoneClone.transform.position = transform.position + (transform.forward + transform.forward);
+                stoneClone.transform.position = transform.position + (transform.forward + transform.forward + new Vector3(0f,-1.5f,0f));
                 ResetRockCamera();
                 rockCamera.transform.parent =   stoneClone.transform;
                 stone.Pickup();
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour {
 
 	public void UpdateStone() {
 		if ( stoneClone.IsPickedUp() ) {
-			stoneClone.transform.position = transform.position + ( transform.forward + transform.forward );
+            stoneClone.transform.position = transform.position + (transform.forward * 4f);
 			if ( canShoot && IsMoving() ) {
 				if ( Input.GetMouseButtonDown( 0 ) ) {
 					ShootStone();

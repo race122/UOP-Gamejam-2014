@@ -27,13 +27,13 @@ public class ScrubbersMovement : MonoBehaviour {
         if (GameManager.Singleton().GetGameState() == GameManager.eGameState.eRock) {
             //elastic
             difference = currentRockPosition;
-            //offset
-            difference.x -= 1;
-
-            // move the right scrubber
+            
+            // offset the scrubbers
             if (name == "ScrubberRight") {
-                difference.x += 3f;
+                difference.x += 1.5f;
                 difference.z += 3f;
+            } else {
+                difference.x -= 1.5f;
             }
 
             //move
