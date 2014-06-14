@@ -32,11 +32,12 @@ public class ScrubbersMovement : MonoBehaviour {
 
             // move the right scrubber
             if (name == "ScrubberRight") {
-                difference.z += 10f;
+                difference.x += 3f;
+                difference.z += 3f;
             }
 
             //move
-            transform.position += difference;
+            transform.position = difference;
         } else {
             transform.position = new Vector3(0f, 100f, 0f);         // put them in heaven?
         }

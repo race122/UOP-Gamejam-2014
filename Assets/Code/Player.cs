@@ -71,6 +71,11 @@ public class Player : MonoBehaviour {
                 rigidbody.AddForce(direction * DEFAULT_FORCE);
             }
 
+            if (HOGLINE_POSITION.z - transform.position.z < 0) {
+                passedTheLine = true;
+                Disqualify();
+            }
+
             // only apply accel while below max speed and pressing movement keys
 			if ( speed < MAX_SPEED && MovementKeysPressed() ) {
 				speed += acceleration;
@@ -125,14 +130,6 @@ public class Player : MonoBehaviour {
 		if ( stoneClone.IsPickedUp() ) {
 			stoneClone.transform.position = transform.position + ( transform.forward + transform.forward );
 			if ( canShoot && IsMoving() ) {
-				// Turns out the order in which you do the delta matters.
-				// Having this the other way around caused a bug...
-				if ( HOGLINE_POSITION.z - transform.position.z <= 0 ) {
-					passedTheLine = true;
-					Disqualify();
-					StoneFired();
-				}
-
 				if ( Input.GetMouseButtonDown( 0 ) ) {
 					ShootStone();
 				}
@@ -168,8 +165,7 @@ public class Player : MonoBehaviour {
 
     private void EndOfTurn() {
         // if i've been the same team for the last 2 turns switch team
-        if ( teamPrev == team )
-        {
+        if ( teamPrev == team ) {
             SwitchTeam();
         } else {
             teamPrev = team;
@@ -268,10 +264,23 @@ public class Player : MonoBehaviour {
     }
 
     public void Disqualify() {
-    	float disqualifyOffset =		GameManager.Singleton().BACK_OF_HOUSE_POSITION.z - 1.0f;
-    	Vector3 pos =					stoneClone.transform.position;
-    	stoneClone.transform.position =	new Vector3( pos.x, pos.y, disqualifyOffset );
+        // tell player they have been disqualified
+        GameManager.Singleton().HUDDisqualified();
+        canControl = false;
+        canShoot = false;
+        
+        StartCoroutine( DisqualifyCont() );
     }
+
+    IEnumerator DisqualifyCont() {
+        yield return new WaitForSeconds(1);
+
+        float disqualifyOffset = GameManager.Singleton().BACK_OF_HOUSE_POSITION.z - 1.0f;
+        Vector3 pos = stoneClone.transform.position;
+        stoneClone.transform.position = new Vector3(pos.x, pos.y, disqualifyOffset);
+        StoneFired();
+    }
+
 
     private bool CanMoveInDirection(Vector3 direction) {
         Vector3 newPosition = transform.position + direction;
