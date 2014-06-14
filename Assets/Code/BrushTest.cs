@@ -12,7 +12,7 @@ public class BrushTest : MonoBehaviour {
     private float timeElapse = 0;   //elapsed time
     private float scrubPercent = 0;
     private bool prevClipWasLeft = false;   //holds last frame clip (left/right state)
-    private int NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT = 3;
+    private int NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT = 6;
 
 	Vector3 scrubVector = new Vector3(0, 0, 0);
 
