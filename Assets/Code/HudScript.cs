@@ -9,8 +9,8 @@ public class HudScript : MonoBehaviour {
 	public Texture2D redStones;
 	public Texture2D blueStones;
 
-	public Texture2D hudPointer;
-	public Texture2D hudArc;
+	//public Texture2D hudPointer;
+	//public Texture2D hudArc;
 
     private int redOffset = 40;
     private int blueOffset = 40;
@@ -37,7 +37,8 @@ public class HudScript : MonoBehaviour {
 		UpdateScores ();
 		UpdateCurrentPlayer ();
         UpdateStoneCounter ();
-		DrawStoneDirection (); //may remove this if we can't get it done in time
+		//DrawStoneDirection (); //may remove this if we can't get it done in time
+        // it wasnt done in time... removed -Krz
 	}
 
 	//A function that updates the display for teams current scores
@@ -92,7 +93,7 @@ public class HudScript : MonoBehaviour {
 		redOffset =		0;
 		blueOffset =	0;
 	}
-
+    /*
 	private void DrawStoneDirection() {
 		//GUI.DrawTexture( new Rect( (  ) ) );
 		//float theta = Vector3.Dot( Vector3 lhs, Vector3 rhs );
@@ -101,6 +102,6 @@ public class HudScript : MonoBehaviour {
 		GUI.DrawTexture (new Rect ((Screen.width) * 0.49f, (Screen.height) * 0.81f, 32, 32), hudPointer);
 		GUI.DrawTexture (new Rect ((Screen.width) * 0.4f, (Screen.height) * 0.85f, 256, 64), hudArc);
 	}
-
+*/
 
 }
