@@ -41,7 +41,7 @@ public class HudScript : MonoBehaviour {
 
 	//A function that updates the display for teams current scores
 	private void UpdateScores() {
-		int[] scores = GameManager.getScore ();
+		int[] scores = GameManager.GetScore ();
 		score1.guiText.text = "RED TEAM: " + scores[0].ToString();
         score2.guiText.text = "BLUE TEAM: " + scores[1].ToString();
 	}

@@ -6,6 +6,10 @@ public class EndRoundScript : MonoBehaviour {
 	public GUIText roundWinner;
 	public GUIText roundNumber;
 	public GUIText roundScores;
+
+    private Color32 redTeamTextColor = new Color32(248, 18, 18, 255);
+    private Color32 blueTeamTextColor = new Color32(30, 91, 229, 255);
+
 	//public string buttonName;
 	// Use this for initialization
 	void Start () {
@@ -15,7 +19,7 @@ public class EndRoundScript : MonoBehaviour {
 
 		//I think it's more efficient to call GameManagers.getScore method once
 		//and then pass array to both functions
-		int[] scores = GameManager.getScore ();
+		int[] scores = GameManager.GetScore ();
 		UpdateRoundWinner (scores);
 		updateRoundScore (scores);
 
@@ -28,23 +32,25 @@ public class EndRoundScript : MonoBehaviour {
 	}
 
 	private void updateRoundNumber() {
-		roundNumber.text = "Round: " + GameManager.getRoundNumber ();
+		roundNumber.text = "Round: " + GameManager.GetRoundNumber();
 	}
 
 	private void updateRoundScore(int[] scores) {
-		roundScores.text = "Red Team: " + scores [0] + "\n" + "Blue Team: " + scores [1];
+		roundScores.text = "RED TEAM: " + scores [0] + "\n" + "BLUE TEAM: " + scores [1];
 	}
 	
 	private void UpdateRoundWinner(int[] scores) {
 		//int[] scores = GameManager.getScore ();
 		if (scores [0] > scores [1]) {
-			roundWinner.text = "Red Team wins!";
+            roundWinner.guiText.color = redTeamTextColor;
+            roundWinner.guiText.text = "RED TEAM WINS!";
 		} 
 		else if (scores [0] < scores [1]) {
-			roundWinner.text = "Blue Team wins!";
+            roundWinner.guiText.color = blueTeamTextColor;
+            roundWinner.guiText.text = "BLUE TEAM WINS!";
 		} 
 		else {
-			roundWinner.text = "Round Draw!";
+            roundWinner.guiText.text = "TEAMS ARE TIED!";
 		}
 	}
 }

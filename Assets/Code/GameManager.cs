@@ -11,7 +11,7 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-	public static float volume = checkVolume();
+	public static float volume = CheckVolume();
     private static int team1score = 0, team2score = 0;
     public GameObject stonesDeposit;
     public Camera playerCam;
@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour {
     public Camera bullseyeCam;
     private eGameState mGameState;
     private Player player;
-	//Added by Aidan
 	private static int roundCounter;
     public Vector3 BACK_OF_HOUSE_POSITION;
     public Vector3 GUARD_LINE_POSITION;
@@ -37,6 +36,7 @@ public class GameManager : MonoBehaviour {
         Screen.showCursor =         false;
 		ChangeState                 (eGameState.ePlayer);
         player =                    FindObjectOfType<Player>();
+        roundCounter =              1;
 
         BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
         GUARD_LINE_POSITION =       GameObject.FindGameObjectWithTag("GuardLine").transform.position;
@@ -67,14 +67,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-	private static float checkVolume() {
-		if ( PlayerPrefs.HasKey("volume") )
-		{
+	private static float CheckVolume() {
+		if ( PlayerPrefs.HasKey("volume") ) {
 			volume = PlayerPrefs.GetFloat( "volume" );
 			return volume;
-		}
-		else
-		{
+		} else {
 			volume = 1.0f;
 		}
 
@@ -182,7 +179,7 @@ public class GameManager : MonoBehaviour {
 		PlayerPrefs.Save();
 	}
 
-	public static int[] getScore() {
+	public static int[] GetScore() {
 		int[] scores = {team1score, team2score};
 		return scores;
 	}
@@ -228,7 +225,7 @@ public class GameManager : MonoBehaviour {
     }
 
 	//Added by Aidan
-	public static int getRoundNumber() {
+	public static int GetRoundNumber() {
 		return roundCounter;
 	}
 
