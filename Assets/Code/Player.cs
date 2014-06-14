@@ -38,35 +38,31 @@ public class Player : MonoBehaviour {
     private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 1.5f, -61.5f);
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  new Vector3(0f, 5f, -3f);
     private Vector3 HOGLINE_POSITION =              Vector3.zero;
-    private Vector3 STONE_SPAWN_OFFSET =            new Vector3(0f, -1f, 2.5f);
     private float BOUNDARY_RESTRICTION_X_OFFSET =   7f;
-    private float BOUNDARY_RESTRICTION_Z_OFFSET =   32f;
+    private float BOUNDARY_RESTRICTION_Z_OFFSET =   34f;
+    private int DELAY_BETWEEN_CAMERA_SWITCH =       3;
 
 	void Start() {
 	    HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
         ROCK_CAMERA_DEFAULT_POSITION =   PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
+        transform.position =             PLAYER_DEFAULT_POSITION;
         
-        SwitchCamera(GameManager.eGameState.ePlayer);
+        SwitchState(GameManager.eGameState.ePlayer);
         GiveStone();
 	}
 
     void Update() {
-        UpdateStone();      // this needs to go first
+        UpdateStone();            // this needs to go first
         ResetIfOutOfBounds();
 		Move();
 		Look();
         UpdateFriction();
         UpdateAnimation();
-
-		if ( speed >= (acceleration * 2f) && !MovementKeysPressed() ) {
-		 	speed -= acceleration;
-		}
 	}
 
 	public void Move() {
 		if ( canControl ) {
 			float dz =				Input.GetAxis( "Vertical" );
-
 			dz =					Mathf.Clamp( dz, -(speed * 0.5f), speed );
 
             Vector3 direction = new Vector3(0f, 0f, dz);
@@ -75,6 +71,11 @@ public class Player : MonoBehaviour {
                 direction = transform.TransformDirection(direction);
                 // move player
                 rigidbody.AddForce(direction * DEFAULT_FORCE);
+            }
+
+            if (HOGLINE_POSITION.z - transform.position.z < 0) {
+                passedTheLine = true;
+                Disqualify();
             }
 
             // only apply accel while below max speed and pressing movement keys
@@ -97,10 +98,6 @@ public class Player : MonoBehaviour {
 		dx += Input.GetAxis( "Mouse X" ) * sensitivity;
         dx = Mathf.Clamp( dx, -maxLookAngle, maxLookAngle );
         transform.Rotate( 0f, -dx, 0f );
-
-        Quaternion totalRotation = transform.rotation;
-        float yaw = totalRotation.y;
-
         transform.rotation = Quaternion.Euler( transform.rotation.x, dx + transform.rotation.y, transform.rotation.z );
 	}
     
@@ -135,14 +132,6 @@ public class Player : MonoBehaviour {
 		if ( stoneClone.IsPickedUp() ) {
 			stoneClone.transform.position = transform.position + ( transform.forward + transform.forward );
 			if ( canShoot && IsMoving() ) {
-				// Turns out the order in which you do the delta matters.
-				// Having this the other way around caused a bug...
-				if ( HOGLINE_POSITION.z - transform.position.z <= 0 ) {
-					passedTheLine = true;
-					Disqualify();
-					StoneFired();
-				}
-
 				if ( Input.GetMouseButtonDown( 0 ) ) {
 					ShootStone();
 				}
@@ -157,12 +146,18 @@ public class Player : MonoBehaviour {
 
 			// apply our current velocity to the stone
 			stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
-            
 
-			SwitchCamera(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
-			stoneClone.Fire();                              //this will call StoneFired() when the stone stops moving
+			SwitchState(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
+			stoneClone.Fire();                             //this will call StoneFired() when the stone stops moving
+            StartCoroutine( AllowRockToPassCameraBack() );
     	}
 	}
+
+    private IEnumerator AllowRockToPassCameraBack() {
+        yield return new WaitForSeconds(DELAY_BETWEEN_CAMERA_SWITCH);
+
+        stoneClone.CanSwitchCameraBack();
+    }
 
     // resets the stone after being fired
     public void StoneFired() {
@@ -178,8 +173,7 @@ public class Player : MonoBehaviour {
 
     private void EndOfTurn() {
         // if i've been the same team for the last 2 turns switch team
-        if ( teamPrev == team )
-        {
+        if ( teamPrev == team ) {
             SwitchTeam();
         } else {
             teamPrev = team;
@@ -187,7 +181,7 @@ public class Player : MonoBehaviour {
 
         ClearUpBurnedStones();
 
-        SwitchCamera(GameManager.eGameState.ePlayer);
+        SwitchState(GameManager.eGameState.ePlayer);
     }
 
     private int StonesInSupply() {
@@ -201,7 +195,7 @@ public class Player : MonoBehaviour {
         return i;
     }
 
-	private void SwitchCamera( GameManager.eGameState state ) {
+	private void SwitchState( GameManager.eGameState state ) {
 		GameManager.Singleton().ChangeState( state );
     }
 
@@ -231,8 +225,7 @@ public class Player : MonoBehaviour {
     }
 
     private void EndOfRound() {
-        SwitchCamera(GameManager.eGameState.eBullseye);
-        GameManager.Singleton().UpdateScores();
+        SwitchState(GameManager.eGameState.eBullseye);
         //reset game or load a scene to show the winner
     }
 
@@ -268,6 +261,10 @@ public class Player : MonoBehaviour {
         if (IsMoving()) {
             rigidbody.AddForce(rigidbody.velocity * frictionValue * -1f);
         }
+
+        if (speed >= (acceleration * 2f) && !MovementKeysPressed()) {
+            speed -= acceleration;
+        }
     }
 
     public bool IsMoving() {
@@ -275,10 +272,23 @@ public class Player : MonoBehaviour {
     }
 
     public void Disqualify() {
-    	float disqualifyOffset =		GameManager.Singleton().BACK_OF_HOUSE_POSITION.z - 1.0f;
-    	Vector3 pos =					stoneClone.transform.position;
-    	stoneClone.transform.position =	new Vector3( pos.x, pos.y, disqualifyOffset );
+        // tell player they have been disqualified
+        GameManager.Singleton().HUDDisqualified();
+        canControl = false;
+        canShoot = false;
+        
+        StartCoroutine( DisqualifyCont() );
     }
+
+    IEnumerator DisqualifyCont() {
+        yield return new WaitForSeconds(1);
+
+        float disqualifyOffset = GameManager.Singleton().BACK_OF_HOUSE_POSITION.z - 1.0f;
+        Vector3 pos = stoneClone.transform.position;
+        stoneClone.transform.position = new Vector3(pos.x, pos.y, disqualifyOffset);
+        StoneFired();
+    }
+
 
     private bool CanMoveInDirection(Vector3 direction) {
         Vector3 newPosition = transform.position + direction;
@@ -312,6 +322,9 @@ public class Player : MonoBehaviour {
         // if player is already out of bounds disqualify them && "Z-kill"
         if ( !CanMoveInDirection(Vector3.zero) || transform.position.y < -10 ) {
             RespawnPlayer();
+
+            // tell player their position was reset
+            GameManager.Singleton().HUDResetPosition();
         }
     }
 }

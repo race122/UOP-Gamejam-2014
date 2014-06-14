@@ -9,8 +9,8 @@ public class HudScript : MonoBehaviour {
 	public Texture2D redStones;
 	public Texture2D blueStones;
 
-	public Texture2D hudPointer;
-	public Texture2D hudArc;
+	//public Texture2D hudPointer;
+	//public Texture2D hudArc;
 
     private int redOffset = 40;
     private int blueOffset = 40;
@@ -19,10 +19,8 @@ public class HudScript : MonoBehaviour {
     private int stonesLeftTeamTwo;
 
     private Color32 redTeamTextColor =	new Color32( 248, 18, 18, 255 );
-    private Color32 blueTeamTextColor =	new Color32( 131, 177, 219, 255 );
+    private Color32 blueTeamTextColor =	new Color32( 30, 91, 229, 255 );
 
-	//Rock[] stone;
-    
 	// Use this for initialization
 	void Start() {
 		//stone = FindObjectsOfType<Rock> ();
@@ -35,48 +33,37 @@ public class HudScript : MonoBehaviour {
 
 	void OnGUI() {
 		UpdateScores ();
-		UpdateCurrentPlayer ();
+		UpdateCurrentTeam ();
         UpdateStoneCounter ();
-		DrawStoneDirection (); //may remove this if we can't get it done in time
+		//DrawStoneDirection (); //may remove this if we can't get it done in time
+        // it wasnt done in time... removed -Krz
 	}
 
 	//A function that updates the display for teams current scores
 	private void UpdateScores() {
 		int[] scores = GameManager.getScore ();
-		score1.guiText.text = "Team 1: " + scores[0].ToString();
-		score2.guiText.text = "Team 2: " + scores[1].ToString();
+		score1.guiText.text = "RED TEAM: " + scores[0].ToString();
+        score2.guiText.text = "BLUE TEAM: " + scores[1].ToString();
 	}
 
 	//A function that updates the display for the current team
 	// Dan: Surely then, this would be better called "UpdateCurrentTeam()"?
-	private void UpdateCurrentPlayer() {
+    // Krz: okay i renamed it for you :p
+	private void UpdateCurrentTeam() {
 		// Dan: My way is better...
-		currentTeam.guiText.text =				GameManager.Singleton().IsTeamOne() ? "Red team's turn" : "Blue team's turn";
+        currentTeam.guiText.enabled =           (GameManager.Singleton().GetGameState() == GameManager.eGameState.ePlayer);     //only display when the play is making their shot
+		currentTeam.guiText.text =				GameManager.Singleton().IsTeamOne() ? "RED TEAM MAKE YOUR SHOT" : "BLUE TEAM MAKE YOUR SHOT";
 		currentTeam.guiText.material.color =	GameManager.Singleton().IsTeamOne() ? redTeamTextColor : blueTeamTextColor;
 	}
 
     private void UpdateStonesLeft() {
         stonesLeftTeamOne = GameManager.TeamOneStonesLeft();
         stonesLeftTeamTwo = GameManager.TeamTwoStonesLeft();
-
-
-        // check to see if the player still has the stone
-        //if (GameManager.Singleton().GetGameState() == GameManager.eGameState.ePlayer) {
-        //    if (GameManager.Singleton().IsTeamOne()) {
-        //        stonesLeftTeamOne++;
-        //    } else {
-        //        stonesLeftTeamTwo++;
-        //    }
-        //}
     }
 
 	private void UpdateStoneCounter() {
 		//Draw stones for team one
-		/*
-		if (stone.InSupply () && stone.team == GameManager.eTeam.TEAM_RED) {
-
-		}
-		*/
+		//if (stone.InSupply () && stone.team == GameManager.eTeam.TEAM_RED) {}
 		for (int i = 0; i < stonesLeftTeamOne; i++) {
 			GUI.DrawTexture (new Rect ((Screen.width) * 0.41f + redOffset, (Screen.height) * 0.02f, 32, 32), redStones);
 			redOffset += 40;
@@ -92,7 +79,7 @@ public class HudScript : MonoBehaviour {
 		redOffset =		0;
 		blueOffset =	0;
 	}
-
+    /*
 	private void DrawStoneDirection() {
 		//GUI.DrawTexture( new Rect( (  ) ) );
 		//float theta = Vector3.Dot( Vector3 lhs, Vector3 rhs );
@@ -101,6 +88,5 @@ public class HudScript : MonoBehaviour {
 		GUI.DrawTexture (new Rect ((Screen.width) * 0.49f, (Screen.height) * 0.81f, 32, 32), hudPointer);
 		GUI.DrawTexture (new Rect ((Screen.width) * 0.4f, (Screen.height) * 0.85f, 256, 64), hudArc);
 	}
-
-
+*/
 }

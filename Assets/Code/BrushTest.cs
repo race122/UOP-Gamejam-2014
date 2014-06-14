@@ -3,12 +3,9 @@ using System.Collections;
 
 public class BrushTest : MonoBehaviour {
 	//x/y mouse position coords
-	private float MousePositionY;
     private float MousePositionX;
 	
 	//get scrub motion
-    private bool bottomClip;
-    private bool topClip;
     private bool leftClip;
     private bool rightClip;
 	
@@ -23,10 +20,7 @@ public class BrushTest : MonoBehaviour {
 
 	Vector3 scrubVector = new Vector3(0, 0, 0);
 
-    public MeshRenderer meshRenderer;
-	
-	void Start () {
-       meshRenderer = GetComponent<MeshRenderer>();
+    void Start () {
 	}
 
 	//debug gui
@@ -34,8 +28,6 @@ public class BrushTest : MonoBehaviour {
 		// Make a background box
 		/*
 		GUI.Box(new Rect(50,50,160,160), "Y: " + MousePositionY.ToString()
-		        + "\n topClip: " + topClip
-		        + "\n bottomClip: " + bottomClip
 		        + "\n leftClip: " + leftClip
 		        + "\n rightClip: " + rightClip
 		        + "\n timeElapse: " + timeElapse
@@ -49,107 +41,66 @@ public class BrushTest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		MousePositionY = Input.mousePosition.y;
+        //get mouse x position
 		MousePositionX = Input.mousePosition.x;
 
-		//Get clipping NS
-		if (MousePositionY > Screen.height / 2)
-		{
-			topClip = true;
-			bottomClip = false;
-		}
-		if (MousePositionY < Screen.height / 2)
-		{
-			topClip = false;
-			bottomClip = true;
-		}
-		//EW
-		if (MousePositionX > Screen.width / 2)
-		{
-			rightClip = true;
-			leftClip = false;
-		}
-		if (MousePositionX < Screen.width / 2)
-		{
-			rightClip = false;
-			leftClip = true;
-		}
+        //Get clipping EW
+        rightClip = (MousePositionX > Screen.width / 2);
+        leftClip = !(MousePositionX > Screen.width / 2);
 
-		//scrub X axis
-		scrubX();
-
+		//scrub Y axis
+		scrubY();
 		
-		animationSpeed(scrubFinal);
-		setFriction(scrubFinal);
-		
-		//bleed off
+		// cap
 		if (scrubFinal >120) {
 			scrubFinal = 120.0f;
-				}
-		if (scrubFinal <= 0)
-		{
+		}
+
+        //bleed off
+		if (scrubFinal <= 0) {
 			scrubFinal = 0;
 			scrubVector.x = 0;
-		}
-		else
-		{
+		} else {
 			scrubFinal -= 0.7f;
 			scrubVector.x -= 0.5f;
 		}
+
+        animationSpeed(scrubFinal);
+        setFriction(scrubFinal);
 	}
 	
 	//change scrub animation speed by % of passed value.
-	void animationSpeed(float scrubPercent)
-	{
+	void animationSpeed(float scrubPercent) {
 		//play vareity of animations
-		if ((scrubPercent * 0.75) > 110f)
-		{
+		if ((scrubPercent * 0.75) > 110f) {
 			//max out animation - so no crazy speeds
 			animation["npc_action"].speed = 120f;
-		}
-		else if (scrubPercent > 0)
-		{
+		} else if (scrubPercent > 0) {
 			//normal
 			animation.CrossFade("npc_action");
 			animation["npc_action"].speed = scrubPercent / 75;
-		}
-		else
-		{
+		} else {
 			//no motion - play idle animation
 			animation.CrossFade("npc_running");
 		}
 	}
 
-	void setFriction(float scrubPercent)
-	{/*
-		if ((scrubPercent * 0.075) > 1.0f)
-		{
-			//pass max 1
-			//GameManager.Singleton().SetFriction(0);
-		}
-		else
-		{*/
-			GameManager.Singleton().SetFriction(1.0f - scrubPercent);
-		//}
+	void setFriction(float scrubPercent) {
+		GameManager.Singleton().SetFriction(1.0f - scrubPercent);
 	}
 
-	void scrubX()
-	{
+	void scrubY() {
 		//get scrub power
-		if (topClip == true)
-		{
+		if (leftClip == true) {
 			timeElapse += Time.deltaTime;
-			scrubPercent = 10 - (timeElapse * 100);
-			if (scrubPercent < 0)
-			{
+			scrubPercent = 1f - (timeElapse * 1000);
+			if (scrubPercent < 0) {
 				scrubPercent = 0;
 			}
 		}
 		
 		//reset
-		if (topClip == false)
-		{
+		if (rightClip == false) {
 			//count total scrub elapsed time
 			scrubValue += timeElapse;
 			
@@ -157,14 +108,10 @@ public class BrushTest : MonoBehaviour {
 			scrubVector.x = scrubFinal;
 			
 			//bleed off scrub percent
-			if (scrubPercent <= 0)
-			{
+			if (scrubPercent <= 0) {
 				scrubPercent = 0;
-			}
-			else
-			{
+			} else {
 				scrubPercent -= 0.5f;
-				
 			}
 			
 			//reset
@@ -172,8 +119,7 @@ public class BrushTest : MonoBehaviour {
 		}
 	}
 
-	void setAnimation(float value)
-	{
+	void setAnimation(float value) {
 		scrubFinal = value;
 	}
 }
