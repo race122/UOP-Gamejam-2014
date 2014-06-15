@@ -10,10 +10,10 @@ using UnityEngine;
 using System.Collections;
 
 public class ResolutionManager : MonoBehaviour {
-        public Camera camera;
+    public Camera camera;
 
-    	void Start () {
-            float screenAspectRatio = (float)Screen.width / (float)Screen.height;
+    void Start () {
+        float screenAspectRatio = (float)Screen.width / (float)Screen.height;
 
         if (screenAspectRatio > 1.77f) {
             camera.orthographicSize = 8.5f;

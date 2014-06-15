@@ -22,7 +22,6 @@ public class Player : MonoBehaviour {
 	private float speed =							0.0f;
 	private float acceleration =					0.015f;
 	private const float MAX_SPEED =					0.06f;
-	private float sensitivity =						3.0f;
     private float frictionValue =                   0.2f;
     private float slowestSpeed =                    0.075f;
     private float maxLookAngle =                    10f;
@@ -55,11 +54,9 @@ public class Player : MonoBehaviour {
         UpdateStone();            // this needs to go first
         ResetIfOutOfBounds();
 		Move();
-		Look();
+		//Look();
         UpdateFriction();
         UpdateAnimation();
-        Screen.lockCursor = true;
-        Screen.showCursor = false;
 	}
 
 	public void Move() {
@@ -97,7 +94,7 @@ public class Player : MonoBehaviour {
     }
 
 	public void Look() {
-		dx += Input.GetAxis( "Mouse X" ) * sensitivity;
+		dx += Input.GetAxis( "Mouse X" ) * GameManager.Singleton().GetSensitivity();
         dx = Mathf.Clamp( dx, -maxLookAngle, maxLookAngle );
         transform.Rotate( 0f, -dx, 0f );
         transform.rotation = Quaternion.Euler( transform.rotation.x, dx + transform.rotation.y, transform.rotation.z );
@@ -235,8 +232,8 @@ public class Player : MonoBehaviour {
         return (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0);
     }
 
-    public void SetFriction(float friction) {
-        stoneClone.SetFriction(friction);
+    public void SetFriction(float friction, Brusher.eScrubPlace scrubPlace) {
+        stoneClone.SetFriction(friction, scrubPlace);
     }
 
     public void ClearUpBurnedStones() {
