@@ -41,12 +41,18 @@ public class GameManager : MonoBehaviour {
 		ChangeState                 (eGameState.ePlayer);
         player =                    FindObjectOfType<Player>();
         roundCounter =              1;
-        SwitchFirstTeam();
         cursorDefaultHeight =       cursor.transform.position.y;
 
         BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
         GUARD_LINE_POSITION =       GameObject.FindGameObjectWithTag("GuardLine").transform.position;
+        player.team =               firstTeam;
+        player.teamPrev =           firstTeam;
 	}
+
+    void OnLevelWasLoaded(int level) {
+        SwitchFirstTeam();
+        player.team = firstTeam;
+    }
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Return)) {
