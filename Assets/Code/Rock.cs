@@ -28,12 +28,15 @@ public class Rock : MonoBehaviour
     private float frictionValue;
     private float slowestSpeed =                0.075f;
 
+
+    private Vector3 frictionDirection;        // apply curling
+
     private float FRICTION_MAX =                0.325f;
-    private float FRICTION_MIN =                0.1f;
+    private float FRICTION_MIN =                0.025f;
     private float COMMENTATOR_DELAY =           3.0f;
 
     private Vector3 BULLSEYE_POSITION;
-    
+        
     // --------------------------------------
     // functions
     // --------------------------------------
@@ -46,7 +49,6 @@ public class Rock : MonoBehaviour
         frictionValue =             FRICTION_MAX;
         BULLSEYE_POSITION =         GameObject.FindGameObjectWithTag("Bullseye").transform.position;
         sphereCollider =            GetComponent<SphereCollider>();
-        // NEED TO ADD: GameObjects with the tags above at the correct locations
     }
 
     void Update() {
@@ -106,11 +108,7 @@ public class Rock : MonoBehaviour
     public bool InSupply() {
         return inSupply;
     }
-
-	public bool IsFired() {
-		return isFiring;
-	}
-
+    
     public bool IsPickedUp() {
         return isPickedUp;
     }
@@ -126,7 +124,9 @@ public class Rock : MonoBehaviour
     }
 
     private void UpdateFriction() {
-        if (IsMoving()) {
+        if (HasBeenFired() && GameManager.Singleton().GetGameState() == GameManager.eGameState.eRock) {
+            rigidbody.AddForce(frictionDirection);
+
             if (rigidbody.velocity.magnitude > 3.2f) {
                 rigidbody.AddForce(rigidbody.velocity * frictionValue * -1f);
             } else {
@@ -137,14 +137,39 @@ public class Rock : MonoBehaviour
 
     // Send a value 0-1 to this function to set the friction value 
     // (0 = lowest, 1 = highest)
-    public void SetFriction(float friction) {
-        frictionValue = friction * (FRICTION_MAX - FRICTION_MIN);
+    public void SetFriction(float frictionPercent, Brusher.eScrubPlace scrubPlace) {
+        frictionValue = frictionPercent * (FRICTION_MAX - FRICTION_MIN);
         
         if (frictionValue < FRICTION_MIN) {
             frictionValue = FRICTION_MIN;
         } else if (frictionValue > FRICTION_MAX) {
             frictionValue = FRICTION_MAX;
         }
+
+        switch(scrubPlace) {
+            case Brusher.eScrubPlace.eFarLeft:{
+                frictionDirection = new Vector3(-0.05f * rigidbody.velocity.magnitude, 0f, 0f);
+                break;
+            }
+            case Brusher.eScrubPlace.eLeft:{
+                frictionDirection = new Vector3(-0.025f * rigidbody.velocity.magnitude, 0f, 0f);
+                break;
+            }
+            case Brusher.eScrubPlace.eMiddle:{
+                frictionDirection = Vector3.zero;
+                break;
+            }
+            case Brusher.eScrubPlace.eRight:{
+                frictionDirection = new Vector3(0.025f * rigidbody.velocity.magnitude, 0f, 0f);
+                break;
+            }
+            case Brusher.eScrubPlace.eFarRight:{
+                frictionDirection = new Vector3(0.05f * rigidbody.velocity.magnitude, 0f, 0f);
+                break;
+            }
+        }
+
+        frictionDirection *= frictionPercent;
     }
 
     private void UpdateCamera() {

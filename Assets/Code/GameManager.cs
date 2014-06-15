@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour {
     public GUIText hudDisqualified;
     public GUIText hudResetPosition;
     public GUIText hudBrushNow;
+    public GUITexture cursor;
+    public static eTeam firstTeam=eTeam.TEAM_BLUE;
+    private float sensitivity = 3.2f;
+    private float cursorDefaultHeight;
 
     public enum eGameState {
         ePlayer = 0,
@@ -37,10 +41,67 @@ public class GameManager : MonoBehaviour {
 		ChangeState                 (eGameState.ePlayer);
         player =                    FindObjectOfType<Player>();
         roundCounter =              1;
+        SwitchFirstTeam();
+        cursorDefaultHeight =       cursor.transform.position.y;
 
         BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
         GUARD_LINE_POSITION =       GameObject.FindGameObjectWithTag("GuardLine").transform.position;
 	}
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Return)) {
+            if (Time.timeScale > 0) {
+                Time.timeScale = 0;
+            } else {
+                Time.timeScale = 1;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.LoadLevel("mainMenu");
+        }
+
+        UpdateCursor();
+    }    
+
+    private void UpdateCursor() {
+        // hide and lock default cursor either way
+        Screen.showCursor = false;
+        Screen.lockCursor = true;
+
+        switch (GetGameState()) {
+            case eGameState.eBullseye:
+            case eGameState.ePlayer:{
+                    DisplayCursor(false);
+                    break;
+                }
+            case eGameState.eRock:{
+                    DisplayCursor(true);
+                    break;
+                }
+        }
+    }
+
+    private void DisplayCursor(bool setting) {
+        cursor.guiTexture.enabled = setting;
+
+        if (setting) {
+            Vector3 newCursorPosition;
+
+            newCursorPosition = cursor.transform.position;
+
+            newCursorPosition.y = cursorDefaultHeight;
+            newCursorPosition.x += Input.GetAxis("Mouse X") * sensitivity * 0.01f;
+            newCursorPosition.x = Mathf.Clamp(newCursorPosition.x, -1f, 1f);
+
+            cursor.transform.position = newCursorPosition;
+        }
+    }
+
+    public float GetCursorXPosition() {
+        return cursor.transform.position.x;
+    }
+
 
     public void ChangeState(eGameState state) {
         mGameState = state;
@@ -58,12 +119,12 @@ public class GameManager : MonoBehaviour {
         if (state == eGameState.eRock) {
             rockCam.enabled =   true;
             HUDBrushNow(true);
+            cursor.transform.position = new Vector3(0.5f, 0.5f, 5f);
         }
 
         if (state == eGameState.eBullseye) {
-            // i dont think this ever gets used =[ -Krz
-            EndOfRound();
             bullseyeCam.enabled = true;
+            StartCoroutine(SwitchToEndOfRound());
         }
     }
 
@@ -76,12 +137,6 @@ public class GameManager : MonoBehaviour {
 		}
 
 		return volume;
-	}
-
-	void Update() {
-		if ( Input.GetKeyUp( KeyCode.Escape ) ) {
-			Application.LoadLevel( "mainMenu" );
-		}
 	}
 
 	public enum eTeam {
@@ -196,7 +251,7 @@ public class GameManager : MonoBehaviour {
         int i = 0;
 
         foreach (Rock stone in FindObjectsOfType<Rock>()) {
-			if ((stone.IsPickedUp() || stone.InSupply()) && stone.team == GameManager.eTeam.TEAM_RED) {
+            if ((stone.IsPickedUp() || stone.InSupply()) && stone.team == GameManager.eTeam.TEAM_RED) {
 				i++;
 			}
         }
@@ -216,8 +271,8 @@ public class GameManager : MonoBehaviour {
         return i;
     }
 
-    public void SetFriction(float friction) {
-        player.SetFriction(friction);
+    public void SetFriction(float friction, Brusher.eScrubPlace scrubPlace) {
+        player.SetFriction(friction, scrubPlace);
     }
 
     public eGameState GetGameState() {
@@ -260,5 +315,23 @@ public class GameManager : MonoBehaviour {
     private void HUDBrushNow(bool setting) {
         //tell player to brush now by moving the mouse up and down fast
         hudBrushNow.guiText.enabled = setting;
+    }
+
+    private void SwitchFirstTeam() {
+        if (firstTeam == eTeam.TEAM_BLUE) {
+            firstTeam = eTeam.TEAM_RED;
+        } else {
+            firstTeam = eTeam.TEAM_BLUE;
+        }
+    }
+
+    private IEnumerator SwitchToEndOfRound() {
+        yield return new WaitForSeconds(5);
+
+        EndOfRound();
+    }
+
+    public float GetSensitivity() {
+        return sensitivity;
     }
 }

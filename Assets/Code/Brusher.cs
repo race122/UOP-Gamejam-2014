@@ -23,47 +23,78 @@ public class Brusher : MonoBehaviour {
     private float farRight = 0f;
     private bool movingLeft = true;
     
-    private float timeElapse = 0;   //elapsed time
-    private float scrubPercent = 0;
-    private int NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT = 8;
+    private float timeElapse = 0f;   //elapsed time
+    private float scrubPercent = 0f;
+    private float scrubDecay = 0f;
+    private int NUMBER_OF_SCRUBS_PER_SECOND_TO_ACHIEVE_100_PERCENT = 6;
+    private eScrubPlace scrubPlace;
 
+
+    public enum eScrubPlace {
+        eFarLeft = 0,
+        eLeft,
+        eMiddle,
+        eRight,
+        eFarRight
+    }
+    
+    // --------------------------------------
+    // functions
+    // --------------------------------------
+    
     void Start () {
+        
 	}
 
 /*	//debug gui
 	void OnGUI () {
 		// Make a background box
-		/
+		
 		GUI.Box(new Rect(50,50,160,160),
-                "X: " + MousePositionX.ToString()
-		        + "\n leftClip: " + leftClip
-		        + "\n rightClip: " + rightClip
+                "Decay: " + scrubDecay
 		        + "\n timeElapse: " + timeElapse
 		        + "\n scrub%: " + scrubPercent);
 	}                                               */
 	
 	void Update () {
-		ScrubX();
+        if (GameManager.Singleton().GetGameState() == GameManager.eGameState.eRock) {
+		    ScrubX();
 
-        AnimationSpeed(scrubPercent);
-        SetFriction(scrubPercent);
+            //this was a quick fix to keep the scrubbers scrubbing and didnt inturrupt the animation
+            scrubDecay += scrubPercent - (Time.deltaTime * 10f);
+            scrubDecay = Mathf.Clamp(scrubDecay, 0f, 1f);
+
+            AnimationSpeed(scrubDecay);
+            SetFriction(scrubPercent, GameManager.Singleton().GetCursorXPosition());
+        }
 	}
 	
 	//change scrub animation speed by % of passed value.
     private void AnimationSpeed(float scrubPercent) {
 		//play vareity of animations
-		if (scrubPercent > 0) {
-			//max out animation - so no crazy speeds
-			animation["npc_action"].speed = scrubPercent * 2f;
+		if (scrubPercent > 0.3) {
+			animation["npc_action"].speed = 1f;
             animation.CrossFade("npc_action");
-		} else {
-			//no motion - play idle animation
-			animation.CrossFade("npc_running");
-		}
+        } else {
+            //no motion - play idle animation
+            animation.CrossFade("npc_running");
+        }
 	}
 
-    private void SetFriction(float scrubPercent) {
-		GameManager.Singleton().SetFriction(1.0f - scrubPercent);
+    private void SetFriction(float scrubPercent, float xPosition) {
+        if (xPosition <= 0.2f) {
+            scrubPlace = eScrubPlace.eFarLeft;
+        } else if (xPosition <= 0.4f) {
+            scrubPlace = eScrubPlace.eLeft;
+        } else if (xPosition >= 0.8f) {
+            scrubPlace = eScrubPlace.eFarRight; 
+        } else if (xPosition >= 0.6f) {
+            scrubPlace = eScrubPlace.eRight;
+        } else {
+            scrubPlace = eScrubPlace.eMiddle;
+        }
+
+        GameManager.Singleton().SetFriction(1.0f - scrubPercent, scrubPlace);
 	}
 
 	private void ScrubX() {

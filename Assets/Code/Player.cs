@@ -1,4 +1,4 @@
-﻿/*
+/*
 	FILE:			Player.cs
 	AUHTOR:			Dan, Krz
 	PROJECT:		Geri-Lynn Ramsey's Xtreme Curling 2014
@@ -17,12 +17,11 @@ public class Player : MonoBehaviour {
     private GameManager.eTeam teamPrev;
     public Camera rockCamera;
     public Camera playerCamera;
-    
-    
+
+
 	private float speed =							0.0f;
-	private float acceleration =					0.02f;
+	private float acceleration =					0.015f;
 	private const float MAX_SPEED =					0.06f;
-	private float sensitivity =						6.0f;
     private float frictionValue =                   0.2f;
     private float slowestSpeed =                    0.075f;
     private float maxLookAngle =                    10f;
@@ -35,7 +34,7 @@ public class Player : MonoBehaviour {
 
     private int DEFAULT_FORCE =                     85;
 
-    private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 1.5f, -61.5f);
+    private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 0.2f, -61.5f);
     private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  new Vector3(0f, 5f, -3f);
     private Vector3 HOGLINE_POSITION =              Vector3.zero;
     private float BOUNDARY_RESTRICTION_X_OFFSET =   7f;
@@ -43,10 +42,10 @@ public class Player : MonoBehaviour {
     private int DELAY_BETWEEN_CAMERA_SWITCH =       3;
 
 	void Start() {
-	    HOGLINE_POSITION =               GameObject.FindGameObjectWithTag("Hogline").transform.position;
-        ROCK_CAMERA_DEFAULT_POSITION =   PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
-        transform.position =             PLAYER_DEFAULT_POSITION;
-        
+	    HOGLINE_POSITION =                          GameObject.FindGameObjectWithTag("Hogline").transform.position;
+        ROCK_CAMERA_DEFAULT_POSITION =              PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
+        transform.position =                        PLAYER_DEFAULT_POSITION;
+
         SwitchState(GameManager.eGameState.ePlayer);
         GiveStone();
 	}
@@ -55,7 +54,7 @@ public class Player : MonoBehaviour {
         UpdateStone();            // this needs to go first
         ResetIfOutOfBounds();
 		Move();
-		Look();
+		//Look();
         UpdateFriction();
         UpdateAnimation();
 	}
@@ -95,22 +94,22 @@ public class Player : MonoBehaviour {
     }
 
 	public void Look() {
-		dx += Input.GetAxis( "Mouse X" ) * sensitivity;
+		dx += Input.GetAxis( "Mouse X" ) * GameManager.Singleton().GetSensitivity();
         dx = Mathf.Clamp( dx, -maxLookAngle, maxLookAngle );
         transform.Rotate( 0f, -dx, 0f );
         transform.rotation = Quaternion.Euler( transform.rotation.x, dx + transform.rotation.y, transform.rotation.z );
 	}
-    
+
     public void GiveStone() {
         bool found = false;
 
         RespawnPlayer();
-        
+
 		foreach ( Rock stone in FindObjectsOfType<Rock>() ) {
 			if ( stone.InSupply() && stone.team == team ) {
 				stoneClone =					stone;
                 stoneClone.transform.parent =   null;
-                stoneClone.transform.position = transform.position + (transform.forward + transform.forward);
+                stoneClone.transform.position = transform.position + (transform.forward + transform.forward + new Vector3(0f,-1.5f,0f));
                 ResetRockCamera();
                 rockCamera.transform.parent =   stoneClone.transform;
                 stone.Pickup();
@@ -130,7 +129,7 @@ public class Player : MonoBehaviour {
 
 	public void UpdateStone() {
 		if ( stoneClone.IsPickedUp() ) {
-			stoneClone.transform.position = transform.position + ( transform.forward + transform.forward );
+            stoneClone.transform.position = transform.position + (transform.forward * 4f);
 			if ( canShoot && IsMoving() ) {
 				if ( Input.GetMouseButtonDown( 0 ) ) {
 					ShootStone();
@@ -220,7 +219,7 @@ public class Player : MonoBehaviour {
     private void ResetRockCamera() {
         rockCamera.transform.parent = null;
         //rockCamera.transform.position = Vector3.zero;
-        
+
         rockCamera.transform.position = ROCK_CAMERA_DEFAULT_POSITION;
     }
 
@@ -233,8 +232,8 @@ public class Player : MonoBehaviour {
         return (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0);
     }
 
-    public void SetFriction(float friction) {
-        stoneClone.SetFriction(friction);
+    public void SetFriction(float friction, Brusher.eScrubPlace scrubPlace) {
+        stoneClone.SetFriction(friction, scrubPlace);
     }
 
     public void ClearUpBurnedStones() {
@@ -276,7 +275,7 @@ public class Player : MonoBehaviour {
         GameManager.Singleton().HUDDisqualified();
         canControl = false;
         canShoot = false;
-        
+
         StartCoroutine( DisqualifyCont() );
     }
 
