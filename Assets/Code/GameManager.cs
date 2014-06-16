@@ -127,7 +127,8 @@ public class GameManager : MonoBehaviour {
         }
 
         if (state == eGameState.eRock) {
-            rockCam.enabled =   true;
+            rockCam.enabled = true;
+            miniCam.enabled = true;
             HUDBrushNow(true);
             cursor.transform.position = new Vector3(0.5f, 0.5f, 5f);
         }
