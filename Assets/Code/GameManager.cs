@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public Camera playerCam;
     public Camera rockCam;
     public Camera bullseyeCam;
+    public Camera miniCam;
     private eGameState mGameState;
     private Player player;
 	private static int roundCounter;
@@ -117,10 +118,12 @@ public class GameManager : MonoBehaviour {
         rockCam.enabled =       false;
         playerCam.enabled =     false;
         bullseyeCam.enabled =   false;
+        miniCam.enabled =       false;
         HUDBrushNow(false);
 
         if (state == eGameState.ePlayer) {
             playerCam.enabled = true;
+            miniCam.enabled =   true;
         }
 
         if (state == eGameState.eRock) {
