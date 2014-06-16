@@ -10,9 +10,9 @@ using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-
 	public static float volume = CheckVolume();
     private static int team1score = 0, team2score = 0;
+    private int team1currentscore = 0, team2currentscore = 0;
     public GameObject stonesDeposit;
     public Camera playerCam;
     public Camera rockCam;
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
     public GUIText hudDisqualified;
     public GUIText hudResetPosition;
     public GUIText hudBrushNow;
+    public GUIText hudFinalScores;
     public GUITexture cursor;
     public static eTeam firstTeam=eTeam.TEAM_BLUE;
     private float sensitivity = 3.2f;
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour {
         BACK_OF_HOUSE_POSITION =    GameObject.FindGameObjectWithTag("BackOfHouse").transform.position;
         GUARD_LINE_POSITION =       GameObject.FindGameObjectWithTag("GuardLine").transform.position;
         player.team =               firstTeam;
-        player.teamPrev =           firstTeam;
+        player.teamPrev =           (firstTeam == eTeam.TEAM_BLUE) ? eTeam.TEAM_RED: eTeam.TEAM_BLUE;
 	}
 
     void OnLevelWasLoaded(int level) {
@@ -130,7 +131,8 @@ public class GameManager : MonoBehaviour {
 
         if (state == eGameState.eBullseye) {
             bullseyeCam.enabled = true;
-            StartCoroutine(SwitchToEndOfRound());
+            EndOfRound();
+            StartCoroutine(SwitchToEndOfRound(5));  // wait 5 seconds and switch to end of round scene
         }
     }
 
@@ -160,17 +162,24 @@ public class GameManager : MonoBehaviour {
 	}
 
     public void UpdateScores() {
+        int winningTeamPoints;
+        string pointsPluraled;
+
         eTeam winningTeam = GetRoundWinner();
         GivePoints(winningTeam, GetEnemyClosestToBullseye(winningTeam) );
-        Debug.Log("Game Over");
-        Debug.Log(winningTeam + "won the game");
+
+        // create msg to display on screen
+        winningTeamPoints = winningTeam == eTeam.TEAM_RED ? team1currentscore : team2currentscore;
+        pointsPluraled = winningTeamPoints + " POINT";
+        pointsPluraled += winningTeamPoints == 1 ? "S" : "";
+        hudFinalScores.guiText.text = (winningTeam == eTeam.TEAM_RED) ? "RED TEAM SCORES " + pointsPluraled : "BLUE TEAM SCORES " + pointsPluraled; ;
+        hudFinalScores.guiText.enabled = true;
     }
 
     private void EndOfRound() {
         UpdateScores();
 		roundCounter++;
 		print ("Round number: " + roundCounter.ToString ());
-		Application.LoadLevel ("EndOfRound");
     }
 
     private eTeam GetRoundWinner() {
@@ -216,15 +225,15 @@ public class GameManager : MonoBehaviour {
 
     private void GiveWinningTeamPoints( eTeam team, int points ) {
         switch ( team ) {
-            case eTeam.TEAM_RED:
-            {
+            case eTeam.TEAM_RED:{
                 team1score += points;
+                team1currentscore += points;
                 break;
             }
 
-            case eTeam.TEAM_BLUE:
-            {
+            case eTeam.TEAM_BLUE:{
                 team2score += points;
+                team2currentscore += points;
                 break;
             }
         }
@@ -331,10 +340,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private IEnumerator SwitchToEndOfRound() {
-        yield return new WaitForSeconds(5);
+    private IEnumerator SwitchToEndOfRound(int delay) {
+        yield return new WaitForSeconds(delay);
 
-        EndOfRound();
+        Application.LoadLevel("EndOfRound");
     }
 
     public float GetSensitivity() {

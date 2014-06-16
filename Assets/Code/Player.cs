@@ -28,6 +28,7 @@ public class Player : MonoBehaviour {
 	private bool canControl =						true;
 	private bool passedTheLine =					false;
     private float dx;
+    private int turnsPlayed =                       0;
 
 	private Rock stoneClone;
 
@@ -170,13 +171,8 @@ public class Player : MonoBehaviour {
     }
 
     private void EndOfTurn() {
-        // if i've been the same team for the last 2 turns switch team
-        if ( teamPrev == team ) {
-            SwitchTeam();
-        } else {
-            teamPrev = team;
-        }
-
+        turnsPlayed++;
+        SelectTeam();
         ClearUpBurnedStones();
 
         SwitchState(GameManager.eGameState.ePlayer);
@@ -197,21 +193,23 @@ public class Player : MonoBehaviour {
 		GameManager.Singleton().ChangeState( state );
     }
 
+    private void SelectTeam() {
+        if ((turnsPlayed % 4) == 1 || (turnsPlayed % 4) == 3) {
+            SwitchTeam();
+        }
+    }
+
     private void SwitchTeam() {
-        teamPrev = team;
+        switch (team) {
+            case GameManager.eTeam.TEAM_RED: {
+                    team = GameManager.eTeam.TEAM_BLUE;
+                    break;
+                }
 
-        switch ( team ) {
-            case GameManager.eTeam.TEAM_RED:
-            {
-                team = GameManager.eTeam.TEAM_BLUE;
-                break;
-            }
-
-            case GameManager.eTeam.TEAM_BLUE:
-            {
-                team = GameManager.eTeam.TEAM_RED;
-                break;
-            }
+            case GameManager.eTeam.TEAM_BLUE: {
+                    team = GameManager.eTeam.TEAM_RED;
+                    break;
+                }
         }
     }
 
@@ -276,15 +274,16 @@ public class Player : MonoBehaviour {
         canShoot = false;
         stoneClone.Fire();
 
-        StartCoroutine( DisqualifyCont() );
+        StartCoroutine(DisqualifyCont());
     }
 
     IEnumerator DisqualifyCont() {
         yield return new WaitForSeconds(1);
 
-        float disqualifyOffset = GameManager.Singleton().BACK_OF_HOUSE_POSITION.z + 10.0f;
+        float disqualifyOffset = GameManager.Singleton().BACK_OF_HOUSE_POSITION.z + 30.0f;
         Vector3 pos = stoneClone.transform.position;
         stoneClone.transform.position = new Vector3(pos.x, pos.y, disqualifyOffset);
+        ClearUpBurnedStones();
         StoneFired();
     }
 

@@ -33,7 +33,6 @@ public class Rock : MonoBehaviour
 
     private static float FRICTION_MAX =                 40.0f;
     private static float FRICTION_MIN =                 10.0f;
-    private static float BRUSH_IGNORE_PERCENT =         .750f;              //at high speed the brush is ignored by this percentage
     private static float FRICTION_FACTOR_HIGH_SPEED =   .550f;
     private static float FRICTION_MED_SPEED =           4.80f;              //above this is high speed
     private static float FRICTION_FACTOR_MED_SPEED =    0.70f;

@@ -44,11 +44,11 @@ public class EndRoundScript : MonoBehaviour {
 		//int[] scores = GameManager.getScore ();
 		if (scores [0] > scores [1]) {
             roundWinner.guiText.color = redTeamTextColor;
-            roundWinner.guiText.text = "RED TEAM WINS!";
+            roundWinner.guiText.text = "RED TEAM LEADS!";
 		}
 		else if (scores [0] < scores [1]) {
             roundWinner.guiText.color = blueTeamTextColor;
-            roundWinner.guiText.text = "BLUE TEAM WINS!";
+            roundWinner.guiText.text = "BLUE TEAM LEADS!";
 		}
 		else {
             roundWinner.guiText.text = "TEAMS ARE TIED!";
