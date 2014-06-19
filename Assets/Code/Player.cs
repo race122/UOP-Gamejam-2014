@@ -14,40 +14,40 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
     public GameManager.eTeam team;
-    private GameManager.eTeam teamPrev;
+    public GameManager.eTeam teamPrev;
     public Camera rockCamera;
     public Camera playerCamera;
 
 
-	private float speed =							0.0f;
-	private float acceleration =					0.015f;
-	private const float MAX_SPEED =					0.06f;
+    private float speed;
+	private float acceleration =					1.0f;
+	private const float MAX_SPEED =					3.2f;
     private float frictionValue =                   0.2f;
-    private float slowestSpeed =                    0.075f;
     private float maxLookAngle =                    10f;
     private bool canShoot =                         true;
 	private bool canControl =						true;
 	private bool passedTheLine =					false;
     private float dx;
+    private int turnsPlayed =                       0;
 
 	private Rock stoneClone;
 
-    private int DEFAULT_FORCE =                     85;
+    private int DEFAULT_FORCE =                     128;
 
-    private Vector3 PLAYER_DEFAULT_POSITION =       new Vector3(0f, 0.2f, -61.5f);
-    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =  new Vector3(0f, 5f, -3f);
-    private Vector3 HOGLINE_POSITION =              Vector3.zero;
-    private float BOUNDARY_RESTRICTION_X_OFFSET =   7f;
-    private float BOUNDARY_RESTRICTION_Z_OFFSET =   34f;
-    private int DELAY_BETWEEN_CAMERA_SWITCH =       3;
+    private static Vector3 PLAYER_DEFAULT_POSITION =        new Vector3(0f, 0.2f, -61.5f);
+    private Vector3 ROCK_CAMERA_DEFAULT_POSITION =          Vector3.zero;
+    private Vector3 HOGLINE_POSITION =                      Vector3.zero;
+    private static float BOUNDARY_RESTRICTION_X_OFFSET =    7f;
+    private static float BOUNDARY_RESTRICTION_Z_OFFSET =    34f;
+    private static int DELAY_BETWEEN_CAMERA_SWITCH =        3;
+    private static float STOP_MOVING_AT_THIS_SPEED =        0.075f;
 
 	void Start() {
-	    HOGLINE_POSITION =                          GameObject.FindGameObjectWithTag("Hogline").transform.position;
-        ROCK_CAMERA_DEFAULT_POSITION =              PLAYER_DEFAULT_POSITION + ROCK_CAMERA_DEFAULT_POSITION;
-        transform.position =                        PLAYER_DEFAULT_POSITION;
-
+        HOGLINE_POSITION =                                  GameObject.FindGameObjectWithTag("Hogline").transform.position;
+        ROCK_CAMERA_DEFAULT_POSITION =                      PLAYER_DEFAULT_POSITION + new Vector3(0f, 5f, -3f);
         SwitchState(GameManager.eGameState.ePlayer);
         GiveStone();
+        RespawnPlayer();
 	}
 
     void Update() {
@@ -62,14 +62,14 @@ public class Player : MonoBehaviour {
 	public void Move() {
 		if ( canControl ) {
 			float dz =				Input.GetAxis( "Vertical" );
-			dz =					Mathf.Clamp( dz, -(speed * 0.5f), speed );
+			dz =					Mathf.Clamp( dz, -0.5f, 1.0f );
 
             Vector3 direction = new Vector3(0f, 0f, dz);
 
             if (CanMoveInDirection(direction)) {
                 direction = transform.TransformDirection(direction);
-                // move player
-                rigidbody.AddForce(direction * DEFAULT_FORCE);
+                // move player in direction proportional to current speed, default force and time since last update
+                rigidbody.AddForce(direction * speed * DEFAULT_FORCE * Time.deltaTime);
             }
 
             if (HOGLINE_POSITION.z - transform.position.z < 0) {
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour {
 
             // only apply accel while below max speed and pressing movement keys
 			if ( speed < MAX_SPEED && MovementKeysPressed() ) {
-				speed += acceleration;
+				speed += acceleration * Time.deltaTime;
 			}
 		}
 	}
@@ -146,9 +146,9 @@ public class Player : MonoBehaviour {
 			// apply our current velocity to the stone
 			stoneClone.rigidbody.AddForce( rigidbody.velocity * DEFAULT_FORCE );
 
-			SwitchState(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
-			stoneClone.Fire();                             //this will call StoneFired() when the stone stops moving
-            StartCoroutine( AllowRockToPassCameraBack() );
+            SwitchState(GameManager.eGameState.eRock);     //switch to rockCamera which follows the stone
+            stoneClone.Fire();                             //this will call StoneFired() when the stone stops moving
+            StartCoroutine(AllowRockToPassCameraBack());
     	}
 	}
 
@@ -171,13 +171,8 @@ public class Player : MonoBehaviour {
     }
 
     private void EndOfTurn() {
-        // if i've been the same team for the last 2 turns switch team
-        if ( teamPrev == team ) {
-            SwitchTeam();
-        } else {
-            teamPrev = team;
-        }
-
+        turnsPlayed++;
+        SelectTeam();
         ClearUpBurnedStones();
 
         SwitchState(GameManager.eGameState.ePlayer);
@@ -198,21 +193,23 @@ public class Player : MonoBehaviour {
 		GameManager.Singleton().ChangeState( state );
     }
 
+    private void SelectTeam() {
+        if ((turnsPlayed % 4) == 1 || (turnsPlayed % 4) == 3) {
+            SwitchTeam();
+        }
+    }
+
     private void SwitchTeam() {
-        teamPrev = team;
+        switch (team) {
+            case GameManager.eTeam.TEAM_RED: {
+                    team = GameManager.eTeam.TEAM_BLUE;
+                    break;
+                }
 
-        switch ( team ) {
-            case GameManager.eTeam.TEAM_RED:
-            {
-                team = GameManager.eTeam.TEAM_BLUE;
-                break;
-            }
-
-            case GameManager.eTeam.TEAM_BLUE:
-            {
-                team = GameManager.eTeam.TEAM_RED;
-                break;
-            }
+            case GameManager.eTeam.TEAM_BLUE: {
+                    team = GameManager.eTeam.TEAM_RED;
+                    break;
+                }
         }
     }
 
@@ -258,7 +255,7 @@ public class Player : MonoBehaviour {
         }
 
         if (IsMoving()) {
-            rigidbody.AddForce(rigidbody.velocity * frictionValue * -1f);
+            rigidbody.AddForce(rigidbody.velocity * frictionValue * Time.deltaTime * -120f);
         }
 
         if (speed >= (acceleration * 2f) && !MovementKeysPressed()) {
@@ -267,7 +264,7 @@ public class Player : MonoBehaviour {
     }
 
     public bool IsMoving() {
-        return (rigidbody.velocity.magnitude > slowestSpeed);
+        return (rigidbody.velocity.magnitude > STOP_MOVING_AT_THIS_SPEED);
     }
 
     public void Disqualify() {
@@ -275,16 +272,18 @@ public class Player : MonoBehaviour {
         GameManager.Singleton().HUDDisqualified();
         canControl = false;
         canShoot = false;
+        stoneClone.Fire();
 
-        StartCoroutine( DisqualifyCont() );
+        StartCoroutine(DisqualifyCont());
     }
 
     IEnumerator DisqualifyCont() {
         yield return new WaitForSeconds(1);
 
-        float disqualifyOffset = GameManager.Singleton().BACK_OF_HOUSE_POSITION.z - 1.0f;
+        float disqualifyOffset = GameManager.Singleton().BACK_OF_HOUSE_POSITION.z + 30.0f;
         Vector3 pos = stoneClone.transform.position;
         stoneClone.transform.position = new Vector3(pos.x, pos.y, disqualifyOffset);
+        ClearUpBurnedStones();
         StoneFired();
     }
 
@@ -315,6 +314,7 @@ public class Player : MonoBehaviour {
         transform.position = PLAYER_DEFAULT_POSITION;
         transform.rotation = Quaternion.identity;
         rigidbody.velocity = Vector3.zero;
+        speed =              0;
     }
 
     private void ResetIfOutOfBounds() {
